@@ -1,0 +1,190 @@
+@import "tailwindcss";
+
+@layer base {
+  html {
+    overflow-y: scroll;
+    scrollbar-gutter: stable;
+  }
+
+  :root {
+    --orange-light: #F4A982;
+    --orange: #E2571B;
+    --orange-deep: #B8421A;
+    --green: #16A34A;
+    --green-deep: #128A3E;
+    --green-light: #4ADE80;
+    --red: #DC2626;
+    
+    --orange-ghost: rgba(226, 87, 27, 0.10);
+    --orange-faint: rgba(226, 87, 27, 0.25);
+    --green-ghost: rgba(22, 163, 74, 0.10);
+    --green-faint: rgba(22, 163, 74, 0.25);
+
+    /* Default role = Investor / Buyer */
+    --role: var(--orange);
+    --role-deep: var(--orange-deep);
+    --role-light: var(--orange-light);
+    --role-ghost: var(--orange-ghost);
+    --role-faint: var(--orange-faint);
+
+    /* Theme colors - Dark by default */
+    --bg: #0A0908;
+    --bg-paper: #12100E;
+    --bg-bone: #181512;
+    --bg-tint: #1F1914;
+    --text: #FAFAF7;
+    --text-muted: rgba(250, 250, 247, 0.72);
+    --text-faint: rgba(250, 250, 247, 0.48);
+    --text-ghost: rgba(250, 250, 247, 0.25);
+    --line: rgba(250, 250, 247, 0.10);
+    --line-strong: rgba(250, 250, 247, 0.22);
+    --nav-bg: #14120F;
+    --nav-border: rgba(255, 255, 255, 0.14);
+  }
+
+  [data-theme="light"] {
+    --bg: #FAFAF7;
+    --bg-paper: #FFFFFF;
+    --bg-bone: #F4F0E8;
+    --bg-tint: #FDF4EE;
+    --text: #0A0908;
+    --text-muted: rgba(10, 9, 8, 0.70);
+    --text-faint: rgba(10, 9, 8, 0.48);
+    --text-ghost: rgba(10, 9, 8, 0.28);
+    --line: rgba(10, 9, 8, 0.10);
+    --line-strong: rgba(10, 9, 8, 0.22);
+    --nav-bg: #EAE3D5;
+    --nav-border: rgba(0, 0, 0, 0.12);
+  }
+
+  [data-role="architect"] {
+    --role: var(--green);
+    --role-deep: var(--green-deep);
+    --role-light: var(--green-light);
+    --role-ghost: var(--green-ghost);
+    --role-faint: var(--green-faint);
+  }
+
+  body {
+    font-family: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+    transition: background-color 0.3s cubic-bezier(0.16, 1, 0.3, 1), color 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+}
+
+@keyframes tickerScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes blinkLive {
+  0%, 60% { opacity: 1; }
+  61%, 100% { opacity: 0.3; }
+}
+
+.animate-ticker {
+  display: flex;
+  width: max-content;
+  animation: tickerScroll 45s linear infinite;
+}
+
+.animate-ticker:hover {
+  animation-play-state: paused;
+}
+
+.font-serif {
+  font-family: 'Instrument Serif', Georgia, serif;
+}
+
+.custom-deal-scroll::-webkit-scrollbar {
+  width: 4px;
+}
+.custom-deal-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-deal-scroll::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 4px;
+}
+.custom-deal-scroll::-webkit-scrollbar-thumb:hover {
+  background: var(--role);
+}
+
+.font-mono {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--line-strong);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--role);
+}
+
+/* Subtle glow / border utilities */
+.border-line {
+  border-color: var(--line);
+}
+.border-line-strong {
+  border-color: var(--line-strong);
+}
+.bg-paper {
+  background-color: var(--bg-paper);
+}
+.bg-bone {
+  background-color: var(--bg-bone);
+}
+.text-muted-custom {
+  color: var(--text-muted);
+}
+.text-faint-custom {
+  color: var(--text-faint);
+}
+
+@keyframes progress_10s {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
+.animate-progress-10s {
+  animation: progress_10s 10s linear infinite;
+}
+
+/* 3D button sweeping light ray animation */
+@keyframes sweepLightRay {
+  0% {
+    transform: translateX(-160%) skewX(-24deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.9;
+  }
+  35% {
+    opacity: 0.9;
+  }
+  48% {
+    transform: translateX(280%) skewX(-24deg);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(280%) skewX(-24deg);
+    opacity: 0;
+  }
+}
+
+.animate-light-ray {
+  animation: sweepLightRay 4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}

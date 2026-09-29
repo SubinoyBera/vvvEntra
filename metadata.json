@@ -1,0 +1,6 @@
+{
+  "name": "vvEntra · Venture Intelligence",
+  "description": "Where vision and ventures enter reality. A private venture intelligence network and confidential opportunity marketplace.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
