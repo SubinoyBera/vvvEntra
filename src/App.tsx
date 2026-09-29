@@ -10,7 +10,6 @@ import { OpportunitiesPage } from './pages/OpportunitiesPage';
 import { TermsPage } from './pages/TermsPage';
 import { PricingPage } from './pages/PricingPage';
 import { NdaGateModal } from './components/modals/NdaGateModal';
-import { Toast } from './components/modals/Toast';
 
 const AppContent: React.FC = () => {
   const { activeRoute, setActiveRoute } = useApp();
@@ -46,7 +45,6 @@ const AppContent: React.FC = () => {
 
       {/* Gate & Feedback Overlays */}
       <NdaGateModal />
-      <Toast />
     </div>
   );
 };

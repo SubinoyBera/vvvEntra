@@ -139,16 +139,12 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     setSelectedOpportunityForNda(null);
   };
 
-  const addToast = (message: string, type: 'info' | 'success' | 'warn' = 'info') => {
-    const id = Date.now().toString() + Math.random().toString(36).substring(2, 5);
-    setToasts(prev => [...prev.slice(-3), { id, message, type }]);
-    setTimeout(() => {
-      setToasts(prev => prev.filter(t => t.id !== id));
-    }, 3800);
+  const addToast = (_message: string, _type: 'info' | 'success' | 'warn' = 'info') => {
+    // Disabled completely per user request
   };
 
-  const removeToast = (id: string) => {
-    setToasts(prev => prev.filter(t => t.id !== id));
+  const removeToast = (_id: string) => {
+    // Disabled completely per user request
   };
 
   return (
