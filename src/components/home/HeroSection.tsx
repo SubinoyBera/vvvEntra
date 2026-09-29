@@ -1,6 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useApp } from '../../context/AppContext';
-import { Search, ArrowRight, Plus } from 'lucide-react';
+import { Search, ArrowRight, Plus, ChevronDown, Check } from 'lucide-react';
+
+const SECTOR_OPTIONS = [
+  { id: 'all', label: 'All sectors' },
+  { id: 'ai', label: 'AI & Automation' },
+  { id: 'saas', label: 'SaaS & B2B' },
+  { id: 'fintech', label: 'Fintech & SMB' },
+  { id: 'climate', label: 'Climate Tech' },
+  { id: 'health', label: 'HealthTech' },
+];
 
 export const HeroSection: React.FC = () => {
   const {
@@ -15,10 +24,29 @@ export const HeroSection: React.FC = () => {
   const [activeSectorPill, setActiveSectorPill] = useState<string>('All sectors');
   const [localInput, setLocalInput] = useState(searchQuery);
   const [selectedCategory, setSelectedCategory] = useState('all');
+  const [isSectorDropdownOpen, setIsSectorDropdownOpen] = useState(false);
+  const sectorDropdownRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (sectorDropdownRef.current && !sectorDropdownRef.current.contains(event.target as Node)) {
+        setIsSectorDropdownOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
 
   const handleSearchSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setSearchQuery(localInput);
+    if (localInput.trim()) {
+      addToast(`Showing results for "${localInput}"`, 'info');
+      const el = document.getElementById('opportunities');
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   return (
@@ -92,13 +120,6 @@ export const HeroSection: React.FC = () => {
                   : 'text-neutral-400 hover:text-white hover:bg-white/[0.05] border border-transparent hover:border-white/10 hover:-translate-y-[0.5px]'
               }`}
             >
-              {/* Sweeping Light Ray on Active State */}
-              {role === 'investor' && (
-                <div className="absolute inset-0 overflow-hidden rounded-full pointer-events-none">
-                  <div className="absolute top-0 bottom-0 w-28 -left-14 bg-gradient-to-r from-transparent via-white/55 to-transparent blur-[1px] animate-light-ray pointer-events-none" />
-                </div>
-              )}
-
               {/* Icon Container with Micro-Badge Glow */}
               <div
                 className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center shrink-0 transition-colors ${
@@ -142,13 +163,6 @@ export const HeroSection: React.FC = () => {
                   : 'text-neutral-400 hover:text-white hover:bg-white/[0.05] border border-transparent hover:border-white/10 hover:-translate-y-[0.5px]'
               }`}
             >
-              {/* Sweeping Light Ray on Active State */}
-              {role === 'architect' && (
-                <div className="absolute inset-0 overflow-hidden rounded-full pointer-events-none">
-                  <div className="absolute top-0 bottom-0 w-28 -left-14 bg-gradient-to-r from-transparent via-white/55 to-transparent blur-[1px] animate-light-ray pointer-events-none" />
-                </div>
-              )}
-
               {/* Icon Container with Micro-Badge Glow */}
               <div
                 className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center shrink-0 transition-colors ${
@@ -196,17 +210,70 @@ export const HeroSection: React.FC = () => {
             </div>
 
             <div className="flex items-center gap-2 sm:gap-3 shrink-0 pr-1">
-              <select
-                value={selectedCategory}
-                onChange={(e) => setSelectedCategory(e.target.value)}
-                aria-label="Filter sector"
-                className="bg-transparent text-xs sm:text-sm text-[var(--text-muted)] outline-none cursor-pointer py-1.5 px-2 font-medium hidden md:inline-block border-l border-[var(--line-strong)] pl-3"
-              >
-                <option value="all">All sectors</option>
-                <option value="ai">AI & Automation</option>
-                <option value="saas">SaaS & B2B</option>
-                <option value="fintech">Fintech & SMB</option>
-              </select>
+              
+              {/* Custom Dark Sector Dropdown - Fixes white box issue */}
+              <div className="relative hidden md:block" ref={sectorDropdownRef}>
+                <button
+                  type="button"
+                  onClick={() => setIsSectorDropdownOpen(!isSectorDropdownOpen)}
+                  aria-label="Filter sector"
+                  className="flex items-center gap-1.5 text-xs sm:text-sm text-[var(--text-muted)] hover:text-white outline-none cursor-pointer py-1.5 px-3 font-medium border-l border-[var(--line-strong)] pl-3.5 transition-colors select-none"
+                >
+                  <span className="truncate max-w-[125px]">
+                    {SECTOR_OPTIONS.find((s) => s.id === selectedCategory)?.label || 'All sectors'}
+                  </span>
+                  <ChevronDown
+                    className={`w-3.5 h-3.5 text-neutral-400 transition-transform duration-200 ${
+                      isSectorDropdownOpen ? 'rotate-180 text-white' : ''
+                    }`}
+                  />
+                </button>
+
+                {/* Floating Menu with Dark Premium Style */}
+                {isSectorDropdownOpen && (
+                  <div 
+                    className="absolute top-full right-0 mt-3 w-52 py-1.5 bg-[#14110E] border border-white/15 rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.9)] backdrop-blur-2xl z-50 text-left animate-in fade-in zoom-in-95 duration-150"
+                  >
+                    <div className="px-3.5 py-1.5 text-[10px] font-mono uppercase tracking-widest text-neutral-500 font-semibold border-b border-white/5 mb-1">
+                      Filter Sector
+                    </div>
+                    {SECTOR_OPTIONS.map((opt) => {
+                      const isSelected = selectedCategory === opt.id;
+                      return (
+                        <button
+                          key={opt.id}
+                          type="button"
+                          onClick={() => {
+                            setSelectedCategory(opt.id);
+                            setIsSectorDropdownOpen(false);
+                            if (opt.id !== 'all') {
+                              setLocalInput(opt.label);
+                              setSearchQuery(opt.label);
+                              addToast(`Filtered by ${opt.label}`, 'info');
+                            } else {
+                              setLocalInput('');
+                              setSearchQuery('');
+                              addToast('Showing all sectors', 'info');
+                            }
+                          }}
+                          className={`w-[calc(100%-8px)] mx-1 px-3 py-2 text-xs rounded-xl flex items-center justify-between text-left transition-colors cursor-pointer ${
+                            isSelected
+                              ? role === 'architect'
+                                ? 'bg-[#16A34A]/20 text-[#4ADE80] font-semibold border border-[#16A34A]/40'
+                                : 'bg-[#E2571B]/20 text-[#FB923C] font-semibold border border-[#E2571B]/40'
+                              : 'text-neutral-300 hover:text-white hover:bg-white/[0.08]'
+                          }`}
+                        >
+                          <span className="truncate">{opt.label}</span>
+                          {isSelected && (
+                            <Check className={`w-3.5 h-3.5 shrink-0 ${role === 'architect' ? 'text-[#4ADE80]' : 'text-[#FB923C]'}`} />
+                          )}
+                        </button>
+                      );
+                    })}
+                  </div>
+                )}
+              </div>
 
               <button
                 type="submit"
@@ -221,6 +288,126 @@ export const HeroSection: React.FC = () => {
               </button>
             </div>
           </form>
+
+          {/* Relevant Trending & Signal Bubbles (Guaranteed Single Line) */}
+          <div className="w-full flex items-center justify-center flex-nowrap overflow-x-auto no-scrollbar gap-2 sm:gap-2.5 mt-4 sm:mt-5 max-w-3xl mx-auto py-0.5 px-1">
+            {(role === 'investor'
+              ? [
+                  {
+                    icon: '🔥',
+                    label: 'Hot',
+                    highlight: 'AI Compliance (+28%)',
+                    action: () => {
+                      setLocalInput('AI Compliance');
+                      setSearchQuery('AI Compliance');
+                      setSelectedCategory('ai');
+                      addToast('Filtering by Hot sector: AI Compliance (+28%)', 'info');
+                      const el = document.getElementById('opportunities');
+                      if (el) el.scrollIntoView({ behavior: 'smooth' });
+                    },
+                  },
+                  {
+                    icon: '⚡',
+                    label: 'Rising',
+                    highlight: 'RegTech (+26%)',
+                    action: () => {
+                      setLocalInput('RegTech');
+                      setSearchQuery('RegTech');
+                      setSelectedCategory('saas');
+                      addToast('Filtering by Rising trend: RegTech (+26%)', 'info');
+                      const el = document.getElementById('opportunities');
+                      if (el) el.scrollIntoView({ behavior: 'smooth' });
+                    },
+                  },
+                  {
+                    icon: '',
+                    label: 'New',
+                    highlight: '14 today',
+                    action: () => {
+                      setActiveTimeframe('7-day');
+                      addToast('Showing 14 opportunities newly indexed today', 'success');
+                      const el = document.getElementById('opportunities');
+                      if (el) el.scrollIntoView({ behavior: 'smooth' });
+                    },
+                  },
+                  {
+                    icon: '',
+                    label: 'Architects',
+                    highlight: '247',
+                    action: () => {
+                      addToast('247 KYC-verified architects with active escrow vaults', 'info');
+                    },
+                  },
+                ]
+              : [
+                  {
+                    icon: '🔥',
+                    label: 'Hot',
+                    highlight: 'RegTech (+26%)',
+                    action: () => {
+                      setLocalInput('RegTech');
+                      setSearchQuery('RegTech');
+                      setSelectedCategory('saas');
+                      addToast('Top Builder Opportunity: RegTech (+26%)', 'info');
+                      const el = document.getElementById('opportunities');
+                      if (el) el.scrollIntoView({ behavior: 'smooth' });
+                    },
+                  },
+                  {
+                    icon: '⚡',
+                    label: 'Rising',
+                    highlight: 'AI Agents (+34%)',
+                    action: () => {
+                      setLocalInput('AI Agents');
+                      setSearchQuery('AI Agents');
+                      setSelectedCategory('ai');
+                      addToast('High Demand alert: AI Agents (+34%)', 'info');
+                      const el = document.getElementById('opportunities');
+                      if (el) el.scrollIntoView({ behavior: 'smooth' });
+                    },
+                  },
+                  {
+                    icon: '',
+                    label: 'Escrow',
+                    highlight: '$2.4M',
+                    action: () => {
+                      addToast('$2,450,000+ active institutional liquidity pre-committed in Delaware escrow', 'success');
+                    },
+                  },
+                  {
+                    icon: '',
+                    label: 'Buyers',
+                    highlight: '189',
+                    action: () => {
+                      addToast('189 verified corporate & PE buyers actively filtering dossiers', 'info');
+                    },
+                  },
+                ]
+            ).map((bubble, idx) => (
+              <button
+                key={idx}
+                type="button"
+                onClick={bubble.action}
+                className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-3.5 py-1.5 rounded-full border border-white/10 bg-[#14110E]/85 hover:bg-[#1B1714] hover:border-white/25 backdrop-blur-md text-[11px] sm:text-xs font-mono transition-all duration-200 cursor-pointer select-none active:scale-[0.98] shadow-xs hover:shadow-md hover:-translate-y-0.5 group shrink-0 whitespace-nowrap"
+              >
+                {bubble.icon && (
+                  <span className="text-xs shrink-0">{bubble.icon}</span>
+                )}
+                <span className="text-neutral-300 font-normal group-hover:text-white transition-colors">
+                  {bubble.label}
+                </span>
+                <span
+                  className={`font-semibold transition-colors duration-200 ${
+                    role === 'architect'
+                      ? 'text-[#16A34A] group-hover:text-emerald-300'
+                      : 'text-[#E2571B] group-hover:text-orange-400'
+                  }`}
+                >
+                  {bubble.highlight}
+                </span>
+              </button>
+            ))}
+          </div>
 
         </div>
 
