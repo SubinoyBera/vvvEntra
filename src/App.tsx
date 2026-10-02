@@ -11,6 +11,7 @@ import { TermsPage } from './pages/TermsPage';
 import { PricingPage } from './pages/PricingPage';
 import { FaqPage } from './pages/FaqPage';
 import { ListOpportunityPage } from './pages/ListOpportunityPage';
+import { PlaybookPage } from './pages/PlaybookPage';
 import { NdaGateModal } from './components/modals/NdaGateModal';
 
 const AppContent: React.FC = () => {
@@ -29,6 +30,8 @@ const AppContent: React.FC = () => {
       <div className="relative z-10 flex-1 w-full pt-[88px] sm:pt-[104px]">
         {activeRoute === '#trust' ? (
           <TrustPage />
+        ) : activeRoute === '#playbook' ? (
+          <PlaybookPage />
         ) : activeRoute === '#opportunities' ? (
           <OpportunitiesPage />
         ) : activeRoute === '#terms' ? (

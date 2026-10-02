@@ -299,12 +299,12 @@ export const TrustPage: React.FC = () => {
   };
 
   return (
-    <div className="w-full text-white select-none pb-24 transition-colors duration-300">
+    <div id="trust-page" className="w-full text-neutral-900 dark:text-white select-none pb-24 transition-colors duration-300">
       
       {/* ======================================================== */}
       {/* 1. HERO SECTION (Matching User Image Exact Reference) */}
       {/* ======================================================== */}
-      <section className="relative pt-12 sm:pt-20 pb-16 sm:pb-24 border-b border-[var(--line)] overflow-hidden">
+      <section className="relative pt-12 sm:pt-20 pb-16 sm:pb-24 border-b border-black/10 dark:border-[var(--line)] bg-[#F8F6F1] dark:bg-transparent overflow-hidden">
         {/* Subtle radial ambient background glow */}
         <div 
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[450px] blur-[140px] pointer-events-none rounded-full opacity-20 transition-all duration-500"
@@ -321,14 +321,14 @@ export const TrustPage: React.FC = () => {
           </div>
 
           {/* Main Huge Heading */}
-          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-semibold tracking-tight text-white leading-[1.08] max-w-4xl mx-auto">
+          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-semibold tracking-tight text-neutral-900 dark:text-white leading-[1.08] max-w-4xl mx-auto">
             Trust is <em className="font-serif italic font-normal transition-colors duration-300" style={{ color: themeColor }}>engineered.</em>
             <br />
             Not promised.
           </h1>
 
           {/* Description Paragraph */}
-          <p className="max-w-3xl mx-auto text-sm sm:text-base md:text-lg text-neutral-400 mt-6 sm:mt-7 leading-relaxed font-normal">
+          <p className="max-w-3xl mx-auto text-sm sm:text-base md:text-lg text-neutral-600 dark:text-neutral-400 mt-6 sm:mt-7 leading-relaxed font-normal">
             Every dollar that flows through vvEntra is protected by five layers of structured trust. Identity verification. Escrow custody. Staged reveal. Clear dispute resolution. And for premium deals, a platform-backed guarantee. This page explains exactly how your money and your intellectual property are protected.
           </p>
 
@@ -342,7 +342,7 @@ export const TrustPage: React.FC = () => {
             ].map((badge) => (
               <div
                 key={badge.id}
-                className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/10 bg-[#120E0B] dark:bg-[#120E0B] text-neutral-300 text-xs sm:text-sm font-mono tracking-wide shadow-sm"
+                className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-black/15 dark:border-white/10 bg-white dark:bg-[#120E0B] text-neutral-800 dark:text-neutral-300 text-xs sm:text-sm font-mono tracking-wide shadow-sm"
               >
                 <span 
                   className="w-1.5 h-1.5 rounded-full shrink-0" 
@@ -359,7 +359,7 @@ export const TrustPage: React.FC = () => {
       {/* ======================================================== */}
       {/* 2. SECTION 01: THE TRUST PARADOX (Matching Reference Image) */}
       {/* ======================================================== */}
-      <section className="py-16 sm:py-24 border-b border-[var(--line)] bg-[#070605] dark:bg-[#070605]">
+      <section className="py-16 sm:py-24 border-b border-black/10 dark:border-[var(--line)] bg-[#F2EEE5] dark:bg-[#070605] transition-colors duration-300">
         <div className="max-w-[1140px] mx-auto px-4 sm:px-6 lg:px-8 text-center">
           
           {/* Eyebrow: 01   THE TRUST PARADOX */}
@@ -370,20 +370,20 @@ export const TrustPage: React.FC = () => {
             >
               01
             </span>
-            <span className="text-[11px] sm:text-xs font-mono uppercase tracking-[0.25em] text-neutral-400 font-medium">
+            <span className="text-[11px] sm:text-xs font-mono uppercase tracking-[0.25em] text-neutral-600 dark:text-neutral-400 font-medium">
               THE TRUST PARADOX
             </span>
           </div>
 
           {/* Heading - Accurately configured to 2 lines only */}
-          <h2 className="font-serif text-3xl sm:text-5xl lg:text-[3.5rem] font-normal text-white tracking-tight leading-[1.14] max-w-4xl mx-auto">
+          <h2 className="font-serif text-3xl sm:text-5xl lg:text-[3.5rem] font-normal text-neutral-900 dark:text-white tracking-tight leading-[1.14] max-w-4xl mx-auto">
             The problem every <em className="font-serif italic font-normal transition-colors duration-300" style={{ color: themeColor }}>idea marketplace</em> has
             <br />
             failed to solve.
           </h2>
 
           {/* Subheading */}
-          <p className="max-w-2xl mx-auto text-xs sm:text-sm md:text-base text-neutral-400 mt-5 sm:mt-6 leading-relaxed font-normal">
+          <p className="max-w-2xl mx-auto text-xs sm:text-sm md:text-base text-neutral-600 dark:text-neutral-400 mt-5 sm:mt-6 leading-relaxed font-normal">
             Buying a business opportunity is fundamentally different from buying a physical product.<br className="hidden sm:inline" />
             Once intellectual property is revealed, it cannot be returned. This creates an unsolvable<br className="hidden sm:inline" />
             trust problem, until you engineer around it.
@@ -393,7 +393,7 @@ export const TrustPage: React.FC = () => {
           <div className="relative grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 items-stretch mt-12 sm:mt-16 text-left">
             
             {/* Left Card: ARCHITECT'S FEAR */}
-            <div className="p-7 sm:p-9 rounded-2xl bg-[#0D0B0A] border border-white/10 shadow-xl flex flex-col justify-between group hover:border-white/20 transition-all duration-300 min-h-[250px] sm:min-h-[270px]">
+            <div className="trust-card p-7 sm:p-9 rounded-2xl bg-white dark:bg-[#0D0B0A] border border-black/15 dark:border-white/10 shadow-md dark:shadow-xl flex flex-col justify-between group hover:border-black/30 dark:hover:border-white/20 transition-all duration-300 min-h-[250px] sm:min-h-[270px]">
               <div>
                 <div 
                   className="text-[11px] sm:text-xs font-mono uppercase tracking-[0.2em] font-semibold mb-5 sm:mb-6 flex items-center gap-1.5"
@@ -402,19 +402,19 @@ export const TrustPage: React.FC = () => {
                   <span>— ARCHITECT'S FEAR</span>
                 </div>
 
-                <blockquote className="font-serif italic text-lg sm:text-[1.28rem] text-neutral-200 leading-relaxed font-normal">
+                <blockquote className="font-serif italic text-lg sm:text-[1.28rem] text-neutral-900 dark:text-neutral-200 leading-relaxed font-normal">
                   “If I show the buyer my opportunity, they will steal it without paying. I cannot show the substance until I am paid.”
                 </blockquote>
               </div>
 
-              <div className="pt-6 mt-8 border-t border-white/5 text-[10.5px] sm:text-[11px] font-mono tracking-widest text-neutral-500 uppercase">
+              <div className="pt-6 mt-8 border-t border-black/8 dark:border-white/5 text-[10.5px] sm:text-[11px] font-mono tracking-widest text-neutral-600 dark:text-neutral-400 uppercase font-semibold">
                 THE SELLER CANNOT REVEAL FIRST.
               </div>
             </div>
 
             {/* Central "vs" Badge */}
             <div 
-              className="md:absolute md:left-1/2 md:top-1/2 md:-translate-x-1/2 md:-translate-y-1/2 flex items-center justify-center w-11 h-11 sm:w-12 sm:h-12 rounded-full border bg-[#0D0B0A] shadow-2xl z-20 mx-auto -my-3 md:my-0 transition-transform duration-300 hover:scale-110"
+              className="md:absolute md:left-1/2 md:top-1/2 md:-translate-x-1/2 md:-translate-y-1/2 flex items-center justify-center w-11 h-11 sm:w-12 sm:h-12 rounded-full border-2 bg-white dark:bg-[#0D0B0A] shadow-lg dark:shadow-2xl z-20 mx-auto -my-3 md:my-0 transition-transform duration-300 hover:scale-110"
               style={{ borderColor: themeColor }}
             >
               <span className="font-serif italic text-sm sm:text-base font-medium select-none" style={{ color: themeColor }}>
@@ -423,7 +423,7 @@ export const TrustPage: React.FC = () => {
             </div>
 
             {/* Right Card: BUYER'S FEAR */}
-            <div className="p-7 sm:p-9 rounded-2xl bg-[#0D0B0A] border border-white/10 shadow-xl flex flex-col justify-between group hover:border-white/20 transition-all duration-300 min-h-[250px] sm:min-h-[270px]">
+            <div className="trust-card p-7 sm:p-9 rounded-2xl bg-white dark:bg-[#0D0B0A] border border-black/15 dark:border-white/10 shadow-md dark:shadow-xl flex flex-col justify-between group hover:border-black/30 dark:hover:border-white/20 transition-all duration-300 min-h-[250px] sm:min-h-[270px]">
               <div>
                 <div 
                   className="text-[11px] sm:text-xs font-mono uppercase tracking-[0.2em] font-semibold mb-5 sm:mb-6 flex items-center gap-1.5"
@@ -432,12 +432,12 @@ export const TrustPage: React.FC = () => {
                   <span>— BUYER'S FEAR</span>
                 </div>
 
-                <blockquote className="font-serif italic text-lg sm:text-[1.28rem] text-neutral-200 leading-relaxed font-normal">
+                <blockquote className="font-serif italic text-lg sm:text-[1.28rem] text-neutral-900 dark:text-neutral-200 leading-relaxed font-normal">
                   “If I pay before seeing the opportunity, the architect could deliver junk or something I already know. I cannot pay until I see the substance.”
                 </blockquote>
               </div>
 
-              <div className="pt-6 mt-8 border-t border-white/5 text-[10.5px] sm:text-[11px] font-mono tracking-widest text-neutral-500 uppercase">
+              <div className="pt-6 mt-8 border-t border-black/8 dark:border-white/5 text-[10.5px] sm:text-[11px] font-mono tracking-widest text-neutral-600 dark:text-neutral-400 uppercase font-semibold">
                 THE BUYER CANNOT PAY FIRST.
               </div>
             </div>
@@ -446,7 +446,7 @@ export const TrustPage: React.FC = () => {
 
           {/* Full-Width Resolution Card with Left Colored Accent Bar */}
           <div 
-            className="mt-6 sm:mt-8 p-6 sm:p-8 rounded-xl sm:rounded-2xl bg-[#0D0B0A] border border-white/10 border-l-[3px] shadow-2xl text-left relative overflow-hidden group hover:border-white/20 transition-all duration-300"
+            className="trust-card mt-6 sm:mt-8 p-6 sm:p-8 rounded-xl sm:rounded-2xl bg-white dark:bg-[#0D0B0A] border border-black/15 dark:border-white/10 border-l-[4px] shadow-md dark:shadow-2xl text-left relative overflow-hidden group hover:border-black/30 dark:hover:border-white/20 transition-all duration-300"
             style={{ borderLeftColor: themeColor }}
           >
             <div 
@@ -456,7 +456,7 @@ export const TrustPage: React.FC = () => {
               <span>VVENTRA'S RESOLUTION</span>
             </div>
 
-            <p className="font-serif text-base sm:text-lg lg:text-[1.2rem] text-neutral-200 leading-relaxed font-normal">
+            <p className="font-serif text-base sm:text-lg lg:text-[1.2rem] text-neutral-900 dark:text-neutral-200 leading-relaxed font-normal">
               Neither party reveals or pays first. Both commit progressively through a{' '}
               <em className="font-serif italic font-normal" style={{ color: themeColor }}>
                 staged reveal
@@ -472,15 +472,16 @@ export const TrustPage: React.FC = () => {
         </div>
       </section>
 
+
       {/* ======================================================== */}
       {/* 3. SECTION 02: FIVE DEFENSE LAYERS (Exact Redesign) */}
       {/* ======================================================== */}
-      <section className="py-16 sm:py-24 border-b border-[var(--line)]">
+      <section className="py-16 sm:py-24 border-b border-black/10 dark:border-[var(--line)] bg-[#FAF8F4] dark:bg-transparent transition-colors duration-300">
         <div className="max-w-[1140px] mx-auto px-4 sm:px-6 lg:px-8">
           
           {/* Header (Exact 2-line title and clean subtitle) */}
           <div className="text-center max-w-4xl mx-auto mb-12 sm:mb-16">
-            <h2 className="font-serif text-3xl sm:text-5xl lg:text-[3.5rem] font-normal text-white tracking-tight leading-[1.14]">
+            <h2 className="font-serif text-3xl sm:text-5xl lg:text-[3.5rem] font-normal text-neutral-900 dark:text-white tracking-tight leading-[1.14]">
               Trust is not one thing. It is{' '}
               <em className="font-serif italic font-normal transition-colors duration-300" style={{ color: themeColor }}>
                 five layers
@@ -488,7 +489,7 @@ export const TrustPage: React.FC = () => {
               <br />
               engineered together.
             </h2>
-            <p className="max-w-2xl mx-auto text-xs sm:text-sm md:text-base text-neutral-400 mt-5 sm:mt-6 leading-relaxed font-normal">
+            <p className="max-w-2xl mx-auto text-xs sm:text-sm md:text-base text-neutral-600 dark:text-neutral-400 mt-5 sm:mt-6 leading-relaxed font-normal">
               Each layer protects against a specific failure mode. Together they create an architecture<br className="hidden sm:inline" />
               where bad actors are filtered at every step, and good actors transact with confidence.
             </p>
@@ -499,13 +500,13 @@ export const TrustPage: React.FC = () => {
             {FIVE_DEFENSE_LAYERS.map((layer) => (
               <div
                 key={layer.num}
-                className="p-6 sm:p-8 rounded-xl sm:rounded-2xl bg-[#0D0B0A] border border-white/10 shadow-xl flex flex-col lg:flex-row lg:items-center justify-between gap-6 sm:gap-8 group hover:border-white/20 transition-all duration-300"
+                className="trust-card p-6 sm:p-8 rounded-xl sm:rounded-2xl bg-white dark:bg-[#0D0B0A] border border-black/15 dark:border-white/10 shadow-md dark:shadow-xl flex flex-col lg:flex-row lg:items-center justify-between gap-6 sm:gap-8 group hover:border-black/30 dark:hover:border-white/20 transition-all duration-300"
               >
                 {/* Left Circle & Middle Content */}
                 <div className="flex flex-col sm:flex-row items-start sm:items-center gap-5 sm:gap-6 flex-1 min-w-0">
                   {/* Number Circle Badge */}
                   <div
-                    className="w-14 h-14 sm:w-16 sm:h-16 rounded-full border flex items-center justify-center shrink-0 transition-transform duration-300 group-hover:scale-105"
+                    className="w-14 h-14 sm:w-16 sm:h-16 rounded-full border bg-neutral-100/80 dark:bg-white/[0.02] flex items-center justify-center shrink-0 transition-transform duration-300 group-hover:scale-105"
                     style={{ borderColor: themeColor }}
                   >
                     <span
@@ -518,11 +519,11 @@ export const TrustPage: React.FC = () => {
 
                   {/* Middle Content */}
                   <div className="flex-1 min-w-0">
-                    <div className="text-[10.5px] sm:text-xs font-mono uppercase tracking-[0.2em] text-neutral-400 font-semibold mb-2 sm:mb-2.5">
+                    <div className="text-[10.5px] sm:text-xs font-mono uppercase tracking-[0.2em] text-neutral-600 dark:text-neutral-400 font-semibold mb-2 sm:mb-2.5">
                       {layer.eyebrow}
                     </div>
 
-                    <h3 className="font-serif text-xl sm:text-2xl text-white font-normal tracking-tight mb-2 sm:mb-2.5">
+                    <h3 className="font-serif text-xl sm:text-2xl text-neutral-900 dark:text-white font-normal tracking-tight mb-2 sm:mb-2.5">
                       {layer.titlePrefix}
                       <em className="font-serif italic font-normal" style={{ color: themeColor }}>
                         {layer.titleHighlight}
@@ -530,14 +531,14 @@ export const TrustPage: React.FC = () => {
                       {layer.titleSuffix}
                     </h3>
 
-                    <p className="text-xs sm:text-sm text-neutral-400 leading-relaxed font-normal max-w-xl">
+                    <p className="text-xs sm:text-sm text-neutral-700 dark:text-neutral-400 leading-relaxed font-normal max-w-xl">
                       {layer.description}
                     </p>
                   </div>
                 </div>
 
                 {/* Right Checklist Column */}
-                <div className="w-full lg:w-[280px] shrink-0 pt-4 lg:pt-0 border-t lg:border-t-0 lg:border-l border-white/5 lg:pl-8 flex flex-col justify-center">
+                <div className="w-full lg:w-[280px] shrink-0 pt-4 lg:pt-0 border-t lg:border-t-0 lg:border-l border-black/10 dark:border-white/5 lg:pl-8 flex flex-col justify-center">
                   <div
                     className="text-[10.5px] sm:text-[11px] font-mono uppercase tracking-[0.2em] font-semibold mb-2.5 sm:mb-3"
                     style={{ color: themeColor }}
@@ -547,7 +548,7 @@ export const TrustPage: React.FC = () => {
 
                   <ul className="space-y-1.5 sm:space-y-2">
                     {layer.checklists.map((item, idx) => (
-                      <li key={idx} className="flex items-start gap-2 text-[11px] sm:text-xs text-neutral-300 font-normal">
+                      <li key={idx} className="flex items-start gap-2 text-[11px] sm:text-xs text-neutral-800 dark:text-neutral-300 font-medium">
                         <span className="font-semibold text-xs leading-none shrink-0" style={{ color: themeColor }}>
                           ✓
                         </span>
@@ -566,7 +567,7 @@ export const TrustPage: React.FC = () => {
       {/* ======================================================== */}
       {/* 4. SECTION 03: ESCROW FLOW · VISUALISED (Exact Redesign) */}
       {/* ======================================================== */}
-      <section className="py-16 sm:py-24 border-b border-[var(--line)] bg-[#070605]">
+      <section className="py-16 sm:py-24 border-b border-black/10 dark:border-[var(--line)] bg-[#F2EEE5] dark:bg-[#070605] transition-colors duration-300">
         <div className="max-w-[1140px] mx-auto px-4 sm:px-6 lg:px-8 text-center">
           
           {/* Eyebrow: 03   ESCROW FLOW · VISUALISED */}
@@ -577,13 +578,13 @@ export const TrustPage: React.FC = () => {
             >
               03
             </span>
-            <span className="text-[11px] sm:text-xs font-mono uppercase tracking-[0.25em] text-neutral-400 font-medium">
+            <span className="text-[11px] sm:text-xs font-mono uppercase tracking-[0.25em] text-neutral-600 dark:text-neutral-400 font-medium">
               ESCROW FLOW · VISUALISED
             </span>
           </div>
 
           {/* Heading */}
-          <h2 className="font-serif text-3xl sm:text-5xl lg:text-[3.5rem] font-normal text-white tracking-tight leading-[1.14] max-w-4xl mx-auto">
+          <h2 className="font-serif text-3xl sm:text-5xl lg:text-[3.5rem] font-normal text-neutral-900 dark:text-white tracking-tight leading-[1.14] max-w-4xl mx-auto">
             Follow the <em className="font-serif italic font-normal transition-colors duration-300" style={{ color: themeColor }}>money.</em>
             <br />
             From buyer commitment to architect
@@ -592,39 +593,39 @@ export const TrustPage: React.FC = () => {
           </h2>
 
           {/* Subtitle paragraph */}
-          <p className="max-w-2xl mx-auto text-xs sm:text-sm md:text-base text-neutral-400 mt-5 sm:mt-6 leading-relaxed font-normal">
+          <p className="max-w-2xl mx-auto text-xs sm:text-sm md:text-base text-neutral-600 dark:text-neutral-400 mt-5 sm:mt-6 leading-relaxed font-normal">
             Every transaction flows through this exact sequence. The money is never under the control<br className="hidden sm:inline" />
             of either party. It is held by vvEntra's escrow infrastructure and released only when the<br className="hidden sm:inline" />
             agreed conditions are met.
           </p>
 
           {/* Large Escrow Visual Terminal Card */}
-          <div className="mt-12 sm:mt-16 p-6 sm:p-9 rounded-2xl bg-[#0D0B0A] border border-white/10 shadow-2xl text-left">
+          <div className="trust-card mt-12 sm:mt-16 p-6 sm:p-9 rounded-2xl bg-white dark:bg-[#0D0B0A] border border-black/15 dark:border-white/10 shadow-lg dark:shadow-2xl text-left">
             
             {/* Top Bar inside card */}
-            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 pb-6 border-b border-white/5">
-              <div className="font-serif text-base sm:text-lg text-white font-normal">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 pb-6 border-b border-black/8 dark:border-white/5">
+              <div className="font-serif text-base sm:text-lg text-neutral-900 dark:text-white font-medium">
                 Sample transaction · VVE-2438 · $4,800
               </div>
-              <div className="flex items-center gap-2 font-mono text-[10.5px] sm:text-xs uppercase tracking-wider text-neutral-400 font-medium">
+              <div className="flex items-center gap-2 font-mono text-[10.5px] sm:text-xs uppercase tracking-wider text-neutral-600 dark:text-neutral-400 font-medium">
                 <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ backgroundColor: themeColor }} />
                 <span>STANDARD ESCROW FLOW</span>
               </div>
             </div>
 
             {/* Inner Sub-container: 3 Actor Cards */}
-            <div className="p-4 sm:p-6 rounded-xl bg-[#090807] border border-white/5 my-7">
+            <div className="p-4 sm:p-6 rounded-xl bg-[#EBE7DD] dark:bg-[#090807] border border-black/10 dark:border-white/5 my-7">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5">
                 
                 {/* 1. BUYER */}
-                <div className="rounded-xl bg-[#0D0B0A] border border-white/10 p-5 sm:p-6 text-center flex flex-col items-center justify-center">
-                  <div className="w-11 h-11 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-neutral-300 mb-3.5">
-                    <User className="w-5 h-5 text-neutral-300" />
+                <div className="trust-card rounded-xl bg-white dark:bg-[#0D0B0A] border border-black/15 dark:border-white/10 p-5 sm:p-6 text-center flex flex-col items-center justify-center shadow-sm">
+                  <div className="w-11 h-11 rounded-full bg-neutral-100 dark:bg-white/5 border border-black/10 dark:border-white/10 flex items-center justify-center text-neutral-700 dark:text-neutral-300 mb-3.5">
+                    <User className="w-5 h-5 text-neutral-700 dark:text-neutral-300" />
                   </div>
-                  <div className="text-[10px] sm:text-[11px] font-mono uppercase tracking-[0.2em] text-neutral-400 font-semibold mb-1">
+                  <div className="text-[10px] sm:text-[11px] font-mono uppercase tracking-[0.2em] text-neutral-600 dark:text-neutral-400 font-semibold mb-1">
                     — BUYER
                   </div>
-                  <div className="font-serif text-lg sm:text-xl text-white font-normal mb-1.5">
+                  <div className="font-serif text-lg sm:text-xl text-neutral-900 dark:text-white font-medium mb-1.5">
                     PE Director
                   </div>
                   <div className="text-[9.5px] sm:text-[10px] font-mono uppercase tracking-wider text-neutral-500 font-semibold">
@@ -634,7 +635,7 @@ export const TrustPage: React.FC = () => {
 
                 {/* 2. VVENTRA ESCROW (Highlighted Center Card) */}
                 <div 
-                  className="rounded-xl bg-[#0D0B0A] border p-5 sm:p-6 text-center flex flex-col items-center justify-center relative shadow-lg"
+                  className="trust-card rounded-xl bg-white dark:bg-[#0D0B0A] border-2 p-5 sm:p-6 text-center flex flex-col items-center justify-center relative shadow-md dark:shadow-lg"
                   style={{ 
                     borderColor: `${themeColor}90`,
                     boxShadow: `0 0 25px ${themeColor}15`
@@ -659,20 +660,20 @@ export const TrustPage: React.FC = () => {
                   <div className="font-serif italic text-lg sm:text-xl font-normal mb-1.5" style={{ color: themeColor }}>
                     Neutral custody
                   </div>
-                  <div className="text-[9.5px] sm:text-[10px] font-mono uppercase tracking-wider text-neutral-400 font-semibold">
+                  <div className="text-[9.5px] sm:text-[10px] font-mono uppercase tracking-wider text-neutral-600 dark:text-neutral-400 font-semibold">
                     FIDUCIARY · REGULATED
                   </div>
                 </div>
 
                 {/* 3. ARCHITECT */}
-                <div className="rounded-xl bg-[#0D0B0A] border border-white/10 p-5 sm:p-6 text-center flex flex-col items-center justify-center">
-                  <div className="w-11 h-11 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-neutral-300 mb-3.5">
-                    <Shield className="w-5 h-5 text-neutral-300" />
+                <div className="trust-card rounded-xl bg-white dark:bg-[#0D0B0A] border border-black/15 dark:border-white/10 p-5 sm:p-6 text-center flex flex-col items-center justify-center shadow-sm">
+                  <div className="w-11 h-11 rounded-full bg-neutral-100 dark:bg-white/5 border border-black/10 dark:border-white/10 flex items-center justify-center text-neutral-700 dark:text-neutral-300 mb-3.5">
+                    <Shield className="w-5 h-5 text-neutral-700 dark:text-neutral-300" />
                   </div>
-                  <div className="text-[10px] sm:text-[11px] font-mono uppercase tracking-[0.2em] text-neutral-400 font-semibold mb-1">
+                  <div className="text-[10px] sm:text-[11px] font-mono uppercase tracking-[0.2em] text-neutral-600 dark:text-neutral-400 font-semibold mb-1">
                     — ARCHITECT
                   </div>
-                  <div className="font-serif text-lg sm:text-xl text-white font-normal mb-1.5">
+                  <div className="font-serif text-lg sm:text-xl text-neutral-900 dark:text-white font-medium mb-1.5">
                     Senior · 2 Exits
                   </div>
                   <div className="text-[9.5px] sm:text-[10px] font-mono uppercase tracking-wider text-neutral-500 font-semibold">
@@ -687,30 +688,30 @@ export const TrustPage: React.FC = () => {
             <div className="space-y-3 sm:space-y-4 pt-1">
               
               {/* Row 01 */}
-              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-6 py-3 px-3 rounded-lg hover:bg-white/[0.02] transition-colors">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-6 py-3 px-3 rounded-lg hover:bg-black/[0.03] dark:hover:bg-white/[0.02] transition-colors">
                 <div className="flex items-start gap-4 flex-1">
                   <span className="font-mono text-xs sm:text-sm font-semibold shrink-0 w-8 pt-0.5" style={{ color: themeColor }}>
                     01
                   </span>
-                  <p className="text-xs sm:text-sm text-neutral-400 leading-relaxed font-normal">
-                    <strong className="text-white font-medium">Buyer initiates unlock</strong> on VVE-2438. Payment of $4,800 debited via card / bank transfer.
+                  <p className="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed font-normal">
+                    <strong className="text-neutral-900 dark:text-white font-medium">Buyer initiates unlock</strong> on VVE-2438. Payment of $4,800 debited via card / bank transfer.
                   </p>
                 </div>
                 <div className="shrink-0 pl-12 sm:pl-0">
-                  <span className="px-3 py-1 rounded-full text-[10px] font-mono font-semibold tracking-wider uppercase inline-block whitespace-nowrap bg-neutral-900 border border-white/10 text-neutral-400">
+                  <span className="px-3 py-1 rounded-full text-[10px] font-mono font-semibold tracking-wider uppercase inline-block whitespace-nowrap bg-neutral-100 dark:bg-neutral-900 border border-black/10 dark:border-white/10 text-neutral-600 dark:text-neutral-400">
                     INITIATED
                   </span>
                 </div>
               </div>
 
               {/* Row 02 */}
-              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-6 py-3 px-3 rounded-lg hover:bg-white/[0.02] transition-colors">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-6 py-3 px-3 rounded-lg hover:bg-black/[0.03] dark:hover:bg-white/[0.02] transition-colors">
                 <div className="flex items-start gap-4 flex-1">
                   <span className="font-mono text-xs sm:text-sm font-semibold shrink-0 w-8 pt-0.5" style={{ color: themeColor }}>
                     02
                   </span>
-                  <p className="text-xs sm:text-sm text-neutral-400 leading-relaxed font-normal">
-                    Funds held in vvEntra escrow. <strong className="text-white font-medium">Architect receives notification</strong> of committed payment. Content unlock begins.
+                  <p className="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed font-normal">
+                    Funds held in vvEntra escrow. <strong className="text-neutral-900 dark:text-white font-medium">Architect receives notification</strong> of committed payment. Content unlock begins.
                   </p>
                 </div>
                 <div className="shrink-0 pl-12 sm:pl-0">
@@ -728,13 +729,13 @@ export const TrustPage: React.FC = () => {
               </div>
 
               {/* Row 03 */}
-              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-6 py-3 px-3 rounded-lg hover:bg-white/[0.02] transition-colors">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-6 py-3 px-3 rounded-lg hover:bg-black/[0.03] dark:hover:bg-white/[0.02] transition-colors">
                 <div className="flex items-start gap-4 flex-1">
                   <span className="font-mono text-xs sm:text-sm font-semibold shrink-0 w-8 pt-0.5" style={{ color: themeColor }}>
                     03
                   </span>
-                  <p className="text-xs sm:text-sm text-neutral-400 leading-relaxed font-normal">
-                    Buyer reviews opportunity. <strong className="text-white font-medium">7-day inspection window</strong> opens. Buyer can raise dispute with documented evidence if material misrepresentation found.
+                  <p className="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed font-normal">
+                    Buyer reviews opportunity. <strong className="text-neutral-900 dark:text-white font-medium">7-day inspection window</strong> opens. Buyer can raise dispute with documented evidence if material misrepresentation found.
                   </p>
                 </div>
                 <div className="shrink-0 pl-12 sm:pl-0">
@@ -752,13 +753,13 @@ export const TrustPage: React.FC = () => {
               </div>
 
               {/* Row 04a */}
-              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-6 py-3 px-3 rounded-lg hover:bg-white/[0.02] transition-colors">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-6 py-3 px-3 rounded-lg hover:bg-black/[0.03] dark:hover:bg-white/[0.02] transition-colors">
                 <div className="flex items-start gap-4 flex-1">
                   <span className="font-mono text-xs sm:text-sm font-semibold shrink-0 w-8 pt-0.5" style={{ color: themeColor }}>
                     04a
                   </span>
-                  <p className="text-xs sm:text-sm text-neutral-400 leading-relaxed font-normal">
-                    <strong className="text-white font-medium">Path A · Buyer satisfied.</strong> Funds release to architect minus platform commission (typically 12–18%). Architect receives $4,032 net within 24 hours.
+                  <p className="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed font-normal">
+                    <strong className="text-neutral-900 dark:text-white font-medium">Path A · Buyer satisfied.</strong> Funds release to architect minus platform commission (typically 12–18%). Architect receives $4,032 net within 24 hours.
                   </p>
                 </div>
                 <div className="shrink-0 pl-12 sm:pl-0">
@@ -776,17 +777,17 @@ export const TrustPage: React.FC = () => {
               </div>
 
               {/* Row 04b */}
-              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-6 py-3 px-3 rounded-lg hover:bg-white/[0.02] transition-colors">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-6 py-3 px-3 rounded-lg hover:bg-black/[0.03] dark:hover:bg-white/[0.02] transition-colors">
                 <div className="flex items-start gap-4 flex-1">
                   <span className="font-mono text-xs sm:text-sm font-semibold shrink-0 w-8 pt-0.5" style={{ color: themeColor }}>
                     04b
                   </span>
-                  <p className="text-xs sm:text-sm text-neutral-400 leading-relaxed font-normal">
-                    <strong className="text-white font-medium">Path B · Buyer disputes.</strong> Funds frozen. Both parties submit evidence. vvEntra moderation team reviews and resolves within 5 business days.
+                  <p className="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed font-normal">
+                    <strong className="text-neutral-900 dark:text-white font-medium">Path B · Buyer disputes.</strong> Funds frozen. Both parties submit evidence. vvEntra moderation team reviews and resolves within 5 business days.
                   </p>
                 </div>
                 <div className="shrink-0 pl-12 sm:pl-0">
-                  <span className="px-3 py-1 rounded-full text-[10px] font-mono font-semibold tracking-wider uppercase inline-block whitespace-nowrap bg-rose-950/40 border border-rose-500/30 text-rose-400">
+                  <span className="px-3 py-1 rounded-full text-[10px] font-mono font-semibold tracking-wider uppercase inline-block whitespace-nowrap bg-rose-50 dark:bg-rose-950/40 border border-rose-200 dark:border-rose-500/30 text-rose-700 dark:text-rose-400">
                     FROZEN · UNDER REVIEW
                   </span>
                 </div>
@@ -802,7 +803,7 @@ export const TrustPage: React.FC = () => {
       {/* ======================================================== */}
       {/* 5. SECTION 04: STAGED REVEAL MECHANISM (Exact Redesign) */}
       {/* ======================================================== */}
-      <section className="py-16 sm:py-24 border-b border-[var(--line)]">
+      <section className="py-16 sm:py-24 border-b border-black/10 dark:border-[var(--line)] bg-[#F5F2EB] dark:bg-[#070605] transition-colors duration-300">
         <div className="max-w-[1140px] mx-auto px-4 sm:px-6 lg:px-8 text-center">
           
           {/* Eyebrow: 04   STAGED REVEAL MECHANISM */}
@@ -813,13 +814,13 @@ export const TrustPage: React.FC = () => {
             >
               04
             </span>
-            <span className="text-[11px] sm:text-xs font-mono uppercase tracking-[0.25em] text-neutral-400 font-medium">
+            <span className="text-[11px] sm:text-xs font-mono uppercase tracking-[0.25em] text-neutral-600 dark:text-neutral-400 font-semibold">
               STAGED REVEAL MECHANISM
             </span>
           </div>
 
           {/* Heading */}
-          <h2 className="font-serif text-3xl sm:text-5xl lg:text-[3.5rem] font-normal text-white tracking-tight leading-[1.14] max-w-4xl mx-auto">
+          <h2 className="font-serif text-3xl sm:text-5xl lg:text-[3.5rem] font-normal text-neutral-900 dark:text-white tracking-tight leading-[1.14] max-w-4xl mx-auto">
             Four tiers. Each one unlocks{' '}
             <em className="font-serif italic font-normal transition-colors duration-300" style={{ color: themeColor }}>
               more substance
@@ -832,7 +833,7 @@ export const TrustPage: React.FC = () => {
           </h2>
 
           {/* Subtitle */}
-          <p className="max-w-2xl mx-auto text-xs sm:text-sm md:text-base text-neutral-400 mt-5 sm:mt-6 leading-relaxed font-normal">
+          <p className="max-w-2xl mx-auto text-xs sm:text-sm md:text-base text-neutral-700 dark:text-neutral-300 mt-5 sm:mt-6 leading-relaxed font-normal">
             This is how real M&A deals work. NDA before the data room. Deposit before due diligence.<br className="hidden sm:inline" />
             Full payment before closing. vvEntra digitises this proven flow for business opportunities of<br className="hidden sm:inline" />
             every scale.
@@ -845,11 +846,11 @@ export const TrustPage: React.FC = () => {
                 {/* Vertical connecting line between adjacent cards under number column */}
                 {idx > 0 && (
                   <div className="flex pl-9 sm:pl-11 -my-4 sm:-my-5 z-0 relative pointer-events-none">
-                    <div className="w-px h-4 sm:h-5 bg-white/15" />
+                    <div className="w-px h-4 sm:h-5 bg-black/20 dark:bg-white/15" />
                   </div>
                 )}
                 
-                <div className="p-6 sm:p-7 rounded-xl sm:rounded-2xl bg-[#0D0B0A] border border-white/10 shadow-xl flex flex-col lg:flex-row lg:items-center justify-between gap-6 group hover:border-white/20 transition-all duration-300 relative z-10">
+                <div className="trust-card trust-tier-card p-6 sm:p-7 rounded-xl sm:rounded-2xl bg-white dark:bg-[#0D0B0A] border border-black/15 dark:border-white/10 shadow-md dark:shadow-xl flex flex-col lg:flex-row lg:items-center justify-between gap-6 group hover:border-black/30 dark:hover:border-white/25 transition-all duration-300 relative z-10">
                   
                   {/* Left Column: Number + Title & Cost */}
                   <div className="flex items-center gap-4 sm:gap-6 min-w-0 lg:w-[340px] shrink-0">
@@ -861,34 +862,36 @@ export const TrustPage: React.FC = () => {
                     </div>
 
                     <div className="min-w-0">
-                      <h3 className="font-serif text-xl sm:text-2xl text-white font-normal tracking-tight mb-1.5 sm:mb-2">
+                      <h3 className="font-serif text-xl sm:text-2xl text-neutral-900 dark:text-white font-medium tracking-tight mb-1.5 sm:mb-2">
                         {tier.titlePrefix}
                         <em className="font-serif italic font-normal" style={{ color: themeColor }}>
                           {tier.titleHighlight}
                         </em>
                       </h3>
-                      <div className="text-[10px] sm:text-[10.5px] font-mono tracking-wider uppercase font-semibold">
-                        <span className="text-neutral-500">{tier.costLabel}</span>
+                      <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-[#F4F0E8] dark:bg-white/5 border border-black/10 dark:border-white/10 text-[10px] sm:text-[10.5px] font-mono tracking-wider uppercase font-semibold">
+                        <span className="text-neutral-600 dark:text-neutral-400">{tier.costLabel}</span>
                         <span style={{ color: themeColor }}>{tier.costDetail}</span>
                       </div>
                     </div>
                   </div>
 
                   {/* Middle Column: Description / What's visible */}
-                  <div className="flex-1 min-w-0 text-xs sm:text-[13px] text-neutral-300 leading-relaxed font-normal lg:px-4">
-                    <strong className="text-white font-medium">{tier.whatLabel}</strong> {tier.whatContent}
+                  <div className="flex-1 min-w-0 text-xs sm:text-[13px] text-neutral-700 dark:text-neutral-300 leading-relaxed font-normal lg:px-4">
+                    <strong className="text-neutral-900 dark:text-white font-semibold">{tier.whatLabel}</strong> {tier.whatContent}
                   </div>
 
                   {/* Right Column: Percentage / Status Badge */}
-                  <div className="w-full lg:w-[110px] shrink-0 flex lg:flex-col items-baseline lg:items-end justify-between lg:justify-center border-t lg:border-t-0 border-white/5 pt-3 lg:pt-0">
-                    <div 
-                      className="font-serif text-2xl sm:text-3xl font-normal leading-none mb-1 select-none"
-                      style={{ color: themeColor }}
-                    >
-                      {tier.percent}
-                    </div>
-                    <div className="text-[9.5px] sm:text-[10px] font-mono uppercase tracking-widest text-neutral-500 font-semibold">
-                      {tier.percentSub}
+                  <div className="w-full lg:w-[120px] shrink-0 flex lg:flex-col items-baseline lg:items-end justify-between lg:justify-center border-t lg:border-t-0 border-black/10 dark:border-white/5 pt-3 lg:pt-0">
+                    <div className="px-3 py-1.5 rounded-lg bg-[#F8F6F0] dark:bg-white/5 border border-black/10 dark:border-white/10 flex flex-col items-end">
+                      <div 
+                        className="font-serif text-2xl sm:text-3xl font-semibold leading-none mb-1 select-none"
+                        style={{ color: themeColor }}
+                      >
+                        {tier.percent}
+                      </div>
+                      <div className="text-[9px] sm:text-[9.5px] font-mono uppercase tracking-widest text-neutral-600 dark:text-neutral-400 font-bold">
+                        {tier.percentSub}
+                      </div>
                     </div>
                   </div>
 
@@ -903,7 +906,7 @@ export const TrustPage: React.FC = () => {
       {/* ======================================================== */}
       {/* 6. SECTION 05: REFUND POLICY (Exact Match to User Image) */}
       {/* ======================================================== */}
-      <section className="py-16 sm:py-24 border-b border-[var(--line)] bg-[#070605]">
+      <section className="py-16 sm:py-24 border-b border-black/10 dark:border-[var(--line)] bg-[#EBE6DC] dark:bg-[#070605] transition-colors duration-300">
         <div className="max-w-[1140px] mx-auto px-4 sm:px-6 lg:px-8 text-center">
           
           {/* Eyebrow: 05   REFUND POLICY */}
@@ -914,13 +917,13 @@ export const TrustPage: React.FC = () => {
             >
               05
             </span>
-            <span className="text-[11px] sm:text-xs font-mono uppercase tracking-[0.25em] text-neutral-400 font-medium">
+            <span className="text-[11px] sm:text-xs font-mono uppercase tracking-[0.25em] text-neutral-600 dark:text-neutral-400 font-semibold">
               REFUND POLICY
             </span>
           </div>
 
           {/* Heading - 2 lines */}
-          <h2 className="font-serif text-3xl sm:text-5xl lg:text-[3.5rem] font-normal text-white tracking-tight leading-[1.14] max-w-4xl mx-auto">
+          <h2 className="font-serif text-3xl sm:text-5xl lg:text-[3.5rem] font-normal text-neutral-900 dark:text-white tracking-tight leading-[1.14] max-w-4xl mx-auto">
             Refunds are{' '}
             <em className="font-serif italic font-normal transition-colors duration-300" style={{ color: themeColor }}>
               structured.
@@ -930,7 +933,7 @@ export const TrustPage: React.FC = () => {
           </h2>
 
           {/* Subtitle */}
-          <p className="max-w-2xl mx-auto text-xs sm:text-sm md:text-base text-neutral-400 mt-5 sm:mt-6 leading-relaxed font-normal">
+          <p className="max-w-2xl mx-auto text-xs sm:text-sm md:text-base text-neutral-700 dark:text-neutral-300 mt-5 sm:mt-6 leading-relaxed font-normal">
             Most platforms either refund too easily, which lets buyers consume content and claim<br className="hidden sm:inline" />
             dissatisfaction, or refund too rarely, which destroys buyer trust. vvEntra uses documented<br className="hidden sm:inline" />
             eligibility criteria, applied consistently by moderation.
@@ -941,18 +944,16 @@ export const TrustPage: React.FC = () => {
             
             {/* Left Card: REFUNDS ARE GRANTED WHEN */}
             <div 
-              className="p-7 sm:p-9 rounded-2xl bg-[#0D0B0A] border border-white/10 shadow-xl flex flex-col justify-between group hover:border-white/20 transition-all duration-300 relative border-t-2 sm:border-t-[3px]"
+              className="trust-card trust-refund-card trust-granted p-7 sm:p-9 rounded-2xl bg-white dark:bg-[#0D0B0A] border border-black/15 dark:border-white/10 shadow-lg dark:shadow-xl flex flex-col justify-between group hover:border-black/30 dark:hover:border-white/20 transition-all duration-300 relative border-t-4"
               style={{ borderTopColor: themeColor }}
             >
               <div>
-                <div 
-                  className="text-[11px] sm:text-xs font-mono uppercase tracking-[0.2em] font-semibold mb-4 sm:mb-5 flex items-center gap-1.5"
-                  style={{ color: themeColor }}
-                >
-                  <span>— REFUNDS ARE GRANTED WHEN</span>
+                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-300 dark:border-emerald-600/30 text-emerald-800 dark:text-emerald-300 text-[10.5px] sm:text-xs font-mono uppercase tracking-[0.2em] font-bold mb-4 sm:mb-5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 dark:bg-emerald-400" />
+                  <span>REFUNDS ARE GRANTED WHEN</span>
                 </div>
 
-                <h3 className="font-serif text-xl sm:text-2xl text-white font-normal tracking-tight mb-6">
+                <h3 className="font-serif text-xl sm:text-2xl text-neutral-900 dark:text-white font-medium tracking-tight mb-6">
                   The architect{' '}
                   <em className="font-serif italic font-normal" style={{ color: themeColor }}>
                     materially misrepresents
@@ -960,33 +961,33 @@ export const TrustPage: React.FC = () => {
                   the opportunity
                 </h3>
 
-                <ul className="space-y-3.5 text-xs sm:text-sm text-neutral-300 leading-relaxed font-normal">
+                <ul className="space-y-3.5 text-xs sm:text-sm text-neutral-800 dark:text-neutral-200 leading-relaxed font-normal">
                   <li className="flex items-start gap-2.5">
-                    <span className="font-semibold text-sm leading-none shrink-0 pt-0.5" style={{ color: themeColor }}>
+                    <span className="font-bold text-sm leading-none shrink-0 pt-0.5" style={{ color: themeColor }}>
                       →
                     </span>
                     <span>Documentation depth is materially less than advertised (e.g., promised 120 pages, delivered 40)</span>
                   </li>
                   <li className="flex items-start gap-2.5">
-                    <span className="font-semibold text-sm leading-none shrink-0 pt-0.5" style={{ color: themeColor }}>
+                    <span className="font-bold text-sm leading-none shrink-0 pt-0.5" style={{ color: themeColor }}>
                       →
                     </span>
                     <span>Content is plagiarised, AI-generated boilerplate, or duplicates a known existing opportunity</span>
                   </li>
                   <li className="flex items-start gap-2.5">
-                    <span className="font-semibold text-sm leading-none shrink-0 pt-0.5" style={{ color: themeColor }}>
+                    <span className="font-bold text-sm leading-none shrink-0 pt-0.5" style={{ color: themeColor }}>
                       →
                     </span>
                     <span>Architect made factually false claims about credentials, track record, or exit history</span>
                   </li>
                   <li className="flex items-start gap-2.5">
-                    <span className="font-semibold text-sm leading-none shrink-0 pt-0.5" style={{ color: themeColor }}>
+                    <span className="font-bold text-sm leading-none shrink-0 pt-0.5" style={{ color: themeColor }}>
                       →
                     </span>
                     <span>Critical promised sections are missing (e.g., financial model advertised but not included)</span>
                   </li>
                   <li className="flex items-start gap-2.5">
-                    <span className="font-semibold text-sm leading-none shrink-0 pt-0.5" style={{ color: themeColor }}>
+                    <span className="font-bold text-sm leading-none shrink-0 pt-0.5" style={{ color: themeColor }}>
                       →
                     </span>
                     <span>The opportunity is fundamentally different from what was previewed in Tier 0–2</span>
@@ -996,13 +997,14 @@ export const TrustPage: React.FC = () => {
             </div>
 
             {/* Right Card: REFUNDS ARE NOT GRANTED WHEN */}
-            <div className="p-7 sm:p-9 rounded-2xl bg-[#0D0B0A] border border-white/10 shadow-xl flex flex-col justify-between group hover:border-white/20 transition-all duration-300 relative border-t-2 sm:border-t-[3px] border-t-rose-500">
+            <div className="trust-card trust-refund-card trust-rejected p-7 sm:p-9 rounded-2xl bg-white dark:bg-[#0D0B0A] border border-black/15 dark:border-white/10 shadow-lg dark:shadow-xl flex flex-col justify-between group hover:border-black/30 dark:hover:border-white/20 transition-all duration-300 relative border-t-4 border-t-rose-500">
               <div>
-                <div className="text-[11px] sm:text-xs font-mono uppercase tracking-[0.2em] font-semibold mb-4 sm:mb-5 flex items-center gap-1.5 text-rose-500">
-                  <span>— REFUNDS ARE NOT GRANTED WHEN</span>
+                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-rose-50 dark:bg-rose-950/40 border border-rose-300 dark:border-rose-600/30 text-rose-800 dark:text-rose-300 text-[10.5px] sm:text-xs font-mono uppercase tracking-[0.2em] font-bold mb-4 sm:mb-5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-rose-600 dark:bg-rose-400" />
+                  <span>REFUNDS ARE NOT GRANTED WHEN</span>
                 </div>
 
-                <h3 className="font-serif text-xl sm:text-2xl text-white font-normal tracking-tight mb-6">
+                <h3 className="font-serif text-xl sm:text-2xl text-neutral-900 dark:text-white font-medium tracking-tight mb-6">
                   The buyer's{' '}
                   <em className="font-serif italic font-normal" style={{ color: themeColor }}>
                     circumstances or opinions
@@ -1010,33 +1012,33 @@ export const TrustPage: React.FC = () => {
                   change after access
                 </h3>
 
-                <ul className="space-y-3.5 text-xs sm:text-sm text-neutral-300 leading-relaxed font-normal">
+                <ul className="space-y-3.5 text-xs sm:text-sm text-neutral-800 dark:text-neutral-200 leading-relaxed font-normal">
                   <li className="flex items-start gap-2.5">
-                    <span className="text-rose-500 font-semibold text-sm leading-none shrink-0 pt-0.5">
+                    <span className="text-rose-500 font-bold text-sm leading-none shrink-0 pt-0.5">
                       ×
                     </span>
                     <span>Buyer simply disagrees with the strategy or market thesis</span>
                   </li>
                   <li className="flex items-start gap-2.5">
-                    <span className="text-rose-500 font-semibold text-sm leading-none shrink-0 pt-0.5">
+                    <span className="text-rose-500 font-bold text-sm leading-none shrink-0 pt-0.5">
                       ×
                     </span>
                     <span>Buyer's market view differs from the architect's</span>
                   </li>
                   <li className="flex items-start gap-2.5">
-                    <span className="text-rose-500 font-semibold text-sm leading-none shrink-0 pt-0.5">
+                    <span className="text-rose-500 font-bold text-sm leading-none shrink-0 pt-0.5">
                       ×
                     </span>
                     <span>Buyer changes their mind after consuming the content</span>
                   </li>
                   <li className="flex items-start gap-2.5">
-                    <span className="text-rose-500 font-semibold text-sm leading-none shrink-0 pt-0.5">
+                    <span className="text-rose-500 font-bold text-sm leading-none shrink-0 pt-0.5">
                       ×
                     </span>
                     <span>Buyer claims they "already knew" the idea (subjective, unverifiable)</span>
                   </li>
                   <li className="flex items-start gap-2.5">
-                    <span className="text-rose-500 font-semibold text-sm leading-none shrink-0 pt-0.5">
+                    <span className="text-rose-500 font-bold text-sm leading-none shrink-0 pt-0.5">
                       ×
                     </span>
                     <span>Buyer's investment priorities shift after due diligence</span>
@@ -1053,7 +1055,7 @@ export const TrustPage: React.FC = () => {
       {/* ======================================================== */}
       {/* 7. SECTION 06: DISPUTE RESOLUTION (Matching Image 1) */}
       {/* ======================================================== */}
-      <section className="py-16 sm:py-24 border-b border-[var(--line)] bg-[#0A0908]">
+      <section className="py-16 sm:py-24 border-b border-black/10 dark:border-[var(--line)] bg-[#F5F1E9] dark:bg-[#0A0908] transition-colors duration-300">
         <div className="max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8 text-center">
           
           {/* Eyebrow: 06   DISPUTE RESOLUTION */}
@@ -1064,13 +1066,13 @@ export const TrustPage: React.FC = () => {
             >
               06
             </span>
-            <span className="text-[11px] sm:text-xs font-mono uppercase tracking-[0.25em] text-neutral-400 font-medium">
+            <span className="text-[11px] sm:text-xs font-mono uppercase tracking-[0.25em] text-neutral-600 dark:text-neutral-400 font-semibold">
               DISPUTE RESOLUTION
             </span>
           </div>
 
           {/* Heading */}
-          <h2 className="font-serif text-3xl sm:text-5xl lg:text-[3.5rem] font-normal text-white tracking-tight leading-[1.14] max-w-4xl mx-auto">
+          <h2 className="font-serif text-3xl sm:text-5xl lg:text-[3.5rem] font-normal text-neutral-900 dark:text-white tracking-tight leading-[1.14] max-w-4xl mx-auto">
             When things go wrong, they are resolved in
             <br />
             <em className="font-serif italic font-normal transition-colors duration-300" style={{ color: themeColor }}>
@@ -1079,13 +1081,13 @@ export const TrustPage: React.FC = () => {
           </h2>
 
           {/* Subtitle */}
-          <p className="max-w-2xl mx-auto text-xs sm:text-sm md:text-base text-neutral-400 mt-5 sm:mt-6 leading-relaxed font-normal">
+          <p className="max-w-2xl mx-auto text-xs sm:text-sm md:text-base text-neutral-700 dark:text-neutral-300 mt-5 sm:mt-6 leading-relaxed font-normal">
             A documented SLA. Equal voice for both sides. Clear evidence requirements. No black-box<br className="hidden sm:inline" />
             decisions. Resolution within five business days, every time.
           </p>
 
-          {/* 5 Milestone Process Nodes */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 sm:gap-4 lg:gap-6 mt-14 sm:mt-18 text-center relative">
+          {/* 5 Milestone Process Nodes as High-Contrast Cards */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5 sm:gap-4 lg:gap-5 mt-14 sm:mt-18 text-center relative">
             {[
               {
                 num: '01',
@@ -1118,14 +1120,17 @@ export const TrustPage: React.FC = () => {
                 desc: 'Refund processed, payment released, or partial settlement applied based on findings.'
               }
             ].map((node, idx) => (
-              <div key={idx} className="flex flex-col items-center group">
+              <div 
+                key={idx} 
+                className="trust-card p-5 sm:p-6 rounded-2xl bg-white dark:bg-[#0D0B0A] border border-black/15 dark:border-white/10 shadow-sm dark:shadow-md flex flex-col items-center group hover:shadow-lg hover:border-black/30 dark:hover:border-white/25 transition-all text-center"
+              >
                 {/* Circle Badge */}
                 <div 
-                  className="w-16 h-16 sm:w-18 sm:h-18 rounded-full border flex items-center justify-center mb-5 sm:mb-6 transition-transform duration-300 group-hover:scale-105"
+                  className="w-14 h-14 sm:w-16 sm:h-16 rounded-full border-2 bg-[#F8F6F0] dark:bg-white/5 flex items-center justify-center mb-4 transition-transform duration-300 group-hover:scale-105"
                   style={{ borderColor: themeColor }}
                 >
                   <span 
-                    className="font-serif italic text-xl sm:text-2xl font-normal select-none"
+                    className="font-serif italic text-lg sm:text-xl font-bold select-none"
                     style={{ color: themeColor }}
                   >
                     {node.num}
@@ -1133,20 +1138,20 @@ export const TrustPage: React.FC = () => {
                 </div>
 
                 {/* Node Title */}
-                <h3 className="font-serif text-base sm:text-lg text-white font-normal mb-2 tracking-tight">
+                <h3 className="font-serif text-base sm:text-lg text-neutral-900 dark:text-white font-medium mb-1.5 tracking-tight">
                   {node.title}
                 </h3>
 
                 {/* Day Badge */}
                 <div 
-                  className="text-[10px] sm:text-[10.5px] font-mono tracking-widest uppercase font-semibold mb-3"
+                  className="inline-flex px-2 py-0.5 rounded text-[10px] font-mono tracking-widest uppercase font-bold mb-2.5 bg-[#FAF7F2] dark:bg-white/5 border border-black/10 dark:border-white/10"
                   style={{ color: themeColor }}
                 >
                   {node.day}
                 </div>
 
                 {/* Description */}
-                <p className="text-xs text-neutral-400 leading-relaxed font-normal max-w-[210px] mx-auto">
+                <p className="text-xs text-neutral-700 dark:text-neutral-300 leading-relaxed font-normal">
                   {node.desc}
                 </p>
               </div>
@@ -1159,7 +1164,7 @@ export const TrustPage: React.FC = () => {
       {/* ======================================================== */}
       {/* 8. SECTION 07: PREMIUM TIER (Matching Image 2) */}
       {/* ======================================================== */}
-      <section className="py-16 sm:py-24 border-b border-[var(--line)] bg-[#070605]">
+      <section className="py-16 sm:py-24 border-b border-black/10 dark:border-[var(--line)] bg-[#EBE5DB] dark:bg-[#070605] transition-colors duration-300">
         <div className="max-w-[1140px] mx-auto px-4 sm:px-6 lg:px-8 text-center">
           
           {/* Eyebrow: 07   PREMIUM TIER */}
@@ -1170,13 +1175,13 @@ export const TrustPage: React.FC = () => {
             >
               07
             </span>
-            <span className="text-[11px] sm:text-xs font-mono uppercase tracking-[0.25em] text-neutral-400 font-medium">
+            <span className="text-[11px] sm:text-xs font-mono uppercase tracking-[0.25em] text-neutral-600 dark:text-neutral-400 font-semibold">
               PREMIUM TIER
             </span>
           </div>
 
           {/* Heading */}
-          <h2 className="font-serif text-3xl sm:text-5xl lg:text-[3.5rem] font-normal text-white tracking-tight leading-[1.14] max-w-4xl mx-auto">
+          <h2 className="font-serif text-3xl sm:text-5xl lg:text-[3.5rem] font-normal text-neutral-900 dark:text-white tracking-tight leading-[1.14] max-w-4xl mx-auto">
             For high-value deals, the platform itself
             <br />
             <em className="font-serif italic font-normal transition-colors duration-300" style={{ color: themeColor }}>
@@ -1186,7 +1191,7 @@ export const TrustPage: React.FC = () => {
           </h2>
 
           {/* Subtitle */}
-          <p className="max-w-2xl mx-auto text-xs sm:text-sm md:text-base text-neutral-400 mt-5 sm:mt-6 leading-relaxed font-normal">
+          <p className="max-w-2xl mx-auto text-xs sm:text-sm md:text-base text-neutral-700 dark:text-neutral-300 mt-5 sm:mt-6 leading-relaxed font-normal">
             On transactions above $10,000, vvEntra steps in as the guarantor. Architects receive<br className="hidden sm:inline" />
             settlement even during disputes. Buyers receive a premium verification status. Risk<br className="hidden sm:inline" />
             transfers from the parties to the platform.
@@ -1196,25 +1201,25 @@ export const TrustPage: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 items-stretch mt-12 sm:mt-16 text-left">
             
             {/* Left Card: FOR ARCHITECTS */}
-            <div className="p-7 sm:p-9 rounded-2xl bg-[#0D0B0A] border border-white/10 shadow-xl flex flex-col justify-between group hover:border-white/20 transition-all duration-300">
+            <div className="trust-card p-7 sm:p-9 rounded-2xl bg-white dark:bg-[#0D0B0A] border border-black/15 dark:border-white/10 shadow-lg dark:shadow-xl flex flex-col justify-between group hover:border-black/30 dark:hover:border-white/20 transition-all duration-300">
               <div>
                 {/* Pill Tag */}
-                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-white/10 bg-[#14110E] text-[10.5px] font-mono tracking-wider uppercase font-semibold mb-5 sm:mb-6" style={{ color: themeColor }}>
+                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-black/15 dark:border-white/10 bg-[#F4F0E8] dark:bg-[#14110E] text-[10.5px] font-mono tracking-wider uppercase font-bold mb-5 sm:mb-6" style={{ color: themeColor }}>
                   <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: themeColor }} />
                   <span>FOR ARCHITECTS</span>
                 </div>
 
-                <h3 className="font-serif text-2xl sm:text-[1.7rem] text-white font-normal tracking-tight leading-snug mb-4">
+                <h3 className="font-serif text-2xl sm:text-[1.7rem] text-neutral-900 dark:text-white font-medium tracking-tight leading-snug mb-4">
                   Guaranteed <em className="font-serif italic font-normal" style={{ color: themeColor }}>settlement.</em>
                   <br />
                   Even during disputes.
                 </h3>
 
-                <p className="text-xs sm:text-sm text-neutral-400 leading-relaxed font-normal mb-7">
+                <p className="text-xs sm:text-sm text-neutral-700 dark:text-neutral-300 leading-relaxed font-normal mb-7">
                   When you list a premium opportunity, vvEntra commits to settling your payment within 48 hours of full unlock, regardless of dispute status. The platform absorbs the risk while disputes are reviewed.
                 </p>
 
-                <ul className="space-y-3 text-xs sm:text-sm text-neutral-300 leading-relaxed font-normal">
+                <ul className="space-y-3 text-xs sm:text-sm text-neutral-800 dark:text-neutral-200 leading-relaxed font-normal">
                   {[
                     'Payment within 48 hours of unlock',
                     'Platform absorbs dispute risk up to cap',
@@ -1223,7 +1228,7 @@ export const TrustPage: React.FC = () => {
                     'Coverage cap up to $50,000 per transaction'
                   ].map((bullet, idx) => (
                     <li key={idx} className="flex items-start gap-2.5">
-                      <span className="text-xs leading-none shrink-0 pt-0.5" style={{ color: themeColor }}>
+                      <span className="text-xs leading-none shrink-0 pt-0.5 font-bold" style={{ color: themeColor }}>
                         ✦
                       </span>
                       <span>{bullet}</span>
@@ -1234,25 +1239,25 @@ export const TrustPage: React.FC = () => {
             </div>
 
             {/* Right Card: FOR BUYERS */}
-            <div className="p-7 sm:p-9 rounded-2xl bg-[#0D0B0A] border border-white/10 shadow-xl flex flex-col justify-between group hover:border-white/20 transition-all duration-300">
+            <div className="trust-card p-7 sm:p-9 rounded-2xl bg-white dark:bg-[#0D0B0A] border border-black/15 dark:border-white/10 shadow-lg dark:shadow-xl flex flex-col justify-between group hover:border-black/30 dark:hover:border-white/20 transition-all duration-300">
               <div>
                 {/* Pill Tag */}
-                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-white/10 bg-[#14110E] text-[10.5px] font-mono tracking-wider uppercase font-semibold mb-5 sm:mb-6" style={{ color: themeColor }}>
+                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-black/15 dark:border-white/10 bg-[#F4F0E8] dark:bg-[#14110E] text-[10.5px] font-mono tracking-wider uppercase font-bold mb-5 sm:mb-6" style={{ color: themeColor }}>
                   <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: themeColor }} />
                   <span>FOR BUYERS</span>
                 </div>
 
-                <h3 className="font-serif text-2xl sm:text-[1.7rem] text-white font-normal tracking-tight leading-snug mb-4">
+                <h3 className="font-serif text-2xl sm:text-[1.7rem] text-neutral-900 dark:text-white font-medium tracking-tight leading-snug mb-4">
                   Premium <em className="font-serif italic font-normal" style={{ color: themeColor }}>verification.</em>
                   <br />
                   Priority access.
                 </h3>
 
-                <p className="text-xs sm:text-sm text-neutral-400 leading-relaxed font-normal mb-7">
+                <p className="text-xs sm:text-sm text-neutral-700 dark:text-neutral-300 leading-relaxed font-normal mb-7">
                   Premium-verified buyers gain access to the highest-tier opportunities and earn faster trust from architects. Your verification badge signals serious intent and reduces friction at every tier of access.
                 </p>
 
-                <ul className="space-y-3 text-xs sm:text-sm text-neutral-300 leading-relaxed font-normal">
+                <ul className="space-y-3 text-xs sm:text-sm text-neutral-800 dark:text-neutral-200 leading-relaxed font-normal">
                   {[
                     'Premium buyer badge on profile',
                     'Access to senior architect tier opportunities',
@@ -1261,7 +1266,7 @@ export const TrustPage: React.FC = () => {
                     'Priority placement in deal flow recommendations'
                   ].map((bullet, idx) => (
                     <li key={idx} className="flex items-start gap-2.5">
-                      <span className="text-xs leading-none shrink-0 pt-0.5" style={{ color: themeColor }}>
+                      <span className="text-xs leading-none shrink-0 pt-0.5 font-bold" style={{ color: themeColor }}>
                         ✦
                       </span>
                       <span>{bullet}</span>
@@ -1279,7 +1284,7 @@ export const TrustPage: React.FC = () => {
       {/* ======================================================== */}
       {/* 9. SECTION 08: INFRASTRUCTURE PARTNERS (Matching Image 3) */}
       {/* ======================================================== */}
-      <section className="py-16 sm:py-24 border-b border-[var(--line)] bg-[#0A0908]">
+      <section className="py-16 sm:py-24 border-b border-black/10 dark:border-[var(--line)] bg-[#F5F2EB] dark:bg-[#0A0908] transition-colors duration-300">
         <div className="max-w-[1140px] mx-auto px-4 sm:px-6 lg:px-8 text-center">
           
           {/* Eyebrow: 08   INFRASTRUCTURE PARTNERS */}
@@ -1290,13 +1295,13 @@ export const TrustPage: React.FC = () => {
             >
               08
             </span>
-            <span className="text-[11px] sm:text-xs font-mono uppercase tracking-[0.25em] text-neutral-400 font-medium">
+            <span className="text-[11px] sm:text-xs font-mono uppercase tracking-[0.25em] text-neutral-600 dark:text-neutral-400 font-semibold">
               INFRASTRUCTURE PARTNERS
             </span>
           </div>
 
           {/* Heading */}
-          <h2 className="font-serif text-3xl sm:text-5xl lg:text-[3.5rem] font-normal text-white tracking-tight leading-[1.14] max-w-4xl mx-auto">
+          <h2 className="font-serif text-3xl sm:text-5xl lg:text-[3.5rem] font-normal text-neutral-900 dark:text-white tracking-tight leading-[1.14] max-w-4xl mx-auto">
             Built on the same rails as{' '}
             <em className="font-serif italic font-normal transition-colors duration-300" style={{ color: themeColor }}>
               Stripe, Razorpay,
@@ -1306,7 +1311,7 @@ export const TrustPage: React.FC = () => {
           </h2>
 
           {/* Subtitle */}
-          <p className="max-w-2xl mx-auto text-xs sm:text-sm md:text-base text-neutral-400 mt-5 sm:mt-6 leading-relaxed font-normal">
+          <p className="max-w-2xl mx-auto text-xs sm:text-sm md:text-base text-neutral-700 dark:text-neutral-300 mt-5 sm:mt-6 leading-relaxed font-normal">
             vvEntra does not reinvent payment infrastructure. We use the same regulated payment<br className="hidden sm:inline" />
             processors, escrow providers, and KYC systems that power global commerce. Your money<br className="hidden sm:inline" />
             flows through battle-tested rails.
@@ -1338,15 +1343,15 @@ export const TrustPage: React.FC = () => {
             ].map((partner, idx) => (
               <div 
                 key={idx}
-                className="p-6 sm:p-7 rounded-xl bg-[#0D0B0A] border border-white/10 shadow-lg flex flex-col justify-center items-center group hover:border-white/20 transition-all duration-300"
+                className="trust-card trust-partner-card p-6 sm:p-7 rounded-2xl bg-white dark:bg-[#0D0B0A] border border-black/15 dark:border-white/10 shadow-md dark:shadow-lg flex flex-col justify-center items-center group hover:border-black/30 dark:hover:border-white/25 transition-all duration-300"
               >
-                <div className="font-serif text-lg sm:text-xl text-white font-normal mb-2">
+                <div className="font-serif text-lg sm:text-xl text-neutral-900 dark:text-white font-medium mb-2">
                   <em className="font-serif italic font-normal" style={{ color: themeColor }}>
                     {partner.highlight}
                   </em>
                   {partner.suffix}
                 </div>
-                <div className="text-[10px] sm:text-[10.5px] font-mono tracking-widest text-neutral-400 font-medium">
+                <div className="text-[10px] sm:text-[10.5px] font-mono tracking-widest text-neutral-600 dark:text-neutral-400 font-bold">
                   {partner.label}
                 </div>
               </div>
@@ -1359,7 +1364,7 @@ export const TrustPage: React.FC = () => {
       {/* ======================================================== */}
       {/* 10. SECTION 09: FREQUENTLY ASKED (Refined & Elevated) */}
       {/* ======================================================== */}
-      <section className="py-16 sm:py-24 border-b border-[var(--line)] bg-[#070605]">
+      <section className="py-16 sm:py-24 border-b border-black/10 dark:border-[var(--line)] bg-[#EBE5DB] dark:bg-[#070605] transition-colors duration-300">
         <div className="max-w-[1040px] mx-auto px-4 sm:px-6 lg:px-8 text-center">
           
           {/* Eyebrow: 09   FREQUENTLY ASKED */}
@@ -1370,13 +1375,13 @@ export const TrustPage: React.FC = () => {
             >
               09
             </span>
-            <span className="text-[11px] sm:text-xs font-mono uppercase tracking-[0.25em] text-neutral-400 font-medium">
+            <span className="text-[11px] sm:text-xs font-mono uppercase tracking-[0.25em] text-neutral-600 dark:text-neutral-400 font-semibold">
               FREQUENTLY ASKED
             </span>
           </div>
 
           {/* Heading */}
-          <h2 className="font-serif text-3xl sm:text-5xl lg:text-[3.5rem] font-normal text-white tracking-tight leading-[1.14] max-w-4xl mx-auto">
+          <h2 className="font-serif text-3xl sm:text-5xl lg:text-[3.5rem] font-normal text-neutral-900 dark:text-white tracking-tight leading-[1.14] max-w-4xl mx-auto">
             The questions{' '}
             <em className="font-serif italic font-normal transition-colors duration-300" style={{ color: themeColor }}>
               everyone asks
@@ -1387,15 +1392,15 @@ export const TrustPage: React.FC = () => {
           </h2>
 
           {/* Subtitle */}
-          <p className="max-w-2xl mx-auto text-xs sm:text-sm md:text-base text-neutral-400 mt-5 sm:mt-6 leading-relaxed font-normal">
+          <p className="max-w-2xl mx-auto text-xs sm:text-sm md:text-base text-neutral-700 dark:text-neutral-300 mt-5 sm:mt-6 leading-relaxed font-normal">
             Direct, unequivocal answers regarding escrow release conditions, dispute resolution guarantees,<br className="hidden sm:inline" />
             fee structures, and cross-border legal protections.
           </p>
 
           {/* Interactive Category Filter Pills + Expand All Control */}
-          <div className="flex flex-wrap items-center justify-between gap-3 mt-10 sm:mt-12 pb-2 border-b border-white/5">
+          <div className="flex flex-wrap items-center justify-between gap-3 mt-10 sm:mt-12 pb-2 border-b border-black/10 dark:border-white/5">
             {/* Filter Pills */}
-            <div className="inline-flex flex-wrap items-center gap-1.5 p-1 rounded-xl bg-[#0D0B0A] border border-white/10">
+            <div className="inline-flex flex-wrap items-center gap-1.5 p-1 rounded-xl bg-white dark:bg-[#0D0B0A] border border-black/15 dark:border-white/10 shadow-sm">
               {[
                 { key: 'all', label: 'All Questions', count: 7 },
                 { key: 'escrow', label: 'Escrow & Safety', count: 3 },
@@ -1407,20 +1412,20 @@ export const TrustPage: React.FC = () => {
                   <button
                     key={tab.key}
                     onClick={() => setFaqFilter(tab.key as any)}
-                    className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all cursor-pointer flex items-center gap-1.5 ${
+                    className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer flex items-center gap-1.5 ${
                       isActive
-                        ? 'bg-white/10 text-white shadow-xs'
-                        : 'text-neutral-400 hover:text-white'
+                        ? 'bg-[#F4F0E8] dark:bg-white/10 text-neutral-950 dark:text-white shadow-xs'
+                        : 'text-neutral-600 hover:text-neutral-950 dark:text-neutral-400 dark:hover:text-white'
                     }`}
                     style={isActive ? { color: themeColor } : {}}
                   >
                     <span>{tab.label}</span>
                     <span 
-                      className="px-1.5 py-0.5 rounded text-[10px] font-mono border"
+                      className="px-1.5 py-0.5 rounded text-[10px] font-mono border font-bold"
                       style={{
-                        borderColor: isActive ? `${themeColor}40` : 'rgba(255,255,255,0.1)',
+                        borderColor: isActive ? `${themeColor}40` : 'rgba(0,0,0,0.12)',
                         backgroundColor: isActive ? `${themeColor}15` : 'transparent',
-                        color: isActive ? themeColor : '#737373'
+                        color: isActive ? themeColor : '#525252'
                       }}
                     >
                       {tab.count}
@@ -1439,7 +1444,7 @@ export const TrustPage: React.FC = () => {
                   setOpenFaqIds(FAQ_ITEMS.map(f => f.id));
                 }
               }}
-              className="text-[11px] font-mono uppercase tracking-wider text-neutral-400 hover:text-white transition-colors cursor-pointer px-2 py-1"
+              className="text-[11px] font-mono uppercase tracking-wider text-neutral-600 hover:text-neutral-950 dark:text-neutral-400 dark:hover:text-white transition-colors cursor-pointer px-2 py-1 font-semibold"
             >
               {openFaqIds.length === FAQ_ITEMS.length ? 'Collapse All —' : 'Expand All +'}
             </button>
@@ -1452,10 +1457,10 @@ export const TrustPage: React.FC = () => {
               return (
                 <div
                   key={item.id}
-                  className={`rounded-xl sm:rounded-2xl transition-all duration-300 relative overflow-hidden ${
+                  className={`trust-card trust-faq-item rounded-xl sm:rounded-2xl transition-all duration-300 relative overflow-hidden ${
                     isOpen
-                      ? 'bg-[#0D0B0A] border shadow-2xl'
-                      : 'bg-[#0D0B0A] border border-white/10 hover:border-white/20'
+                      ? 'bg-white dark:bg-[#0D0B0A] border-2 shadow-lg dark:shadow-2xl'
+                      : 'bg-white dark:bg-[#0D0B0A] border border-black/15 dark:border-white/10 hover:border-black/30 dark:hover:border-white/20 shadow-sm'
                   }`}
                   style={{
                     borderColor: isOpen ? themeColor : undefined,
@@ -1467,7 +1472,7 @@ export const TrustPage: React.FC = () => {
                     onClick={() => toggleFaq(item.id)}
                     className="w-full p-5 sm:p-6 text-left flex items-start sm:items-center justify-between gap-4 cursor-pointer group"
                   >
-                    <span className="font-serif text-lg sm:text-xl text-white font-normal tracking-tight group-hover:text-neutral-100 transition-colors">
+                    <span className="font-serif text-lg sm:text-xl text-neutral-900 dark:text-white font-medium tracking-tight group-hover:text-neutral-950 dark:group-hover:text-neutral-100 transition-colors">
                       {item.question}
                     </span>
 
@@ -1475,8 +1480,8 @@ export const TrustPage: React.FC = () => {
                     <div
                       className={`w-8 h-8 rounded-full border flex items-center justify-center shrink-0 transition-all duration-300 ${
                         isOpen
-                          ? 'border'
-                          : 'border-white/15 text-neutral-400 group-hover:border-white/30 group-hover:text-white'
+                          ? 'border-2'
+                          : 'border-black/20 text-neutral-600 group-hover:border-black/40 group-hover:text-neutral-950 dark:border-white/15 dark:text-neutral-400 dark:group-hover:border-white/30 dark:group-hover:text-white'
                       }`}
                       style={
                         isOpen
@@ -1499,15 +1504,15 @@ export const TrustPage: React.FC = () => {
                   {/* Expanded Body Content */}
                   {isOpen && (
                     <div className="px-5 sm:px-6 pb-6 pt-0 animate-in fade-in slide-in-from-top-1 duration-200">
-                      <p className="text-xs sm:text-sm md:text-[14.5px] text-neutral-300 leading-relaxed font-normal mb-5">
+                      <p className="text-xs sm:text-sm md:text-[14.5px] text-neutral-800 dark:text-neutral-200 leading-relaxed font-normal mb-5">
                         {item.answer}
                       </p>
 
                       {/* Premium Trust / Assurance Footnote Bar */}
-                      <div className="pt-3.5 border-t border-white/5 flex flex-wrap items-center justify-between gap-2 text-[11px] font-mono">
+                      <div className="pt-3.5 border-t border-black/10 dark:border-white/5 flex flex-wrap items-center justify-between gap-2 text-[11px] font-mono">
                         <div className="flex items-center gap-2">
                           <span 
-                            className="px-2 py-0.5 rounded text-[10px] font-mono uppercase tracking-wider font-semibold border"
+                            className="px-2 py-0.5 rounded text-[10px] font-mono uppercase tracking-wider font-bold border"
                             style={{
                               borderColor: `${themeColor}40`,
                               backgroundColor: `${themeColor}15`,
@@ -1517,7 +1522,7 @@ export const TrustPage: React.FC = () => {
                             {item.categoryLabel}
                           </span>
                         </div>
-                        <div className="flex items-center gap-1.5 text-neutral-400">
+                        <div className="flex items-center gap-1.5 text-neutral-600 dark:text-neutral-400 font-medium">
                           <CheckCircle2 className="w-3.5 h-3.5 shrink-0" style={{ color: themeColor }} />
                           <span>{item.trustTag}</span>
                         </div>
@@ -1530,10 +1535,10 @@ export const TrustPage: React.FC = () => {
           </div>
 
           {/* Elevated Escrow Officer Concierge Assistance Bar */}
-          <div className="mt-12 sm:mt-14 p-5 sm:p-6 rounded-2xl bg-[#0D0B0A] border border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-left">
+          <div className="trust-card mt-12 sm:mt-14 p-6 sm:p-7 rounded-2xl bg-white dark:bg-[#0D0B0A] border border-black/15 dark:border-white/10 shadow-lg dark:shadow-xl flex flex-col sm:flex-row items-center justify-between gap-4 text-left">
             <div className="flex items-center gap-3.5">
               <div 
-                className="w-10 h-10 rounded-full flex items-center justify-center shrink-0 border"
+                className="w-11 h-11 rounded-full flex items-center justify-center shrink-0 border"
                 style={{
                   backgroundColor: `${themeColor}15`,
                   borderColor: `${themeColor}40`,
@@ -1543,10 +1548,10 @@ export const TrustPage: React.FC = () => {
                 <Sparkles className="w-5 h-5" style={{ color: themeColor }} />
               </div>
               <div>
-                <h4 className="font-serif text-base text-white font-normal">
+                <h4 className="font-serif text-base sm:text-lg text-neutral-900 dark:text-white font-medium">
                   Have specific transaction terms or custom escrow requirements?
                 </h4>
-                <p className="text-xs text-neutral-400 mt-0.5">
+                <p className="text-xs sm:text-sm text-neutral-700 dark:text-neutral-300 mt-0.5">
                   Our institutional compliance and escrow moderation desk is available for high-tier diligence.
                 </p>
               </div>
@@ -1554,7 +1559,7 @@ export const TrustPage: React.FC = () => {
 
             <button
               onClick={() => addToast('Connecting to vvEntra Institutional Escrow Desk.', 'info')}
-              className="w-full sm:w-auto px-4 py-2 rounded-xl text-xs font-medium border border-white/15 hover:border-white/30 text-white bg-white/5 hover:bg-white/10 transition-all shrink-0 cursor-pointer"
+              className="w-full sm:w-auto px-5 py-2.5 rounded-xl text-xs font-semibold border border-black/20 hover:border-black/40 text-neutral-900 hover:text-black bg-[#F5F2EB] hover:bg-[#EBE5DB] dark:border-white/15 dark:hover:border-white/30 dark:text-white dark:bg-white/5 dark:hover:bg-white/10 transition-all shrink-0 cursor-pointer shadow-xs"
             >
               Contact Escrow Desk
             </button>
@@ -1566,7 +1571,7 @@ export const TrustPage: React.FC = () => {
       {/* ======================================================== */}
       {/* 11. CLOSING SECTION: NOW YOU KNOW EXACTLY HOW IT WORKS */}
       {/* ======================================================== */}
-      <section className="py-20 sm:py-28 bg-[#070605] text-center relative overflow-hidden border-t border-[var(--line)]">
+      <section className="py-20 sm:py-28 bg-[#F8F7F4] dark:bg-[#070605] text-center relative overflow-hidden border-t border-black/8 dark:border-[var(--line)] transition-colors duration-300">
         {/* Ambient atmospheric glow */}
         <div 
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[650px] h-[340px] blur-[150px] pointer-events-none rounded-full opacity-20 transition-all duration-500"
@@ -1604,7 +1609,7 @@ export const TrustPage: React.FC = () => {
           </div>
 
           {/* Headline: Now you know exactly how it works. */}
-          <h2 className="font-serif text-3xl sm:text-5xl lg:text-[3.75rem] font-normal text-white tracking-tight leading-[1.12] mb-5 sm:mb-6 max-w-2xl mx-auto">
+          <h2 className="font-serif text-3xl sm:text-5xl lg:text-[3.75rem] font-normal text-neutral-900 dark:text-white tracking-tight leading-[1.12] mb-5 sm:mb-6 max-w-2xl mx-auto">
             Now you know{' '}
             <em 
               className="font-serif italic font-normal transition-colors duration-300"
@@ -1616,7 +1621,7 @@ export const TrustPage: React.FC = () => {
           </h2>
 
           {/* Subtitle */}
-          <p className="max-w-xl mx-auto text-xs sm:text-sm md:text-base text-neutral-400 leading-relaxed font-normal mb-9 sm:mb-11">
+          <p className="max-w-xl mx-auto text-xs sm:text-sm md:text-base text-neutral-600 dark:text-neutral-400 leading-relaxed font-normal mb-9 sm:mb-11">
             Every dollar protected. Every IP gated. Every dispute resolved within five days. Trust is not a tagline at vvEntra. It is the architecture.
           </p>
 
@@ -1643,14 +1648,14 @@ export const TrustPage: React.FC = () => {
               </span>
             </button>
 
-            {/* Secondary: 3D Obsidian Glass Back to Homepage Pill */}
+            {/* Secondary: 3D Luxury Surface Back to Homepage Pill */}
             <button
               onClick={handleReturnToDashboard}
-              className="relative group cursor-pointer select-none rounded-full px-7 sm:px-8 py-3.5 sm:py-4 text-xs sm:text-sm font-semibold text-neutral-200 hover:text-white tracking-wide transition-all duration-200 w-full sm:w-auto flex items-center justify-center gap-2.5 bg-[#12100E] border border-white/20 hover:border-white/40 shadow-[inset_0_1px_1px_rgba(255,255,255,0.15),0_3px_0_rgba(0,0,0,0.7),0_8px_20px_rgba(0,0,0,0.5)] hover:-translate-y-[1px] hover:shadow-[inset_0_1px_1px_rgba(255,255,255,0.25),0_4px_0_rgba(0,0,0,0.8),0_10px_24px_rgba(0,0,0,0.6)] active:translate-y-[2px] active:shadow-[inset_0_1px_1px_rgba(255,255,255,0.08),0_1px_0_rgba(0,0,0,0.9),0_3px_8px_rgba(0,0,0,0.4)]"
+              className="relative group cursor-pointer select-none rounded-full px-7 sm:px-8 py-3.5 sm:py-4 text-xs sm:text-sm font-semibold text-neutral-800 dark:text-neutral-200 hover:text-neutral-950 dark:hover:text-white tracking-wide transition-all duration-200 w-full sm:w-auto flex items-center justify-center gap-2.5 bg-white dark:bg-[#12100E] border border-black/15 dark:border-white/20 hover:border-black/30 dark:hover:border-white/40 shadow-[inset_0_1px_1px_rgba(255,255,255,1),0_2px_0_rgba(0,0,0,0.08),0_6px_16px_rgba(0,0,0,0.06)] dark:shadow-[inset_0_1px_1px_rgba(255,255,255,0.15),0_3px_0_rgba(0,0,0,0.7),0_8px_20px_rgba(0,0,0,0.5)] hover:-translate-y-[1px] active:translate-y-[2px]"
             >
               <span className="flex items-center gap-2">
                 <span>Back to homepage</span>
-                <span className="transition-transform duration-200 group-hover:translate-x-1 text-neutral-400 group-hover:text-white">→</span>
+                <span className="transition-transform duration-200 group-hover:translate-x-1 text-neutral-500 dark:text-neutral-400 group-hover:text-neutral-900 dark:group-hover:text-white">→</span>
               </span>
             </button>
 

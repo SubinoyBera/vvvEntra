@@ -47,43 +47,43 @@ export const MarketSignalsSection: React.FC = () => {
         {/* ============================================== */}
         {role === 'architect' ? (
           <div className="text-center max-w-3xl mx-auto mb-7 sm:mb-9">
-            <div className="inline-flex items-center gap-2.5 px-3.5 py-1 rounded-full bg-[#101812] border border-[#16A34A]/30 mb-3.5 sm:mb-4">
+            <div className="inline-flex items-center gap-2.5 px-3.5 py-1 rounded-full bg-[var(--bg-bone)] border border-[#16A34A]/30 mb-3.5 sm:mb-4">
               <span className="font-serif italic text-sm text-[#16A34A] font-semibold">
                 02
               </span>
               <span className="w-1 h-1 rounded-full bg-[#16A34A]" />
-              <span className="text-[10.5px] sm:text-xs font-mono text-neutral-300 tracking-[0.2em] uppercase font-semibold">
+              <span className="text-[10.5px] sm:text-xs font-mono text-[var(--text-muted)] tracking-[0.2em] uppercase font-semibold">
                 PRICING & BUYER MIX
               </span>
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse ml-0.5" />
             </div>
 
-            <h2 className="text-2xl sm:text-4xl lg:text-[2.65rem] font-medium tracking-tight text-white leading-[1.18]">
+            <h2 className="text-2xl sm:text-4xl lg:text-[2.65rem] font-medium tracking-tight text-[var(--text)] leading-[1.18]">
               Sector unlock pricing & <em className="font-serif italic text-[#16A34A] font-normal">verified buyer mix.</em>
             </h2>
 
-            <p className="text-xs sm:text-base text-neutral-400 max-w-2xl mx-auto leading-relaxed mt-3 px-2">
+            <p className="text-xs sm:text-base text-[var(--text-muted)] max-w-2xl mx-auto leading-relaxed mt-3 px-2">
               Historical unlock ranges, median clearing rates, and active institutional buyer profiles across targeted build sectors.
             </p>
           </div>
         ) : (
           <div className="text-center max-w-3xl mx-auto mb-7 sm:mb-9">
-            <div className="inline-flex items-center gap-2.5 px-3.5 py-1 rounded-full bg-[#181410] border border-[#E2571B]/30 mb-3.5 sm:mb-4">
+            <div className="inline-flex items-center gap-2.5 px-3.5 py-1 rounded-full bg-[var(--bg-bone)] border border-[#E2571B]/30 mb-3.5 sm:mb-4">
               <span className="font-serif italic text-sm text-[#E2571B] font-semibold">
                 02
               </span>
               <span className="w-1 h-1 rounded-full bg-[#E2571B]" />
-              <span className="text-[10.5px] sm:text-xs font-mono text-neutral-300 tracking-[0.2em] uppercase font-semibold">
+              <span className="text-[10.5px] sm:text-xs font-mono text-[var(--text-muted)] tracking-[0.2em] uppercase font-semibold">
                 CAPITAL DISPATCH & VELOCITY
               </span>
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse ml-0.5" />
             </div>
 
-            <h2 className="text-2xl sm:text-4xl lg:text-[2.65rem] font-medium tracking-tight text-white leading-[1.18]">
+            <h2 className="text-2xl sm:text-4xl lg:text-[2.65rem] font-medium tracking-tight text-[var(--text)] leading-[1.18]">
               Macro capital velocity & <em className="font-serif italic text-[#E2571B] font-normal">sector acceleration.</em>
             </h2>
 
-            <p className="text-xs sm:text-base text-neutral-400 max-w-2xl mx-auto leading-relaxed mt-3 px-2">
+            <p className="text-xs sm:text-base text-[var(--text-muted)] max-w-2xl mx-auto leading-relaxed mt-3 px-2">
               Weekly allocation benchmarks, sector momentum rankings, and high-frequency peer review volume across verified venture stages.
             </p>
           </div>
@@ -100,15 +100,15 @@ export const MarketSignalsSection: React.FC = () => {
             {/* ======================================================== */}
             {/* CARD 1: Capital deployed · weekly */}
             {/* ======================================================== */}
-            <div className="bg-[#0D0B0A] dark:bg-[#0D0B0A] border border-white/10 rounded-2xl p-5 sm:p-6 shadow-2xl flex flex-col justify-between">
+            <div className="bg-white dark:bg-[#0D0B0A] border border-black/10 dark:border-white/10 rounded-2xl p-5 sm:p-6 shadow-xl flex flex-col justify-between">
               <div>
                 {/* Header */}
-                <div className="flex items-baseline justify-between pb-4 border-b border-white/10 mb-6">
-                  <h3 className="text-xl sm:text-2xl font-normal text-white tracking-tight">
+                <div className="flex items-baseline justify-between pb-4 border-b border-black/10 dark:border-[var(--line)] mb-6">
+                  <h3 className="text-xl sm:text-2xl font-normal text-neutral-900 dark:text-white tracking-tight">
                     Capital <em className="font-serif italic text-[#E2571B] font-normal">deployed</em>{' '}
-                    <span className="font-serif font-light text-neutral-300">· weekly</span>
+                    <span className="font-serif font-light text-neutral-500 dark:text-[var(--text-muted)]">· weekly</span>
                   </h3>
-                  <span className="font-mono text-xs text-neutral-400">Total · $42M</span>
+                  <span className="font-mono text-xs text-neutral-500 dark:text-[var(--text-muted)]">Total · $42M</span>
                 </div>
 
                 {/* Bar Chart */}
@@ -121,7 +121,7 @@ export const MarketSignalsSection: React.FC = () => {
                       </span>
 
                       {/* Bar */}
-                      <div className="w-full max-w-[28px] bg-neutral-900 rounded-t-[3px] overflow-hidden flex items-end h-full">
+                      <div className="w-full max-w-[28px] bg-neutral-100 dark:bg-neutral-900 rounded-t-[3px] overflow-hidden flex items-end h-full border border-black/5 dark:border-white/5">
                         <div
                           className="w-full bg-[#E2571B] rounded-t-[3px] transition-all duration-500 group-hover:brightness-110 shadow-[0_0_8px_rgba(226,87,27,0.3)]"
                           style={{ height: `${item.heightPct}%` }}
@@ -129,7 +129,7 @@ export const MarketSignalsSection: React.FC = () => {
                       </div>
 
                       {/* Week label */}
-                      <span className="font-mono text-[10px] sm:text-[11px] text-neutral-500 mt-2 font-medium">
+                      <span className="font-mono text-[10px] sm:text-[11px] text-neutral-600 dark:text-[var(--text-muted)] mt-2 font-medium">
                         {item.week}
                       </span>
                     </div>
@@ -138,39 +138,39 @@ export const MarketSignalsSection: React.FC = () => {
               </div>
 
               {/* Footer Summary */}
-              <div className="pt-3 mt-4 border-t border-white/10 text-xs font-mono text-neutral-400 leading-relaxed">
+              <div className="pt-3 mt-4 border-t border-black/10 dark:border-[var(--line)] text-xs font-mono text-neutral-600 dark:text-[var(--text-muted)] leading-relaxed">
                 Capital flow accelerating. Week-over-week growth averaging{' '}
-                <strong className="text-emerald-400 font-medium">+18%</strong>.
+                <strong className="text-emerald-600 dark:text-emerald-400 font-semibold">+18%</strong>.
               </div>
             </div>
 
             {/* ======================================================== */}
             {/* CARD 2: Sector velocity */}
             {/* ======================================================== */}
-            <div className="bg-[#0D0B0A] dark:bg-[#0D0B0A] border border-white/10 rounded-2xl p-5 sm:p-6 shadow-2xl flex flex-col justify-between">
+            <div className="bg-white dark:bg-[#0D0B0A] border border-black/10 dark:border-white/10 rounded-2xl p-5 sm:p-6 shadow-xl flex flex-col justify-between">
               <div>
                 {/* Header */}
-                <div className="flex items-baseline justify-between pb-4 border-b border-white/10 mb-2">
-                  <h3 className="text-xl sm:text-2xl font-normal text-white tracking-tight">
+                <div className="flex items-baseline justify-between pb-4 border-b border-black/10 dark:border-[var(--line)] mb-2">
+                  <h3 className="text-xl sm:text-2xl font-normal text-neutral-900 dark:text-white tracking-tight">
                     Sector <em className="font-serif italic text-[#E2571B] font-normal">velocity</em>
                   </h3>
-                  <span className="font-mono text-xs text-neutral-400">Buyer interest · 7d</span>
+                  <span className="font-mono text-xs text-neutral-500 dark:text-[var(--text-muted)]">Buyer interest · 7d</span>
                 </div>
 
                 {/* Rows List */}
-                <div className="divide-y divide-white/5">
+                <div className="divide-y divide-black/5 dark:divide-[var(--line)]">
                   {sectorVelocities.map((sec) => (
                     <div
                       key={sec.name}
-                      className="py-2.5 flex items-center justify-between gap-3 text-xs font-sans group hover:bg-white/[0.02] px-1 rounded transition-colors"
+                      className="py-2.5 flex items-center justify-between gap-3 text-xs font-sans group hover:bg-neutral-50 dark:hover:bg-[var(--bg-tint)] px-1.5 rounded transition-colors"
                     >
                       {/* Rank */}
-                      <span className="font-mono text-[11px] text-neutral-500 w-5 shrink-0">
+                      <span className="font-mono text-[11px] text-neutral-500 dark:text-[var(--text-muted)] w-5 shrink-0">
                         {sec.rank}
                       </span>
 
                       {/* Name */}
-                      <span className="text-white text-xs sm:text-[13px] font-medium flex-1 truncate">
+                      <span className="text-neutral-900 dark:text-white text-xs sm:text-[13px] font-medium flex-1 truncate">
                         {sec.name}
                       </span>
 
@@ -180,7 +180,7 @@ export const MarketSignalsSection: React.FC = () => {
                           <path
                             d={sec.path}
                             fill="none"
-                            stroke={sec.dir === 'up' ? '#22C55E' : '#EF4444'}
+                            stroke={sec.dir === 'up' ? '#16A34A' : '#EF4444'}
                             strokeWidth="1.8"
                             strokeLinecap="round"
                             strokeLinejoin="round"
@@ -191,7 +191,7 @@ export const MarketSignalsSection: React.FC = () => {
                       {/* Percentage */}
                       <span
                         className={`font-mono text-xs sm:text-[12.5px] font-semibold w-12 text-right shrink-0 ${
-                          sec.dir === 'up' ? 'text-emerald-400' : 'text-rose-400'
+                          sec.dir === 'up' ? 'text-emerald-600 dark:text-emerald-400' : 'text-rose-600 dark:text-rose-400'
                         }`}
                       >
                         {sec.change}
@@ -205,48 +205,48 @@ export const MarketSignalsSection: React.FC = () => {
             {/* ======================================================== */}
             {/* CARD 3: Where peers are looking */}
             {/* ======================================================== */}
-            <div className="bg-[#0D0B0A] dark:bg-[#0D0B0A] border border-white/10 rounded-2xl p-5 sm:p-6 shadow-2xl flex flex-col justify-between">
+            <div className="bg-white dark:bg-[#0D0B0A] border border-black/10 dark:border-white/10 rounded-2xl p-5 sm:p-6 shadow-xl flex flex-col justify-between">
               <div>
                 {/* Header */}
-                <div className="pb-4 border-b border-white/10 mb-2">
-                  <h3 className="text-xl sm:text-2xl font-normal text-white tracking-tight">
+                <div className="pb-4 border-b border-black/10 dark:border-[var(--line)] mb-2">
+                  <h3 className="text-xl sm:text-2xl font-normal text-neutral-900 dark:text-white tracking-tight">
                     Where <em className="font-serif italic text-[#E2571B] font-normal">peers</em> are looking
                   </h3>
-                  <span className="font-mono text-xs text-neutral-400 mt-1 block">
+                  <span className="font-mono text-xs text-neutral-500 dark:text-[var(--text-muted)] mt-1 block">
                     Aggregated buyer signals
                   </span>
                 </div>
 
                 {/* Rows List */}
-                <div className="divide-y divide-white/5">
+                <div className="divide-y divide-black/5 dark:divide-[var(--line)]">
                   {peerSignals.map((item, idx) => (
                     <div
                       key={`${item.name}-${idx}`}
-                      className="py-3 flex items-center justify-between gap-3 text-xs font-sans group hover:bg-white/[0.02] px-1 rounded transition-colors"
+                      className="py-3 flex items-center justify-between gap-3 text-xs font-sans group hover:bg-neutral-50 dark:hover:bg-[var(--bg-tint)] px-1.5 rounded transition-colors"
                     >
                       {/* Star or Bullet Icon */}
                       <span
                         className={`w-4 text-center shrink-0 ${
-                          item.icon === '★' ? 'text-neutral-400 text-xs' : 'text-neutral-500 text-sm'
+                          item.icon === '★' ? 'text-amber-500 dark:text-amber-400 text-xs' : 'text-neutral-400 text-sm'
                         }`}
                       >
                         {item.icon}
                       </span>
 
                       {/* Sector Name */}
-                      <span className="text-white text-xs sm:text-[13.5px] font-medium flex-1 truncate">
+                      <span className="text-neutral-900 dark:text-white text-xs sm:text-[13.5px] font-medium flex-1 truncate">
                         {item.name}
                       </span>
 
                       {/* View count */}
-                      <span className="font-mono text-[11px] sm:text-xs text-neutral-400 text-right shrink-0">
+                      <span className="font-mono text-[11px] sm:text-xs text-neutral-500 dark:text-[var(--text-muted)] text-right shrink-0">
                         {item.views}
                       </span>
 
                       {/* Unlock count */}
                       <span
                         className={`font-mono text-xs sm:text-[12.5px] text-right shrink-0 font-medium w-20 ${
-                          item.highlight ? 'text-emerald-400' : 'text-neutral-400'
+                          item.highlight ? 'text-emerald-600 dark:text-emerald-400 font-semibold' : 'text-neutral-500 dark:text-[var(--text-muted)]'
                         }`}
                       >
                         {item.unlocks}

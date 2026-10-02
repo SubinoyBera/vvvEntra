@@ -138,12 +138,12 @@ export const OpportunitiesSection: React.FC = () => {
         <div className="text-center max-w-3xl mx-auto mb-7 sm:mb-9">
           {role === 'architect' ? (
             <>
-              <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-normal tracking-tight text-white leading-tight">
+              <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-normal tracking-tight text-[#0E0D0B] dark:text-white leading-tight">
                 Build <em className="font-serif italic font-normal text-[#16A34A]">prompts</em>{' '}
-                <span className="text-neutral-200">· matched to your expertise.</span>
+                <span className="text-neutral-700 dark:text-neutral-300">· matched to your expertise.</span>
               </h2>
 
-              <p className="text-xs sm:text-sm text-neutral-400 leading-relaxed mt-2.5 max-w-2xl mx-auto font-sans">
+              <p className="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed mt-2.5 max-w-2xl mx-auto font-sans">
                 Curated opportunity prompts based on demand gaps, your sector experience, and what
                 serious buyers are actively searching for. Each prompt shows expected pricing and
                 clearing time.
@@ -151,12 +151,12 @@ export const OpportunitiesSection: React.FC = () => {
             </>
           ) : (
             <>
-              <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-normal tracking-tight text-white leading-tight">
+              <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-normal tracking-tight text-[#0E0D0B] dark:text-white leading-tight">
                 Personalized <em className="font-serif italic font-normal text-[#E2571B]">picks</em>{' '}
-                <span className="text-neutral-200">· based on your unlock history.</span>
+                <span className="text-neutral-700 dark:text-neutral-300">· based on your unlock history.</span>
               </h2>
 
-              <p className="text-xs sm:text-sm text-neutral-400 leading-relaxed mt-2.5 max-w-2xl mx-auto font-sans">
+              <p className="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed mt-2.5 max-w-2xl mx-auto font-sans">
                 The matching engine surfaces opportunities likely to fit your investment thesis based on
                 past unlocks, search filters, and stated sector interest.
               </p>
@@ -192,7 +192,7 @@ export const OpportunitiesSection: React.FC = () => {
                     status: 'locked',
                   })
                 }
-                className="bg-[#0D0B0A] dark:bg-[#0D0B0A] border border-white/10 rounded-2xl p-6 sm:p-7 shadow-2xl flex flex-col justify-between hover:border-[#16A34A]/50 transition-all duration-300 cursor-pointer group hover:-translate-y-1"
+                className="build-prompt-card bg-[#F7FAF8] dark:bg-[#0D0B0A] border border-[#16A34A]/25 dark:border-white/10 rounded-2xl p-6 sm:p-7 shadow-[0_10px_30px_-5px_rgba(22,163,74,0.08),0_2px_8px_-2px_rgba(0,0,0,0.04)] dark:shadow-xl flex flex-col justify-between hover:border-[#16A34A]/60 dark:hover:border-[#16A34A]/50 transition-all duration-300 cursor-pointer group hover:-translate-y-1 hover:shadow-[0_16px_36px_-6px_rgba(22,163,74,0.15)]"
               >
                 <div>
                   {/* Top Row: Category Pills & Match Badge */}
@@ -201,7 +201,7 @@ export const OpportunitiesSection: React.FC = () => {
                       {prompt.pills.map((pill, i) => (
                         <span
                           key={i}
-                          className="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-medium uppercase tracking-wider bg-neutral-900 border border-white/10 text-neutral-300"
+                          className="category-pill-architect px-2.5 py-1 rounded-full text-[10px] font-mono font-semibold uppercase tracking-wider bg-emerald-50 dark:bg-neutral-900 border border-emerald-200/80 dark:border-white/10 text-emerald-950 dark:text-neutral-300 shadow-xs"
                         >
                           {pill}
                         </span>
@@ -215,13 +215,13 @@ export const OpportunitiesSection: React.FC = () => {
                   </div>
 
                   {/* Card Title */}
-                  <h3 className="font-serif text-xl sm:text-[22px] text-white font-normal leading-snug mb-5 group-hover:text-green-100 transition-colors">
+                  <h3 className="font-serif text-xl sm:text-[22px] text-[#0E0D0B] dark:text-white font-normal leading-snug mb-5 group-hover:text-emerald-700 dark:group-hover:text-green-100 transition-colors">
                     {prompt.title}
                   </h3>
 
                   {/* Inset Box with Left Green Accent Border */}
-                  <div className="border-l-2 border-[#16A34A] bg-[#14110E] p-3.5 sm:p-4 rounded-r-lg mb-6">
-                    <p className="text-xs text-neutral-300 leading-relaxed font-sans">
+                  <div className="border-l-2 border-[#16A34A] bg-white/85 dark:bg-[#14110E] p-3.5 sm:p-4 rounded-r-lg mb-6 border-y border-r border-[#16A34A]/15 dark:border-transparent shadow-xs">
+                    <p className="text-xs text-neutral-800 dark:text-neutral-300 leading-relaxed font-sans">
                       <em className="font-serif italic text-[#16A34A] not-italic-font font-normal">
                         {prompt.highlight}
                       </em>
@@ -231,11 +231,11 @@ export const OpportunitiesSection: React.FC = () => {
                 </div>
 
                 {/* Bottom Divider & Meta / Price */}
-                <div className="border-t border-dashed border-white/10 pt-4 flex items-center justify-between mt-auto">
-                  <span className="font-mono text-xs text-neutral-400 tracking-wide">
+                <div className="border-t border-dashed border-[#16A34A]/20 dark:border-white/10 pt-4 flex items-center justify-between mt-auto">
+                  <span className="font-mono text-xs text-neutral-600 dark:text-neutral-400 tracking-wide font-medium">
                     {prompt.meta}
                   </span>
-                  <span className="font-serif italic text-lg sm:text-xl text-[#16A34A] font-normal tabular-nums">
+                  <span className="font-serif italic text-lg sm:text-xl text-[#16A34A] font-bold tabular-nums">
                     {prompt.price}
                   </span>
                 </div>
@@ -248,34 +248,34 @@ export const OpportunitiesSection: React.FC = () => {
               <div
                 key={pick.code}
                 onClick={() => handleCardClick(pick)}
-                className="bg-[#0D0B0A] dark:bg-[#0D0B0A] border border-white/10 rounded-2xl p-6 sm:p-7 shadow-2xl flex flex-col justify-between hover:border-[#E2571B]/50 transition-all duration-300 cursor-pointer group hover:-translate-y-1"
+                className="personalized-pick-card bg-[#FFF8F2] dark:bg-[#0D0B0A] border border-[#E2571B]/25 dark:border-white/10 rounded-2xl p-6 sm:p-7 shadow-[0_10px_30px_-5px_rgba(226,87,27,0.09),0_2px_8px_-2px_rgba(0,0,0,0.04)] dark:shadow-xl flex flex-col justify-between hover:border-[#E2571B]/60 dark:hover:border-[#E2571B]/50 transition-all duration-300 cursor-pointer group hover:-translate-y-1 hover:shadow-[0_16px_36px_-6px_rgba(226,87,27,0.16)]"
               >
                 <div>
                   {/* Top Row: Code, Category Pill & Match Pill */}
                   <div className="flex items-center justify-between gap-2 mb-5">
                     <div className="flex items-center gap-2 flex-wrap">
-                      <span className="font-mono text-xs text-[#E2571B] font-semibold tracking-wider">
+                      <span className="font-mono text-xs text-[#E2571B] font-bold tracking-wider">
                         {pick.code}
                       </span>
-                      <span className="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-medium uppercase tracking-wider bg-neutral-900 border border-white/10 text-neutral-300">
+                      <span className="category-pill-investor px-2.5 py-1 rounded-full text-[10px] font-mono font-semibold uppercase tracking-wider bg-[#FFEFE6] text-[#9A3412] border border-[#FDBA74]/80 dark:bg-neutral-900 dark:border-white/10 dark:text-neutral-300 shadow-xs">
                         {pick.categoryTag}
                       </span>
                     </div>
 
                     {/* Match Rate Pill */}
-                    <span className="px-3 py-1 rounded-full text-xs font-mono font-medium bg-[#E2571B] text-white shadow-xs shrink-0">
+                    <span className="px-3 py-1 rounded-full text-xs font-mono font-semibold bg-[#E2571B] text-white shadow-xs shrink-0">
                       {pick.matchRate}
                     </span>
                   </div>
 
                   {/* Card Title */}
-                  <h3 className="font-serif text-xl sm:text-[22px] text-white font-normal leading-snug mb-5 group-hover:text-orange-100 transition-colors">
+                  <h3 className="font-serif text-xl sm:text-[22px] text-[#0E0D0B] dark:text-white font-normal leading-snug mb-5 group-hover:text-[#C2410C] dark:group-hover:text-orange-100 transition-colors">
                     {pick.title}
                   </h3>
 
                   {/* Inset Thesis Box with Left Orange Accent Border */}
-                  <div className="border-l-2 border-[#E2571B] bg-[#14110E] p-3.5 sm:p-4 rounded-r-lg mb-6">
-                    <p className="text-xs text-neutral-300 leading-relaxed font-sans">
+                  <div className="border-l-2 border-[#E2571B] bg-white/85 dark:bg-[#14110E] p-3.5 sm:p-4 rounded-r-lg mb-6 border-y border-r border-[#E2571B]/15 dark:border-transparent shadow-xs">
+                    <p className="text-xs text-neutral-800 dark:text-neutral-300 leading-relaxed font-sans">
                       {pick.thesisLead}
                       <em className="font-serif italic text-[#E2571B] not-italic-font font-normal">
                         {pick.thesisHighlight}
@@ -286,11 +286,11 @@ export const OpportunitiesSection: React.FC = () => {
                 </div>
 
                 {/* Bottom Divider & Meta / Price */}
-                <div className="border-t border-dashed border-white/10 pt-4 flex items-center justify-between mt-auto">
-                  <span className="font-mono text-xs text-neutral-400 tracking-wide">
+                <div className="border-t border-dashed border-[#E2571B]/20 dark:border-white/10 pt-4 flex items-center justify-between mt-auto">
+                  <span className="font-mono text-xs text-neutral-600 dark:text-neutral-400 tracking-wide font-medium">
                     {pick.pages} pages · {pick.frameworks} frameworks
                   </span>
-                  <span className="font-serif italic text-lg sm:text-xl text-[#E2571B] font-normal tabular-nums">
+                  <span className="font-serif italic text-lg sm:text-xl text-[#E2571B] font-bold tabular-nums">
                     {pick.price}
                   </span>
                 </div>

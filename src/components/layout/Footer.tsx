@@ -69,11 +69,11 @@ export const Footer: React.FC = () => {
   ];
 
   return (
-    <footer className="border-t border-[var(--line)] bg-[#070605] text-[var(--text)] transition-colors duration-300 relative overflow-hidden">
+    <footer className="border-t border-black/8 dark:border-[var(--line)] bg-[#F8F7F4] dark:bg-[#070605] text-neutral-900 dark:text-[var(--text)] transition-colors duration-300 relative overflow-hidden">
       
       {/* Subtle atmospheric backglow */}
       <div 
-        className="absolute bottom-0 left-1/4 w-[600px] h-[300px] blur-[160px] pointer-events-none rounded-full opacity-10"
+        className="absolute bottom-0 left-1/4 w-[600px] h-[300px] blur-[160px] pointer-events-none rounded-full opacity-10 dark:opacity-10"
         style={{ backgroundColor: themeColor }}
       />
 
@@ -82,7 +82,7 @@ export const Footer: React.FC = () => {
         {/* ======================================================== */}
         {/* 1. TOP BRAND HEADER & SYSTEM STATUS DOCK */}
         {/* ======================================================== */}
-        <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8 pb-12 border-b border-white/10">
+        <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8 pb-12 border-b border-black/8 dark:border-white/10">
           
           {/* Official vvEntra Logo & Mission Block */}
           <div className="flex flex-col items-start max-w-xl">
@@ -107,49 +107,49 @@ export const Footer: React.FC = () => {
               />
             </a>
 
-            <p className="mt-4 text-xs sm:text-sm text-neutral-400 font-normal leading-relaxed">
+            <p className="mt-4 text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 font-normal leading-relaxed">
               The confidential institutional exchange where venture blueprints, validated thesis dossiers, and private capital deployment are engineered with cryptographic certainty.
             </p>
 
             {/* Trust Assurance Security Badges */}
             <div className="mt-4 flex flex-wrap items-center gap-2">
-              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-[10px] font-mono uppercase tracking-wider bg-white/5 border border-white/10 text-neutral-300">
-                <Lock className="w-3 h-3 text-emerald-400" />
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-[10px] font-mono uppercase tracking-wider bg-white dark:bg-white/5 border border-black/10 dark:border-white/10 text-neutral-700 dark:text-neutral-300 shadow-xs">
+                <Lock className="w-3 h-3 text-emerald-600 dark:text-emerald-400" />
                 <span>AES-256 VAULT</span>
               </span>
-              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-[10px] font-mono uppercase tracking-wider bg-white/5 border border-white/10 text-neutral-300">
-                <ShieldCheck className="w-3 h-3 text-emerald-400" />
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-[10px] font-mono uppercase tracking-wider bg-white dark:bg-white/5 border border-black/10 dark:border-white/10 text-neutral-700 dark:text-neutral-300 shadow-xs">
+                <ShieldCheck className="w-3 h-3 text-emerald-600 dark:text-emerald-400" />
                 <span>DELAWARE JURISDICTION</span>
               </span>
-              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-[10px] font-mono uppercase tracking-wider bg-white/5 border border-white/10 text-neutral-300">
-                <CheckCircle2 className="w-3 h-3 text-emerald-400" />
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-[10px] font-mono uppercase tracking-wider bg-white dark:bg-white/5 border border-black/10 dark:border-white/10 text-neutral-700 dark:text-neutral-300 shadow-xs">
+                <CheckCircle2 className="w-3 h-3 text-emerald-600 dark:text-emerald-400" />
                 <span>7-DAY ESCROW SLA</span>
               </span>
             </div>
           </div>
 
           {/* Right: Modern Operational Status & Telemetry Widget */}
-          <div className="w-full lg:w-auto p-4 sm:p-5 rounded-2xl bg-[#0D0B0A] border border-white/10 shadow-2xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5 shrink-0">
+          <div className="w-full lg:w-auto p-4 sm:p-5 rounded-2xl bg-white dark:bg-[#0D0B0A] border border-black/10 dark:border-white/10 shadow-lg dark:shadow-2xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5 shrink-0">
             <div className="flex flex-col gap-1.5">
               <div className="flex items-center gap-2.5">
                 <span className="relative flex h-2.5 w-2.5">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
                   <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500" />
                 </span>
-                <span className="text-xs sm:text-[13px] font-semibold text-white tracking-tight">
+                <span className="text-xs sm:text-[13px] font-semibold text-neutral-900 dark:text-white tracking-tight">
                   Exchange Systems Operational
                 </span>
-                <span className="px-2 py-0.5 rounded text-[10px] font-mono bg-emerald-500/15 text-emerald-400 border border-emerald-500/30">
+                <span className="px-2 py-0.5 rounded text-[10px] font-mono bg-emerald-50 dark:bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 border border-emerald-600/20 dark:border-emerald-500/30 font-medium">
                   99.98% UPTIME
                 </span>
               </div>
-              <p className="text-[11px] font-mono text-neutral-400">
+              <p className="text-[11px] font-mono text-neutral-500 dark:text-neutral-400">
                 Settlement Rails: Active · Latency: 12ms · Bilateral NDA Node: Online
               </p>
             </div>
 
             {/* Quick Perspective Pill Indicator */}
-            <div className="flex items-center gap-1.5 p-1 rounded-full bg-[#161311] border border-white/10 shrink-0">
+            <div className="flex items-center gap-1.5 p-1 rounded-full bg-neutral-100 dark:bg-[#161311] border border-black/10 dark:border-white/10 shrink-0">
               <button
                 onClick={() => {
                   setRole('investor');
@@ -158,7 +158,7 @@ export const Footer: React.FC = () => {
                 className={`px-3 py-1 rounded-full text-[11px] font-mono font-medium transition-all cursor-pointer ${
                   role === 'investor'
                     ? 'bg-[#E2571B] text-white shadow-xs'
-                    : 'text-neutral-400 hover:text-white'
+                    : 'text-neutral-600 dark:text-neutral-400 hover:text-neutral-950 dark:hover:text-white'
                 }`}
               >
                 Investor
@@ -171,7 +171,7 @@ export const Footer: React.FC = () => {
                 className={`px-3 py-1 rounded-full text-[11px] font-mono font-medium transition-all cursor-pointer ${
                   role === 'architect'
                     ? 'bg-[#16A34A] text-white shadow-xs'
-                    : 'text-neutral-400 hover:text-white'
+                    : 'text-neutral-600 dark:text-neutral-400 hover:text-neutral-950 dark:hover:text-white'
                 }`}
               >
                 Architect
@@ -184,11 +184,11 @@ export const Footer: React.FC = () => {
         {/* ======================================================== */}
         {/* 2. INSTITUTIONAL MULTI-COLUMN NAVIGATION DIRECTORY */}
         {/* ======================================================== */}
-        <div className="py-12 grid grid-cols-2 md:grid-cols-4 gap-8 lg:gap-12 border-b border-white/10">
+        <div className="py-12 grid grid-cols-2 md:grid-cols-4 gap-8 lg:gap-12 border-b border-black/8 dark:border-white/10">
           {navColumns.map((col) => (
             <div key={col.title} className="flex flex-col">
               <h4 
-                className="font-mono text-[11px] uppercase tracking-[0.2em] font-semibold mb-4"
+                className="font-mono text-[11px] uppercase tracking-[0.2em] font-bold mb-4"
                 style={{ color: themeColor }}
               >
                 {col.title}
@@ -202,7 +202,7 @@ export const Footer: React.FC = () => {
                         e.preventDefault();
                         handleNavClick(link.hash);
                       }}
-                      className="text-xs sm:text-[13px] text-neutral-400 hover:text-white transition-colors duration-150 block py-0.5"
+                      className="text-xs sm:text-[13px] text-neutral-600 dark:text-neutral-400 hover:text-neutral-950 dark:hover:text-white font-medium transition-colors duration-150 block py-0.5"
                     >
                       {link.label}
                     </a>
@@ -216,20 +216,20 @@ export const Footer: React.FC = () => {
         {/* ======================================================== */}
         {/* 3. BOTTOM COPYRIGHT, TAGLINE & SCROLL TO TOP */}
         {/* ======================================================== */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-neutral-400">
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-neutral-600 dark:text-neutral-400">
           <div className="flex items-center gap-2">
             <span>© 2026 vvEntra Inc.</span>
-            <span className="text-neutral-600">·</span>
+            <span className="text-neutral-400 dark:text-neutral-600">·</span>
             <span>Confidential Opportunity Exchange</span>
           </div>
 
-          <div className="font-serif italic text-sm text-neutral-300">
+          <div className="font-serif italic text-sm text-neutral-800 dark:text-neutral-300">
             We enter ventures together.
           </div>
 
           <button
             onClick={scrollToTop}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-white/10 hover:border-white/25 text-neutral-400 hover:text-white bg-white/5 hover:bg-white/10 transition-all cursor-pointer text-[11px]"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-black/15 dark:border-white/10 hover:border-black/30 dark:hover:border-white/25 text-neutral-700 dark:text-neutral-400 hover:text-neutral-950 dark:hover:text-white bg-white dark:bg-white/5 hover:bg-neutral-100 dark:hover:bg-white/10 transition-all cursor-pointer text-[11px] shadow-xs"
             title="Scroll to top of page"
           >
             <span>Top</span>

@@ -388,7 +388,7 @@ export const FaqPage: React.FC = () => {
   }, [filteredSections]);
 
   return (
-    <div className="w-full text-white select-none pb-28 transition-colors duration-300">
+    <div className="w-full text-neutral-900 dark:text-white select-none pb-28 transition-colors duration-300">
       
       {/* ======================================================== */}
       {/* 1. HERO SECTION (Matches Reference Header Exactly)       */}
@@ -418,7 +418,7 @@ export const FaqPage: React.FC = () => {
           </div>
 
           {/* Main Headline: Everything you need before your first transaction. */}
-          <h1 className="font-serif text-4xl sm:text-5xl lg:text-[3.85rem] font-normal text-white tracking-tight leading-[1.12] mb-5">
+          <h1 className="font-serif text-4xl sm:text-5xl lg:text-[3.85rem] font-normal text-neutral-900 dark:text-white tracking-tight leading-[1.12] mb-5">
             Everything you need{' '}
             <em 
               className="font-serif italic font-normal transition-colors duration-300"
@@ -430,7 +430,7 @@ export const FaqPage: React.FC = () => {
           </h1>
 
           {/* Subtitle Paragraph */}
-          <p className="text-sm sm:text-base text-neutral-300 font-normal leading-relaxed mb-8 max-w-2xl px-2">
+          <p className="text-sm sm:text-base text-neutral-600 dark:text-neutral-300 font-normal leading-relaxed mb-8 max-w-2xl px-2">
             vvEntra works differently from any platform you've used before. These are the questions every serious buyer and architect asks. Direct answers, no marketing fluff. Pick your side below.
           </p>
 
@@ -442,7 +442,7 @@ export const FaqPage: React.FC = () => {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search questions..."
-                className="w-full bg-[#0D0B0A] border border-white/10 focus:border-white/30 rounded-2xl pl-5 pr-28 py-3.5 text-xs sm:text-sm text-white placeholder-neutral-500 outline-none transition-all shadow-xl"
+                className="w-full bg-white dark:bg-[#0D0B0A] border border-black/10 dark:border-white/10 focus:border-black/30 dark:focus:border-white/30 rounded-2xl pl-5 pr-28 py-3.5 text-xs sm:text-sm text-neutral-900 dark:text-white placeholder-neutral-500 outline-none transition-all shadow-md dark:shadow-xl"
               />
               
               {/* Right side inside input: Dynamic questions counter */}
@@ -451,7 +451,7 @@ export const FaqPage: React.FC = () => {
                   <button
                     type="button"
                     onClick={() => setSearchQuery('')}
-                    className="pointer-events-auto text-neutral-400 hover:text-white p-0.5 cursor-pointer"
+                    className="pointer-events-auto text-neutral-400 hover:text-neutral-900 dark:hover:text-white p-0.5 cursor-pointer"
                   >
                     <X className="w-3.5 h-3.5" />
                   </button>
@@ -462,7 +462,7 @@ export const FaqPage: React.FC = () => {
           </div>
 
           {/* 3D Perspective Toggle Button (Buyer Orange / Architect Green) */}
-          <div className="p-1.5 sm:p-2 rounded-full bg-[#12100E] border border-white/10 shadow-2xl inline-flex items-center gap-2 mb-10">
+          <div className="p-1.5 sm:p-2 rounded-full bg-neutral-100 dark:bg-[#12100E] border border-black/10 dark:border-white/10 shadow-xl inline-flex items-center gap-2 mb-10">
             
             {/* "As a Buyer" Button */}
             <button
@@ -470,7 +470,7 @@ export const FaqPage: React.FC = () => {
               className={`cursor-pointer select-none rounded-full px-5 sm:px-7 py-2.5 sm:py-3 text-xs sm:text-sm font-semibold tracking-wide transition-all duration-200 flex items-center gap-2.5 ${
                 !isArchitect
                   ? 'bg-gradient-to-b from-[#FB923C] via-[#EA580C] to-[#C2410C] text-white border border-[#FDBA74]/60 shadow-[inset_0_1.5px_2px_rgba(255,255,255,0.8),0_4px_0_#9A3412,0_10px_24px_rgba(234,88,12,0.45)] hover:brightness-105 active:translate-y-[2px]'
-                  : 'text-neutral-400 hover:text-white bg-transparent border border-transparent'
+                  : 'text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white bg-transparent border border-transparent'
               }`}
             >
               <User className="w-4 h-4" />
@@ -483,7 +483,7 @@ export const FaqPage: React.FC = () => {
               className={`cursor-pointer select-none rounded-full px-5 sm:px-7 py-2.5 sm:py-3 text-xs sm:text-sm font-semibold tracking-wide transition-all duration-200 flex items-center gap-2.5 ${
                 isArchitect
                   ? 'bg-gradient-to-b from-[#34D399] via-[#16A34A] to-[#15803D] text-white border border-[#86EFAC]/60 shadow-[inset_0_1.5px_2px_rgba(255,255,255,0.8),0_4px_0_#0E622B,0_10px_24px_rgba(22,163,74,0.45)] hover:brightness-105 active:translate-y-[2px]'
-                  : 'text-neutral-400 hover:text-white bg-transparent border border-transparent'
+                  : 'text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white bg-transparent border border-transparent'
               }`}
             >
               <Shield className="w-4 h-4" />
@@ -500,7 +500,7 @@ export const FaqPage: React.FC = () => {
       {/* 2. PERSONA BANNER CARD (Matches Reference Screenshot)    */}
       {/* ======================================================== */}
       <section className="max-w-[1080px] mx-auto px-4 sm:px-6 lg:px-8 mb-16">
-        <div className="rounded-2xl sm:rounded-3xl bg-[#0D0B0A] border border-white/10 shadow-xl overflow-hidden relative text-left flex items-start sm:items-center p-6 sm:p-8">
+        <div className="rounded-2xl sm:rounded-3xl bg-white dark:bg-[#0D0B0A] border border-black/10 dark:border-white/10 shadow-xl overflow-hidden relative text-left flex items-start sm:items-center p-6 sm:p-8">
           
           {/* Vertical Accent Line on Left (Orange for Buyer, Green for Architect) */}
           <div 
@@ -509,17 +509,17 @@ export const FaqPage: React.FC = () => {
           />
 
           {/* Left Avatar Icon Circle */}
-          <div className="w-11 h-11 sm:w-13 sm:h-13 rounded-full bg-[#181411] border border-white/10 flex items-center justify-center text-neutral-300 shrink-0 mr-4 sm:mr-6">
+          <div className="w-11 h-11 sm:w-13 sm:h-13 rounded-full bg-neutral-100 dark:bg-[#181411] border border-black/10 dark:border-white/10 flex items-center justify-center text-neutral-700 dark:text-neutral-300 shrink-0 mr-4 sm:mr-6">
             {!isArchitect ? (
-              <User className="w-5 h-5 text-neutral-300" />
+              <User className="w-5 h-5 text-neutral-700 dark:text-neutral-300" />
             ) : (
-              <Shield className="w-5 h-5 text-neutral-300" />
+              <Shield className="w-5 h-5 text-neutral-700 dark:text-neutral-300" />
             )}
           </div>
 
           {/* Content Text */}
           <div className="flex-1 pr-2">
-            <h2 className="font-serif text-xl sm:text-2xl text-white font-normal mb-1.5">
+            <h2 className="font-serif text-xl sm:text-2xl text-neutral-900 dark:text-white font-normal mb-1.5">
               {!isArchitect ? (
                 <>
                   For{' '}
@@ -534,7 +534,7 @@ export const FaqPage: React.FC = () => {
                 <>
                   For{' '}
                   <em 
-                    className="font-serif italic font-normal text-emerald-400"
+                    className="font-serif italic font-normal text-emerald-600 dark:text-emerald-400"
                   >
                     architects and creators
                   </em>
@@ -542,7 +542,7 @@ export const FaqPage: React.FC = () => {
               )}
             </h2>
 
-            <p className="text-xs sm:text-sm text-neutral-300 font-normal leading-relaxed max-w-3xl">
+            <p className="text-xs sm:text-sm text-neutral-600 dark:text-neutral-300 font-normal leading-relaxed max-w-3xl">
               {!isArchitect
                 ? 'You have capital, execution capacity, and a thesis. What you need is conviction-ready opportunities and a process you can trust. These answers walk through how vvEntra protects your money and helps you make better unlock decisions.'
                 : 'You have domain expertise, verified playbooks, and proprietary IP. What you need is monetizing without uncompensated exposure or predatory broker retainers. These answers walk through how vvEntra protects your IP custody and guarantees your 90% payout.'}
@@ -557,17 +557,17 @@ export const FaqPage: React.FC = () => {
       {/* ======================================================== */}
       <section className="max-w-[1080px] mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
         {filteredSections.length === 0 ? (
-          <div className="p-12 rounded-3xl bg-[#0D0B0A] border border-white/10 text-center">
+          <div className="p-12 rounded-3xl bg-white dark:bg-[#0D0B0A] border border-black/10 dark:border-white/10 text-center shadow-md">
             <HelpCircle className="w-8 h-8 text-neutral-500 mx-auto mb-3" />
-            <h3 className="font-serif text-lg text-white font-normal mb-1">
+            <h3 className="font-serif text-lg text-neutral-900 dark:text-white font-normal mb-1">
               No matching questions found
             </h3>
-            <p className="text-xs text-neutral-400 mb-4">
+            <p className="text-xs text-neutral-600 dark:text-neutral-400 mb-4">
               Try searching with different keywords.
             </p>
             <button
               onClick={() => setSearchQuery('')}
-              className="px-4 py-2 rounded-xl text-xs font-semibold text-white tracking-wide transition-all cursor-pointer"
+              className="px-4 py-2 rounded-xl text-xs font-semibold text-white tracking-wide transition-all cursor-pointer shadow-sm"
               style={{ backgroundColor: themeColor }}
             >
               Reset Search
@@ -586,7 +586,7 @@ export const FaqPage: React.FC = () => {
                   >
                     {sec.number}
                   </span>
-                  <h2 className="font-serif text-2xl sm:text-3xl text-white font-normal tracking-tight">
+                  <h2 className="font-serif text-2xl sm:text-3xl text-neutral-900 dark:text-white font-normal tracking-tight">
                     {sec.titlePrefix}{' '}
                     <em 
                       className="font-serif italic font-normal transition-colors"
@@ -597,13 +597,13 @@ export const FaqPage: React.FC = () => {
                   </h2>
                 </div>
 
-                <span className="text-[10px] sm:text-[11px] font-mono uppercase tracking-[0.2em] text-neutral-500 font-semibold select-none">
+                <span className="text-[10px] sm:text-[11px] font-mono uppercase tracking-[0.2em] text-neutral-500 dark:text-neutral-400 font-semibold select-none">
                   {sec.questions.length} QUESTIONS
                 </span>
               </div>
 
               {/* Thin hairline divider matching screenshot */}
-              <div className="border-t border-white/10 mb-6" />
+              <div className="border-t border-black/10 dark:border-white/10 mb-6" />
 
               {/* Questions List for this Section */}
               <div className="space-y-3 sm:space-y-3.5">
@@ -613,24 +613,29 @@ export const FaqPage: React.FC = () => {
                     <div
                       key={faq.id}
                       onClick={() => toggleAccordion(faq.id)}
-                      className={`rounded-2xl transition-all duration-200 overflow-hidden border cursor-pointer ${
+                      className={`faq-accordion-item rounded-2xl transition-all duration-200 overflow-hidden border cursor-pointer ${
                         isOpen
-                          ? 'bg-[#0E0C0B] border-white/20 shadow-lg'
-                          : 'bg-[#0D0B0A]/90 hover:bg-[#12100E] border-white/10 hover:border-white/20'
+                          ? 'bg-[#FFFDFB] dark:bg-[#0E0C0B] shadow-md dark:shadow-lg'
+                          : 'bg-white dark:bg-[#0D0B0A] hover:bg-[#FAF9F5] dark:hover:bg-[#12100E] border-black/10 dark:border-white/10 hover:border-black/20 dark:hover:border-white/20 shadow-xs'
                       }`}
+                      style={{
+                        borderColor: isOpen 
+                          ? (isArchitect ? 'rgba(22, 163, 74, 0.45)' : 'rgba(226, 87, 27, 0.45)') 
+                          : undefined
+                      }}
                     >
                       {/* Question Row */}
                       <div className="p-5 sm:p-6 flex items-center justify-between gap-4 text-left select-none">
-                        <h3 className="font-serif text-base sm:text-[18px] text-white font-normal leading-snug pr-3">
+                        <h3 className="font-serif text-base sm:text-[18px] text-neutral-900 dark:text-white font-normal leading-snug pr-3">
                           {faq.question}
                         </h3>
 
                         {/* Circular +/- Action Icon Button (Exact Match from Screenshot) */}
                         <div 
-                          className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full border border-white/15 flex items-center justify-center shrink-0 transition-all duration-200 ${
+                          className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full border flex items-center justify-center shrink-0 transition-all duration-200 ${
                             isOpen 
-                              ? 'bg-white/10 border-white/30 text-white' 
-                              : 'text-neutral-400 group-hover:text-white group-hover:border-white/30'
+                              ? 'bg-neutral-100 dark:bg-white/10 border-black/15 dark:border-white/30 text-neutral-900 dark:text-white' 
+                              : 'bg-neutral-50 dark:bg-white/5 border-black/10 dark:border-white/15 text-neutral-500 dark:text-neutral-400 group-hover:border-black/25 dark:group-hover:border-white/30'
                           }`}
                         >
                           {isOpen ? (
@@ -645,9 +650,9 @@ export const FaqPage: React.FC = () => {
                       {isOpen && (
                         <div 
                           onClick={(e) => e.stopPropagation()}
-                          className="px-5 sm:px-6 pb-6 pt-2 text-xs sm:text-[13.5px] text-neutral-300 font-normal leading-relaxed border-t border-white/5 space-y-3.5 animate-in fade-in duration-200"
+                          className="px-5 sm:px-6 pb-6 pt-2 text-xs sm:text-[13.5px] text-neutral-700 dark:text-neutral-300 font-normal leading-relaxed border-t border-black/5 dark:border-white/5 space-y-3.5 animate-in fade-in duration-200"
                         >
-                          <p className="leading-relaxed text-neutral-300">
+                          <p className="leading-relaxed text-neutral-700 dark:text-neutral-300">
                             {faq.answer}
                           </p>
 
@@ -655,9 +660,9 @@ export const FaqPage: React.FC = () => {
                             <div 
                               className="p-3 sm:p-3.5 rounded-xl border flex items-center gap-2.5 text-xs font-mono"
                               style={{
-                                backgroundColor: `${themeColor}10`,
-                                borderColor: `${themeColor}35`,
-                                color: themeColor
+                                backgroundColor: isArchitect ? 'rgba(22, 163, 74, 0.08)' : 'rgba(226, 87, 27, 0.08)',
+                                borderColor: isArchitect ? 'rgba(22, 163, 74, 0.28)' : 'rgba(226, 87, 27, 0.28)',
+                                color: isArchitect ? '#15803D' : '#C2410C'
                               }}
                             >
                               <CheckCircle2 className="w-4 h-4 shrink-0" />
@@ -681,9 +686,9 @@ export const FaqPage: React.FC = () => {
       {/* ======================================================== */}
       <section className="max-w-[820px] mx-auto px-4 sm:px-6 lg:px-8 mt-16 sm:mt-20">
         <div 
-          className="rounded-[28px] sm:rounded-[32px] bg-[#0E0C0A] p-8 sm:p-12 md:p-14 text-center shadow-2xl relative overflow-hidden transition-all duration-300"
+          className="rounded-[28px] sm:rounded-[32px] bg-white dark:bg-[#0E0C0A] p-8 sm:p-12 md:p-14 text-center shadow-xl dark:shadow-2xl relative overflow-hidden transition-all duration-300 border"
           style={{
-            border: `1.5px solid ${themeColor}`
+            borderColor: themeColor
           }}
         >
           {/* Subtle radial inner glow */}
@@ -708,7 +713,7 @@ export const FaqPage: React.FC = () => {
             </div>
 
             {/* Headline: Didn't find your answer? */}
-            <h2 className="font-serif text-3xl sm:text-4xl lg:text-[44px] text-white font-normal tracking-tight mb-4">
+            <h2 className="font-serif text-3xl sm:text-4xl lg:text-[44px] text-neutral-900 dark:text-white font-normal tracking-tight mb-4">
               Didn't find your{' '}
               <em 
                 className="font-serif italic font-normal transition-colors duration-300"
@@ -719,7 +724,7 @@ export const FaqPage: React.FC = () => {
             </h2>
 
             {/* Paragraph copy */}
-            <p className="text-xs sm:text-sm text-neutral-300 font-normal leading-relaxed max-w-xl mx-auto mb-8 sm:mb-10">
+            <p className="text-xs sm:text-sm text-neutral-600 dark:text-neutral-300 font-normal leading-relaxed max-w-xl mx-auto mb-8 sm:mb-10">
               We're a small team and we answer founder-style: directly, quickly, no support-bot routing. Pick the channel that works for you.
             </p>
 
@@ -729,54 +734,54 @@ export const FaqPage: React.FC = () => {
               {/* Card 1: Email us */}
               <a
                 href="mailto:hello@vventra.com"
-                className="group rounded-2xl p-5 sm:p-6 bg-[#12100E] border border-white/10 hover:border-white/20 transition-all duration-200 flex flex-col items-center justify-center hover:bg-[#161311] cursor-pointer"
+                className="group rounded-2xl p-5 sm:p-6 bg-[#FAF9F6] dark:bg-[#12100E] border border-black/8 dark:border-white/10 hover:border-black/20 dark:hover:border-white/20 transition-all duration-200 flex flex-col items-center justify-center hover:bg-neutral-100 dark:hover:bg-[#161311] cursor-pointer shadow-xs"
               >
                 <div 
-                  className="w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center mx-auto mb-3.5 transition-transform group-hover:scale-105"
+                  className="w-9 h-9 rounded-full bg-white dark:bg-white/5 border border-black/10 dark:border-white/10 flex items-center justify-center mx-auto mb-3.5 transition-transform group-hover:scale-105 shadow-xs"
                   style={{ color: themeColor }}
                 >
                   <Mail className="w-4 h-4" />
                 </div>
-                <h3 className="font-serif text-base sm:text-[17px] text-white font-normal mb-1.5">
+                <h3 className="font-serif text-base sm:text-[17px] text-neutral-900 dark:text-white font-normal mb-1.5">
                   Email us
                 </h3>
-                <span className="text-[11px] sm:text-xs font-mono text-neutral-400 group-hover:text-neutral-300 transition-colors">
+                <span className="text-[11px] sm:text-xs font-mono text-neutral-500 dark:text-neutral-400 group-hover:text-neutral-700 dark:group-hover:text-neutral-300 transition-colors">
                   hello@vventra.com
                 </span>
               </a>
 
               {/* Card 2: Live chat */}
               <div
-                className="group rounded-2xl p-5 sm:p-6 bg-[#12100E] border border-white/10 hover:border-white/20 transition-all duration-200 flex flex-col items-center justify-center hover:bg-[#161311] cursor-default"
+                className="group rounded-2xl p-5 sm:p-6 bg-[#FAF9F6] dark:bg-[#12100E] border border-black/8 dark:border-white/10 hover:border-black/20 dark:hover:border-white/20 transition-all duration-200 flex flex-col items-center justify-center hover:bg-neutral-100 dark:hover:bg-[#161311] cursor-default shadow-xs"
               >
                 <div 
-                  className="w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center mx-auto mb-3.5 transition-transform group-hover:scale-105"
+                  className="w-9 h-9 rounded-full bg-white dark:bg-white/5 border border-black/10 dark:border-white/10 flex items-center justify-center mx-auto mb-3.5 transition-transform group-hover:scale-105 shadow-xs"
                   style={{ color: themeColor }}
                 >
                   <MessageCircle className="w-4 h-4" />
                 </div>
-                <h3 className="font-serif text-base sm:text-[17px] text-white font-normal mb-1.5">
+                <h3 className="font-serif text-base sm:text-[17px] text-neutral-900 dark:text-white font-normal mb-1.5">
                   Live chat
                 </h3>
-                <span className="text-[11px] sm:text-xs font-mono text-neutral-400 group-hover:text-neutral-300 transition-colors">
+                <span className="text-[11px] sm:text-xs font-mono text-neutral-500 dark:text-neutral-400 group-hover:text-neutral-700 dark:group-hover:text-neutral-300 transition-colors">
                   Mon-Sat · 9am-9pm IST
                 </span>
               </div>
 
               {/* Card 3: Schedule a call */}
               <div
-                className="group rounded-2xl p-5 sm:p-6 bg-[#12100E] border border-white/10 hover:border-white/20 transition-all duration-200 flex flex-col items-center justify-center hover:bg-[#161311] cursor-default"
+                className="group rounded-2xl p-5 sm:p-6 bg-[#FAF9F6] dark:bg-[#12100E] border border-black/8 dark:border-white/10 hover:border-black/20 dark:hover:border-white/20 transition-all duration-200 flex flex-col items-center justify-center hover:bg-neutral-100 dark:hover:bg-[#161311] cursor-default shadow-xs"
               >
                 <div 
-                  className="w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center mx-auto mb-3.5 transition-transform group-hover:scale-105"
+                  className="w-9 h-9 rounded-full bg-white dark:bg-white/5 border border-black/10 dark:border-white/10 flex items-center justify-center mx-auto mb-3.5 transition-transform group-hover:scale-105 shadow-xs"
                   style={{ color: themeColor }}
                 >
                   <Phone className="w-4 h-4" />
                 </div>
-                <h3 className="font-serif text-base sm:text-[17px] text-white font-normal mb-1.5">
+                <h3 className="font-serif text-base sm:text-[17px] text-neutral-900 dark:text-white font-normal mb-1.5">
                   Schedule a call
                 </h3>
-                <span className="text-[11px] sm:text-xs font-mono text-neutral-400 group-hover:text-neutral-300 transition-colors">
+                <span className="text-[11px] sm:text-xs font-mono text-neutral-500 dark:text-neutral-400 group-hover:text-neutral-700 dark:group-hover:text-neutral-300 transition-colors">
                   Premium tier · 15 min
                 </span>
               </div>
@@ -807,7 +812,7 @@ export const FaqPage: React.FC = () => {
                   window.location.hash = '#trust';
                   window.scrollTo({ top: 0, behavior: 'smooth' });
                 }}
-                className="w-full sm:w-auto px-6 sm:px-7 py-3 rounded-xl text-xs sm:text-sm font-medium text-neutral-200 border border-white/20 hover:border-white/40 hover:text-white bg-transparent transition-all cursor-pointer flex items-center justify-center gap-1.5 active:scale-[0.98]"
+                className="w-full sm:w-auto px-6 sm:px-7 py-3 rounded-xl text-xs sm:text-sm font-medium text-neutral-800 dark:text-neutral-200 border border-black/20 dark:border-white/20 hover:border-black/40 dark:hover:border-white/40 hover:text-neutral-950 dark:hover:text-white bg-white dark:bg-transparent shadow-xs hover:shadow-sm transition-all cursor-pointer flex items-center justify-center gap-1.5 active:scale-[0.98]"
               >
                 <span>Read trust policy</span>
                 <span>→</span>

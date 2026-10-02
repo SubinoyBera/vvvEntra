@@ -135,17 +135,17 @@ export const TopOpportunityGaps: React.FC = () => {
   }, []);
 
   return (
-    <div className="bg-[#0D0B0A] dark:bg-[#0D0B0A] border border-white/10 rounded-2xl p-5 sm:p-7 flex flex-col justify-between shadow-2xl relative overflow-hidden h-[590px] sm:h-[620px] box-border select-none">
+    <div className="bg-white dark:bg-[#0D0B0A] border border-black/10 dark:border-white/10 rounded-2xl p-5 sm:p-7 flex flex-col justify-between shadow-xl relative overflow-hidden h-[590px] sm:h-[620px] box-border select-none">
       
       {/* ============================================== */}
       {/* Header */}
       {/* ============================================== */}
-      <div className="flex items-center justify-between pb-5 border-b border-white/10 mb-4 shrink-0">
-        <h3 className="text-xl sm:text-2xl font-normal text-white tracking-tight">
+      <div className="flex items-center justify-between pb-5 border-b border-black/8 dark:border-white/10 mb-4 shrink-0">
+        <h3 className="text-xl sm:text-2xl font-normal text-neutral-900 dark:text-white tracking-tight">
           Top <em className="font-serif italic font-normal text-[#16A34A]">opportunity gaps</em>
         </h3>
 
-        <span className="font-mono text-neutral-400 text-[11px] sm:text-xs tracking-wide">
+        <span className="font-mono text-neutral-500 dark:text-neutral-400 text-[11px] sm:text-xs tracking-wide">
           Build here for fastest clearing
         </span>
       </div>
@@ -181,14 +181,14 @@ export const TopOpportunityGaps: React.FC = () => {
                   status: 'locked',
                 });
               }}
-              className={`group flex items-center justify-between gap-3 sm:gap-4 px-3.5 sm:px-5 h-[68px] sm:h-[72px] rounded-xl cursor-pointer shadow-sm box-border shrink-0 transition-all duration-300 overflow-hidden ${
+              className={`group flex items-center justify-between gap-3 sm:gap-4 px-3.5 sm:px-5 h-[68px] sm:h-[72px] rounded-xl cursor-pointer shadow-xs box-border shrink-0 transition-all duration-300 overflow-hidden ${
                 isNew
-                  ? 'bg-[#101F14] border border-[#16A34A] shadow-[0_0_16px_rgba(22,163,74,0.3)]'
-                  : 'bg-[#14110E] hover:bg-[#181512] border border-white/5 hover:border-[#16A34A]/50'
+                  ? 'top-gap-new-arrival bg-emerald-50/95 dark:bg-[#101F14] border-2 border-[#16A34A] shadow-[0_4px_20px_rgba(22,163,74,0.22)] dark:shadow-[0_0_16px_rgba(22,163,74,0.3)]'
+                  : 'bg-neutral-50/90 hover:bg-neutral-100 dark:bg-[#14110E] dark:hover:bg-[#181512] border border-black/6 hover:border-[#16A34A]/50 dark:border-white/5 dark:hover:border-[#16A34A]/50'
               }`}
             >
               {/* Left: Rank Badge */}
-              <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#181410] border border-white/10 flex items-center justify-center shrink-0 group-hover:border-[#16A34A]/40 transition-colors">
+              <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white dark:bg-[#181410] border border-black/10 dark:border-white/10 flex items-center justify-center shrink-0 group-hover:border-[#16A34A]/40 transition-colors shadow-xs">
                 <span className="font-serif italic text-base sm:text-lg text-[#16A34A] font-semibold leading-none">
                   {rankStr}
                 </span>
@@ -196,20 +196,28 @@ export const TopOpportunityGaps: React.FC = () => {
 
               {/* Middle: Title & Metrics */}
               <div className="flex-1 min-w-0 pr-2 overflow-hidden">
-                <div className="text-xs sm:text-[14px] font-medium text-white truncate leading-tight group-hover:text-green-200 transition-colors">
+                <div className={`text-xs sm:text-[14px] font-semibold truncate leading-tight transition-colors ${
+                  isNew 
+                    ? 'text-emerald-950 dark:text-white' 
+                    : 'text-neutral-900 dark:text-white group-hover:text-emerald-700 dark:group-hover:text-green-200'
+                }`}>
                   {item.title}
                 </div>
-                <div className="text-[10.5px] sm:text-xs font-mono text-neutral-400 tracking-wide mt-1 truncate leading-tight">
+                <div className={`text-[10.5px] sm:text-xs font-mono tracking-wide mt-1 truncate leading-tight ${
+                  isNew 
+                    ? 'text-emerald-800 dark:text-neutral-300 font-medium' 
+                    : 'text-neutral-600 dark:text-neutral-400'
+                }`}>
                   Demand {item.demand} · Supply {item.supply} · {item.clearTime}
                 </div>
               </div>
 
               {/* Right: Gap Indicator */}
               <div className="text-right shrink-0 flex flex-col items-end pl-2">
-                <span className="font-mono text-base sm:text-lg font-semibold text-[#16A34A] leading-tight tabular-nums">
+                <span className="font-mono text-base sm:text-lg font-bold text-[#16A34A] leading-tight tabular-nums">
                   {item.gap}
                 </span>
-                <span className="font-mono text-[9px] text-neutral-500 uppercase tracking-widest leading-none mt-0.5 font-medium">
+                <span className="font-mono text-[9px] text-neutral-500 uppercase tracking-widest leading-none mt-0.5 font-semibold">
                   GAP
                 </span>
               </div>
@@ -221,12 +229,12 @@ export const TopOpportunityGaps: React.FC = () => {
       {/* ============================================== */}
       {/* Bottom Feed Footer */}
       {/* ============================================== */}
-      <div className="pt-4 mt-3 border-t border-white/5 flex items-center justify-between text-[11px] font-mono text-neutral-400 shrink-0">
+      <div className="pt-4 mt-3 border-t border-black/8 dark:border-white/5 flex items-center justify-between text-[11px] font-mono text-neutral-500 dark:text-neutral-400 shrink-0">
         <span className="flex items-center gap-1.5">
           <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping inline-block" />
           <span>Automatic 5s live gap indexing</span>
         </span>
-        <span className="text-[#16A34A] hover:underline cursor-pointer">
+        <span className="text-[#16A34A] hover:underline cursor-pointer font-medium">
           Tap gap to review architect spec →
         </span>
       </div>

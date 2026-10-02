@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *, .dark, .dark *));
 
 @layer base {
   html {
@@ -42,6 +43,9 @@
     --nav-border: rgba(255, 255, 255, 0.14);
   }
 
+  :root[data-theme="light"],
+  html[data-theme="light"],
+  html.light,
   [data-theme="light"] {
     --bg: #F8F9FA;
     --bg-paper: #FFFFFF;
@@ -203,16 +207,35 @@ select option {
 }
 
 /* Headings in light mode adapt to deep obsidian */
-[data-theme="light"] h1.text-white,
-[data-theme="light"] h2.text-white,
-[data-theme="light"] h3.text-white,
-[data-theme="light"] h4.text-white,
-[data-theme="light"] h5.text-white {
+[data-theme="light"] h1,
+[data-theme="light"] h2,
+[data-theme="light"] h3,
+[data-theme="light"] h4,
+[data-theme="light"] h5 {
   color: #0E0D0B !important;
+}
+
+[data-theme="light"] h1 em[class*="text-[#E2571B]"],
+[data-theme="light"] h2 em[class*="text-[#E2571B]"],
+[data-theme="light"] h3 em[class*="text-[#E2571B]"],
+[data-theme="light"] em[class*="text-[#E2571B]"],
+[data-theme="light"] [class*="text-[#E2571B]"] {
+  color: #E2571B !important;
+}
+
+[data-theme="light"] h1 em[class*="text-[#16A34A]"],
+[data-theme="light"] h2 em[class*="text-[#16A34A]"],
+[data-theme="light"] h3 em[class*="text-[#16A34A]"],
+[data-theme="light"] em[class*="text-[#16A34A]"],
+[data-theme="light"] [class*="text-[#16A34A]"] {
+  color: #16A34A !important;
 }
 
 /* Standalone typography in light mode */
 [data-theme="light"] p.text-white,
+[data-theme="light"] span.text-white:not([class*="bg-emerald"]):not([class*="bg-orange"]):not([class*="bg-[#16A34A]"]):not([class*="bg-[#E2571B]"]):not([class*="bg-gradient"]):not(button *):not(a *),
+[data-theme="light"] strong.text-white,
+[data-theme="light"] strong.text-neutral-200,
 [data-theme="light"] div.text-white:not([class*="bg-emerald"]):not([class*="bg-orange"]):not([class*="bg-[#16A34A]"]):not([class*="bg-[#E2571B]"]):not([class*="bg-gradient-to"]):not(button *):not(a *) {
   color: #0E0D0B;
 }
@@ -239,10 +262,88 @@ select option {
 [data-theme="light"] .bg-\[\#130F0C\],
 [data-theme="light"] .bg-\[\#12100E\],
 [data-theme="light"] .bg-\[\#181411\],
+[data-theme="light"] .bg-\[\#0B130E\],
+[data-theme="light"] .bg-\[\#130E0B\],
+[data-theme="light"] .bg-\[\#0A120D\],
+[data-theme="light"] .bg-\[\#120D0A\],
+[data-theme="light"] .bg-\[\#16110D\],
+[data-theme="light"] .dark\:bg-\[\#0D0B0A\],
+[data-theme="light"] .dark\:bg-\[\#0B130E\],
+[data-theme="light"] .dark\:bg-\[\#130E0B\],
+[data-theme="light"] .dark\:bg-\[\#0A120D\],
+[data-theme="light"] .dark\:bg-\[\#120D0A\],
+[data-theme="light"] .dark\:bg-\[\#16110D\],
 [data-theme="light"] .bg-\[\#181512\]:not(button):not(a) {
   background-color: #FFFFFF !important;
-  border-color: rgba(0, 0, 0, 0.08) !important;
-  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.04), 0 2px 6px -1px rgba(0, 0, 0, 0.02) !important;
+  border-color: rgba(0, 0, 0, 0.14) !important;
+  box-shadow: 0 6px 24px -2px rgba(0, 0, 0, 0.07), 0 2px 6px -1px rgba(0, 0, 0, 0.03) !important;
+}
+
+/* Audience section (Personalized for listers) in light mode - warm subtle orangish tinge for contrast & luxury feel */
+[data-theme="light"] #for-listers .border.rounded-2xl,
+[data-theme="light"] #for-listers .border.rounded-3xl {
+  background-color: #FFF7F1 !important;
+  background-image: linear-gradient(180deg, #FFFDFB 0%, #FFF5ED 100%) !important;
+  border-color: rgba(226, 87, 27, 0.22) !important;
+  box-shadow: 0 16px 45px -10px rgba(226, 87, 27, 0.08), 0 4px 15px -3px rgba(0, 0, 0, 0.03) !important;
+}
+
+[data-theme="light"][data-role="architect"] #for-listers .border.rounded-2xl,
+[data-theme="light"][data-role="architect"] #for-listers .border.rounded-3xl {
+  background-color: #F6FAF7 !important;
+  background-image: linear-gradient(180deg, #FBFCFB 0%, #F2F8F4 100%) !important;
+  border-color: rgba(22, 163, 74, 0.22) !important;
+  box-shadow: 0 16px 45px -10px rgba(22, 163, 74, 0.08), 0 4px 15px -3px rgba(0, 0, 0, 0.03) !important;
+}
+
+/* ========================================================= */
+/* Opportunities Section: Personalized Picks & Build Prompts */
+/* ========================================================= */
+[data-theme="light"] #opportunities h2 {
+  color: #0E0D0B !important;
+}
+
+[data-theme="light"] #opportunities h2 span {
+  color: #57534E !important;
+}
+
+/* Personalized picks cards in light mode - warm subtle orangish tinge for contrast & luxury feel */
+[data-theme="light"] #opportunities .personalized-pick-card {
+  background-color: #FFF8F2 !important;
+  background-image: linear-gradient(180deg, #FFFDFB 0%, #FFF4EB 100%) !important;
+  border-color: rgba(226, 87, 27, 0.25) !important;
+  box-shadow: 0 12px 32px -6px rgba(226, 87, 27, 0.09), 0 2px 8px -2px rgba(0, 0, 0, 0.03) !important;
+}
+
+[data-theme="light"] #opportunities .personalized-pick-card:hover {
+  border-color: rgba(226, 87, 27, 0.55) !important;
+  box-shadow: 0 16px 40px -6px rgba(226, 87, 27, 0.16), 0 4px 12px -2px rgba(0, 0, 0, 0.05) !important;
+}
+
+/* Category pills in light mode - clear, elegant, warm (never black) */
+[data-theme="light"] #opportunities .category-pill-investor {
+  background-color: #FFEFE6 !important;
+  color: #9A3412 !important;
+  border-color: rgba(234, 88, 12, 0.35) !important;
+}
+
+[data-theme="light"] #opportunities .build-prompt-card {
+  background-color: #F8FAF8 !important;
+  background-image: linear-gradient(180deg, #FBFCFB 0%, #F2F8F4 100%) !important;
+  border-color: rgba(22, 163, 74, 0.25) !important;
+  box-shadow: 0 12px 32px -6px rgba(22, 163, 74, 0.09), 0 2px 8px -2px rgba(0, 0, 0, 0.03) !important;
+}
+
+[data-theme="light"] #opportunities .category-pill-architect {
+  background-color: #ECFDF5 !important;
+  color: #065F46 !important;
+  border-color: rgba(16, 185, 129, 0.35) !important;
+}
+
+/* Eyebrow pills in light mode */
+[data-theme="light"] .bg-\[\#101812\],
+[data-theme="light"] .bg-\[\#181410\] {
+  background-color: #F2F1EC !important;
 }
 
 /* Sub-card rows & hover states */
@@ -268,7 +369,7 @@ select option {
 [data-theme="light"] .border-white\/20,
 [data-theme="light"] .border-white\/25,
 [data-theme="light"] .border-white\/30 {
-  border-color: rgba(0, 0, 0, 0.09) !important;
+  border-color: rgba(0, 0, 0, 0.13) !important;
 }
 
 /* Inputs and textareas */
@@ -316,4 +417,194 @@ select option {
   background-color: #0E0C0A !important;
   border-color: rgba(255, 255, 255, 0.10) !important;
 }
+
+/* FAQ Page in Light Mode */
+[data-theme="light"] .faq-accordion-item {
+  background-color: #FFFFFF !important;
+  border-color: rgba(0, 0, 0, 0.08) !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04) !important;
+}
+
+[data-theme="light"] .faq-accordion-item:hover {
+  background-color: #FAF9F6 !important;
+  border-color: rgba(0, 0, 0, 0.16) !important;
+}
+
+[data-theme="light"] .faq-accordion-item h3 {
+  color: #0E0D0B !important;
+}
+
+[data-theme="light"] .faq-accordion-item p {
+  color: #44403C !important;
+}
+
+/* Footer in Light Mode */
+[data-theme="light"] footer {
+  background-color: #F8F7F4 !important;
+  color: #0E0D0B !important;
+  border-color: rgba(0, 0, 0, 0.08) !important;
+}
+
+[data-theme="light"] footer .border-white\/10 {
+  border-color: rgba(0, 0, 0, 0.08) !important;
+}
+
+[data-theme="light"] footer a:not([class*="bg-"]):not(button) {
+  color: #57534E;
+}
+
+[data-theme="light"] footer a:not([class*="bg-"]):not(button):hover {
+  color: #0E0D0B;
+}
+
+/* Top Opportunity Gaps in Light Mode */
+[data-theme="light"] .top-gap-new-arrival {
+  background-color: #ECFDF5 !important;
+  border-color: #16A34A !important;
+  box-shadow: 0 4px 20px -2px rgba(22, 163, 74, 0.25), 0 2px 6px -1px rgba(0, 0, 0, 0.05) !important;
+}
+
+[data-theme="light"] .top-gap-new-arrival .text-emerald-950,
+[data-theme="light"] .top-gap-new-arrival .text-white {
+  color: #064E3B !important;
+}
+
+[data-theme="light"] .top-gap-new-arrival .text-emerald-800,
+[data-theme="light"] .top-gap-new-arrival .text-neutral-400 {
+  color: #047857 !important;
+}
+
+/* Trust Page in Light Mode - High-Contrast Visible Cards & Boxes */
+[data-theme="light"] #trust-page {
+  background-color: #F8F5EE;
+}
+
+[data-theme="light"] #trust-page .trust-card,
+[data-theme="light"] #trust-page .trust-tier-card,
+[data-theme="light"] #trust-page .trust-refund-card,
+[data-theme="light"] #trust-page .trust-partner-card,
+[data-theme="light"] #trust-page .trust-faq-item {
+  background-color: #FFFFFF !important;
+  border-color: rgba(0, 0, 0, 0.16) !important;
+  border-width: 1.5px !important;
+  box-shadow: 0 8px 24px -2px rgba(0, 0, 0, 0.08), 0 2px 6px -1px rgba(0, 0, 0, 0.04) !important;
+}
+
+[data-theme="light"] #trust-page .trust-card:hover,
+[data-theme="light"] #trust-page .trust-tier-card:hover,
+[data-theme="light"] #trust-page .trust-refund-card:hover,
+[data-theme="light"] #trust-page .trust-partner-card:hover,
+[data-theme="light"] #trust-page .trust-faq-item:hover {
+  border-color: rgba(0, 0, 0, 0.32) !important;
+  box-shadow: 0 14px 36px -4px rgba(0, 0, 0, 0.12), 0 4px 12px -2px rgba(0, 0, 0, 0.06) !important;
+}
+
+/* Ensure inner code/detail containers and text in cards have crisp contrast */
+[data-theme="light"] #trust-page .trust-card p,
+[data-theme="light"] #trust-page .trust-tier-card p,
+[data-theme="light"] #trust-page .trust-refund-card p,
+[data-theme="light"] #trust-page .trust-refund-card li,
+[data-theme="light"] #trust-page .trust-faq-item p {
+  color: #1E293B !important;
+}
+
+[data-theme="light"] #trust-page .trust-card h3,
+[data-theme="light"] #trust-page .trust-card h4,
+[data-theme="light"] #trust-page .trust-tier-card h3,
+[data-theme="light"] #trust-page .trust-refund-card h3,
+[data-theme="light"] #trust-page .trust-partner-card .font-serif,
+[data-theme="light"] #trust-page .trust-faq-item button span.font-serif {
+  color: #0F172A !important;
+}
+
+/* Section 05: Refund comparison cards high contrast */
+[data-theme="light"] #trust-page .trust-refund-card.trust-granted {
+  border-top: 4px solid #E2571B !important;
+  background-color: #FFFFFF !important;
+}
+
+[data-theme="light"][data-role="architect"] #trust-page .trust-refund-card.trust-granted {
+  border-top-color: #16A34A !important;
+}
+
+[data-theme="light"] #trust-page .trust-refund-card.trust-rejected {
+  border-top: 4px solid #E11D48 !important;
+  background-color: #FFFFFF !important;
+}
+
+/* Section 08: Infrastructure partner cards */
+[data-theme="light"] #trust-page .trust-partner-card {
+  background-color: #FFFFFF !important;
+  border: 1.5px solid rgba(0, 0, 0, 0.16) !important;
+  box-shadow: 0 6px 22px -2px rgba(0, 0, 0, 0.08), 0 2px 6px -1px rgba(0, 0, 0, 0.04) !important;
+}
+
+/* FAQ Accordion in Trust Page */
+[data-theme="light"] #trust-page .trust-faq-item.is-open {
+  border-color: #E2571B !important;
+  box-shadow: 0 0 25px rgba(226, 87, 27, 0.14), 0 6px 20px rgba(0, 0, 0, 0.06) !important;
+}
+
+[data-theme="light"][data-role="architect"] #trust-page .trust-faq-item.is-open {
+  border-color: #16A34A !important;
+  box-shadow: 0 0 25px rgba(22, 163, 74, 0.14), 0 6px 20px rgba(0, 0, 0, 0.06) !important;
+}
+
+/* Dark mode contrast guarantees */
+[data-theme="dark"] #trust-page .trust-card,
+[data-theme="dark"] #trust-page .trust-tier-card,
+[data-theme="dark"] #trust-page .trust-refund-card,
+[data-theme="dark"] #trust-page .trust-partner-card,
+[data-theme="dark"] #trust-page .trust-faq-item {
+  background-color: #110F0D !important;
+  border-color: rgba(255, 255, 255, 0.14) !important;
+  box-shadow: 0 10px 30px -4px rgba(0, 0, 0, 0.7) !important;
+}
+
+[data-theme="dark"] #trust-page .trust-card:hover,
+[data-theme="dark"] #trust-page .trust-tier-card:hover,
+[data-theme="dark"] #trust-page .trust-refund-card:hover,
+[data-theme="dark"] #trust-page .trust-partner-card:hover,
+[data-theme="dark"] #trust-page .trust-faq-item:hover {
+  border-color: rgba(255, 255, 255, 0.28) !important;
+}
+
+/* Playbook Page in Light Mode */
+[data-theme="light"] #playbook-page {
+  background-color: #F8F5EE;
+}
+
+[data-theme="light"] #playbook-page .trust-card {
+  background-color: #FFFFFF !important;
+  border-color: rgba(0, 0, 0, 0.16) !important;
+  border-width: 1.5px !important;
+  box-shadow: 0 8px 24px -2px rgba(0, 0, 0, 0.08), 0 2px 6px -1px rgba(0, 0, 0, 0.04) !important;
+}
+
+[data-theme="light"] #playbook-page .trust-card:hover {
+  border-color: rgba(0, 0, 0, 0.32) !important;
+  box-shadow: 0 14px 36px -4px rgba(0, 0, 0, 0.12), 0 4px 12px -2px rgba(0, 0, 0, 0.06) !important;
+}
+
+[data-theme="light"] #playbook-page h1,
+[data-theme="light"] #playbook-page h2,
+[data-theme="light"] #playbook-page h3 {
+  color: #0F172A !important;
+}
+
+[data-theme="light"] #playbook-page p {
+  color: #1E293B !important;
+}
+
+/* Playbook Page in Dark Mode */
+[data-theme="dark"] #playbook-page .trust-card {
+  background-color: #0D0B0A !important;
+  border-color: rgba(255, 255, 255, 0.12) !important;
+  box-shadow: 0 10px 30px -4px rgba(0, 0, 0, 0.7) !important;
+}
+
+[data-theme="dark"] #playbook-page .trust-card:hover {
+  border-color: rgba(255, 255, 255, 0.25) !important;
+}
+
 

@@ -226,7 +226,7 @@ export const LivePulseSection: React.FC = () => {
                 }`}
               />
             </span>
-            <h3 className="text-xl sm:text-2xl font-semibold tracking-tight text-white flex items-center gap-1.5">
+            <h3 className="text-xl sm:text-2xl font-semibold tracking-tight text-[var(--text)] flex items-center gap-1.5">
               <span>Live sector</span>
               <em
                 className={`font-serif italic font-normal transition-colors duration-300 ${
@@ -238,7 +238,7 @@ export const LivePulseSection: React.FC = () => {
             </h3>
           </div>
 
-          <span className="text-xs font-mono text-neutral-400 tracking-wider">
+          <span className="text-xs font-mono text-[var(--text-muted)] tracking-wider">
             {isArchitect
               ? 'Continuous feed · 7-day build velocity & clearance activity'
               : 'Continuous feed · 7-day velocity & transaction activity'}
@@ -254,16 +254,16 @@ export const LivePulseSection: React.FC = () => {
             return (
               <div
                 key={sec.id}
-                className={`p-3 rounded-xl border transition-all duration-200 flex flex-col justify-between gap-3 shadow-lg group ${
+                className={`p-3 rounded-xl border transition-all duration-200 flex flex-col justify-between gap-3 shadow-sm group ${
                   isArchitect
-                    ? 'bg-[#0B130E] border-white/10 hover:border-emerald-500/40 hover:shadow-[0_0_15px_rgba(22,163,74,0.15)]'
-                    : 'bg-[#130E0B] border-white/10 hover:border-[#E2571B]/50 hover:shadow-[0_0_15px_rgba(226,87,27,0.18)]'
+                    ? 'bg-white dark:bg-[#0B130E] border-black/10 dark:border-white/10 hover:border-emerald-500/40 hover:shadow-[0_0_15px_rgba(22,163,74,0.15)]'
+                    : 'bg-white dark:bg-[#130E0B] border-black/10 dark:border-white/10 hover:border-[#E2571B]/50 hover:shadow-[0_0_15px_rgba(226,87,27,0.18)]'
                 }`}
               >
                 {/* Sector Title */}
                 <div
-                  className={`text-xs font-medium text-white truncate transition-colors duration-200 ${
-                    isArchitect ? 'group-hover:text-emerald-300' : 'group-hover:text-orange-300'
+                  className={`text-xs font-medium text-neutral-900 dark:text-white truncate transition-colors duration-200 ${
+                    isArchitect ? 'group-hover:text-emerald-600 dark:group-hover:text-emerald-400' : 'group-hover:text-orange-600 dark:group-hover:text-orange-400'
                   }`}
                   title={sec.name}
                 >
@@ -272,13 +272,13 @@ export const LivePulseSection: React.FC = () => {
 
                 {/* Number & Delta */}
                 <div className="flex items-baseline justify-between font-mono">
-                  <span className="text-sm sm:text-base font-semibold tabular-nums text-white">
+                  <span className="text-sm sm:text-base font-semibold tabular-nums text-neutral-900 dark:text-white">
                     {sec.count}
                   </span>
                   
                   <span
                     className={`text-[11px] font-medium flex items-center tabular-nums ${
-                      isUp ? 'text-emerald-400' : 'text-rose-400'
+                      isUp ? 'text-emerald-600 dark:text-emerald-400' : 'text-rose-600 dark:text-rose-400'
                     }`}
                   >
                     <span className="mr-0.5">{isUp ? '↑' : '↓'}</span>
@@ -294,10 +294,10 @@ export const LivePulseSection: React.FC = () => {
         {/* LIVE TAPE TERMINAL CONTAINER (Architect vs Investor) */}
         {/* ======================================================== */}
         <div
-          className={`p-4 sm:p-5 rounded-2xl border shadow-2xl flex flex-col lg:flex-row lg:items-center justify-between gap-5 relative overflow-hidden transition-all duration-300 ${
+          className={`p-4 sm:p-5 rounded-2xl border shadow-lg flex flex-col lg:flex-row lg:items-center justify-between gap-5 relative overflow-hidden transition-all duration-300 ${
             isArchitect
-              ? 'bg-[#0A120D] border-emerald-500/20 shadow-[0_0_30px_rgba(22,163,74,0.06)]'
-              : 'bg-[#120D0A] border-[#E2571B]/25 shadow-[0_0_30px_rgba(226,87,27,0.08)]'
+              ? 'bg-white dark:bg-[#0A120D] border-emerald-500/30 dark:border-emerald-500/20 shadow-[0_4px_25px_rgba(0,0,0,0.05)] dark:shadow-[0_0_30px_rgba(22,163,74,0.06)]'
+              : 'bg-white dark:bg-[#120D0A] border-[#E2571B]/35 dark:border-[#E2571B]/25 shadow-[0_4px_25px_rgba(0,0,0,0.05)] dark:shadow-[0_0_30px_rgba(226,87,27,0.08)]'
           }`}
         >
           
@@ -310,14 +310,14 @@ export const LivePulseSection: React.FC = () => {
             <Radio
               className={`w-4 h-4 transition-colors duration-500 ${
                 isUpdating
-                  ? 'text-emerald-400'
+                  ? 'text-emerald-500'
                   : isArchitect
                   ? 'text-[#16A34A]'
                   : 'text-[#E2571B]'
               }`}
             />
             <span className="uppercase font-semibold">
-              {isArchitect ? 'LIVE TAPE:' : 'LIVE TAPE:'}
+              LIVE TAPE:
             </span>
           </div>
 
@@ -328,16 +328,16 @@ export const LivePulseSection: React.FC = () => {
                 <div
                   key={act.id}
                   className={`flex flex-wrap items-center gap-x-2 text-xs font-mono transition-opacity duration-700 ${
-                    act.isNew ? 'text-neutral-200' : 'text-neutral-400'
+                    act.isNew ? 'text-neutral-900 dark:text-[var(--text)]' : 'text-neutral-600 dark:text-[var(--text-muted)]'
                   }`}
                 >
                   {/* Role */}
-                  <span className="text-white font-medium">
+                  <span className="text-neutral-900 dark:text-[var(--text)] font-semibold">
                     {act.role}
                   </span>
 
                   {/* Action */}
-                  <span className="text-neutral-400">
+                  <span className="text-neutral-600 dark:text-[var(--text-muted)]">
                     {act.action}
                   </span>
 
@@ -346,20 +346,20 @@ export const LivePulseSection: React.FC = () => {
                     onClick={() => handleCodeClick(act.code, act.sector)}
                     className={`font-semibold hover:underline cursor-pointer transition-colors duration-200 ${
                       isArchitect
-                        ? 'text-[#16A34A] hover:text-emerald-300'
-                        : 'text-[#E2571B] hover:text-orange-400'
+                        ? 'text-[#16A34A] hover:text-emerald-600'
+                        : 'text-[#E2571B] hover:text-orange-600'
                     }`}
                   >
                     {act.code}
                   </span>
 
                   {/* Sector */}
-                  <span className="text-neutral-400">
+                  <span className="text-neutral-600 dark:text-[var(--text-muted)]">
                     ({act.sector})
                   </span>
 
                   {/* Timestamp */}
-                  <span className="text-neutral-500 text-[11px] tabular-nums">
+                  <span className="text-neutral-400 dark:text-[var(--text-faint)] text-[11px] tabular-nums">
                     · {formatTime(act.minutesAgo)}
                   </span>
                 </div>
@@ -370,8 +370,8 @@ export const LivePulseSection: React.FC = () => {
           {/* Right: View Full Market Terminal link */}
           <a
             href="#dashboard"
-            className={`text-xs font-mono text-neutral-400 shrink-0 flex items-center gap-1.5 transition-colors duration-200 group ${
-              isArchitect ? 'hover:text-emerald-400' : 'hover:text-[#E2571B]'
+            className={`text-xs font-mono text-neutral-600 dark:text-[var(--text-muted)] shrink-0 flex items-center gap-1.5 transition-colors duration-200 group ${
+              isArchitect ? 'hover:text-emerald-600' : 'hover:text-[#E2571B]'
             }`}
           >
             <span>{isArchitect ? 'View Architect Terminal' : 'View Full Market Terminal'}</span>

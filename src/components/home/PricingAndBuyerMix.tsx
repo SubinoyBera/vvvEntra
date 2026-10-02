@@ -185,29 +185,29 @@ export const PricingAndBuyerMix: React.FC = () => {
         {/* ======================================================== */}
         {/* LEFT CARD: Sector pricing benchmarks (7 Cols Desktop) */}
         {/* ======================================================== */}
-        <div className="lg:col-span-7 bg-[#0D0B0A] dark:bg-[#0D0B0A] border border-white/10 rounded-2xl p-5 sm:p-7 shadow-2xl flex flex-col justify-between select-none">
+        <div className="lg:col-span-7 bg-white dark:bg-[#0D0B0A] border border-black/10 dark:border-white/10 rounded-2xl p-5 sm:p-7 shadow-xl flex flex-col justify-between select-none">
           <div>
             {/* Header */}
-            <div className="flex items-baseline justify-between pb-4 border-b border-white/10 mb-4">
-              <h3 className="text-xl sm:text-2xl font-normal text-white tracking-tight">
+            <div className="flex items-baseline justify-between pb-4 border-b border-black/10 dark:border-[var(--line)] mb-4">
+              <h3 className="text-xl sm:text-2xl font-normal text-neutral-900 dark:text-white tracking-tight">
                 Sector <em className="font-serif italic font-normal text-[#16A34A]">pricing benchmarks</em>
               </h3>
-              <span className="font-mono text-xs text-neutral-400 tracking-wider">
+              <span className="font-mono text-xs text-neutral-500 dark:text-[var(--text-muted)] tracking-wider">
                 AVG · LAST 30 DAYS
               </span>
             </div>
 
             {/* Table Column Headers */}
-            <div className="grid grid-cols-12 gap-2 text-[10.5px] sm:text-[11px] font-mono text-neutral-500 uppercase tracking-widest pb-3 border-b border-white/5 px-2">
+            <div className="grid grid-cols-12 gap-2 text-[10.5px] sm:text-[11px] font-mono text-neutral-500 dark:text-[var(--text-muted)] uppercase tracking-widest pb-3 border-b border-black/10 dark:border-[var(--line)] px-2">
               <div className="col-span-5">SECTOR</div>
               <div className="col-span-2 text-right">MIN</div>
-              <div className="col-span-2 text-right text-emerald-500/80 font-semibold">AVG</div>
+              <div className="col-span-2 text-right text-emerald-600 dark:text-emerald-400 font-semibold">AVG</div>
               <div className="col-span-2 text-right">TOP</div>
               <div className="col-span-1 text-right">TREND</div>
             </div>
 
             {/* Benchmark Rows */}
-            <div className="divide-y divide-white/5">
+            <div className="divide-y divide-black/5 dark:divide-[var(--line)]">
               {BENCHMARKS.map((row, idx) => (
                 <div
                   key={idx}
@@ -231,20 +231,20 @@ export const PricingAndBuyerMix: React.FC = () => {
                       status: 'locked',
                     })
                   }
-                  className="grid grid-cols-12 gap-2 items-center py-4 px-2 rounded-xl transition-all duration-200 hover:bg-white/[0.03] cursor-pointer group hover:border hover:border-[#16A34A]/30 border border-transparent"
+                  className="grid grid-cols-12 gap-2 items-center py-4 px-2 rounded-xl transition-all duration-200 hover:bg-neutral-50 dark:hover:bg-[var(--bg-tint)] cursor-pointer group hover:border hover:border-[#16A34A]/30 border border-transparent"
                 >
                   {/* Sector Title & Subsector */}
                   <div className="col-span-5 min-w-0 pr-1">
-                    <div className="text-xs sm:text-[14px] font-medium text-white tracking-tight truncate group-hover:text-emerald-300 transition-colors">
+                    <div className="text-xs sm:text-[14px] font-medium text-neutral-900 dark:text-white tracking-tight truncate group-hover:text-emerald-600 dark:group-hover:text-emerald-300 transition-colors">
                       {row.sector}
                     </div>
-                    <div className="text-[9.5px] sm:text-[10px] font-mono text-neutral-500 tracking-wider truncate mt-0.5 uppercase">
+                    <div className="text-[9.5px] sm:text-[10px] font-mono text-neutral-500 dark:text-[var(--text-muted)] tracking-wider truncate mt-0.5 uppercase">
                       {row.subSector}
                     </div>
                   </div>
 
                   {/* Min Price */}
-                  <div className="col-span-2 text-right font-mono text-xs sm:text-[13.5px] text-neutral-300 tabular-nums">
+                  <div className="col-span-2 text-right font-mono text-xs sm:text-[13.5px] text-neutral-500 dark:text-[var(--text-muted)] tabular-nums">
                     {row.min}
                   </div>
 
@@ -254,7 +254,7 @@ export const PricingAndBuyerMix: React.FC = () => {
                   </div>
 
                   {/* Top Price */}
-                  <div className="col-span-2 text-right font-mono text-xs sm:text-[13.5px] text-neutral-300 tabular-nums">
+                  <div className="col-span-2 text-right font-mono text-xs sm:text-[13.5px] text-[var(--text-muted)] tabular-nums">
                     {row.top}
                   </div>
 
@@ -269,7 +269,7 @@ export const PricingAndBuyerMix: React.FC = () => {
                           strokeWidth="2"
                           strokeLinecap="round"
                           strokeLinejoin="round"
-                          className="group-hover:stroke-emerald-300 transition-colors"
+                          className="group-hover:stroke-emerald-400 transition-colors"
                         />
                       </svg>
                     </div>
@@ -280,10 +280,10 @@ export const PricingAndBuyerMix: React.FC = () => {
           </div>
 
           {/* Left Card Bottom Takeaway */}
-          <div className="pt-4 mt-3 border-t border-white/10 flex items-center justify-between text-xs font-mono text-neutral-400">
+          <div className="pt-4 mt-3 border-t border-[var(--line)] flex items-center justify-between text-xs font-mono text-[var(--text-muted)]">
             <span className="flex items-center gap-1.5">
               <TrendingUp className="w-3.5 h-3.5 text-[#16A34A]" />
-              <span>Median unlock spread: <strong className="text-white font-semibold">$4.4k – $7.2k</strong></span>
+              <span>Median unlock spread: <strong className="text-[var(--text)] font-semibold">$4.4k – $7.2k</strong></span>
             </span>
             <span className="text-[#16A34A] hover:underline cursor-pointer hidden sm:inline">
               Tap row to view verified comps →
@@ -294,15 +294,15 @@ export const PricingAndBuyerMix: React.FC = () => {
         {/* ======================================================== */}
         {/* RIGHT CARD: Who's looking · buyer mix (5 Cols Desktop) */}
         {/* ======================================================== */}
-        <div className="lg:col-span-5 bg-[#0D0B0A] dark:bg-[#0D0B0A] border border-white/10 rounded-2xl p-5 sm:p-7 shadow-2xl flex flex-col justify-between select-none">
+        <div className="lg:col-span-5 bg-white dark:bg-[#0D0B0A] border border-black/10 dark:border-white/10 rounded-2xl p-5 sm:p-7 shadow-xl flex flex-col justify-between select-none">
           <div>
             {/* Header */}
-            <div className="flex items-baseline justify-between pb-4 border-b border-white/10 mb-5">
-              <h3 className="text-xl sm:text-2xl font-normal text-white tracking-tight">
+            <div className="flex items-baseline justify-between pb-4 border-b border-black/10 dark:border-[var(--line)] mb-5">
+              <h3 className="text-xl sm:text-2xl font-normal text-neutral-900 dark:text-white tracking-tight">
                 Who's <em className="font-serif italic font-normal text-[#16A34A]">looking</em>
-                <span className="font-serif font-light text-neutral-200"> · buyer mix</span>
+                <span className="font-serif font-light text-neutral-500 dark:text-[var(--text-muted)]"> · buyer mix</span>
               </h3>
-              <span className="font-mono text-xs text-neutral-400 tracking-wider">
+              <span className="font-mono text-xs text-neutral-500 dark:text-[var(--text-muted)] tracking-wider">
                 By sector engagement
               </span>
             </div>
@@ -333,7 +333,7 @@ export const PricingAndBuyerMix: React.FC = () => {
                   <span className="font-serif italic text-3xl sm:text-[34px] text-[#16A34A] font-normal leading-none tabular-nums">
                     {activeSlice ? `${activeSlice.pct}%` : '247'}
                   </span>
-                  <span className="font-mono text-[9px] sm:text-[9.5px] uppercase tracking-[0.2em] text-neutral-400 mt-1 font-medium">
+                  <span className="font-mono text-[9px] sm:text-[9.5px] uppercase tracking-[0.2em] text-neutral-500 dark:text-[var(--text-muted)] mt-1 font-medium">
                     {activeSlice ? activeSlice.name : 'TOTAL BUYERS'}
                   </span>
                 </div>
@@ -349,7 +349,7 @@ export const PricingAndBuyerMix: React.FC = () => {
                       onMouseEnter={() => setActiveSlice(slice)}
                       onMouseLeave={() => setActiveSlice(null)}
                       className={`flex items-center justify-between gap-2 px-2 py-1 rounded-md transition-all cursor-pointer ${
-                        isHovered ? 'bg-white/5 translate-x-1' : 'hover:bg-white/[0.02]'
+                        isHovered ? 'bg-neutral-100 dark:bg-[var(--bg-tint)] translate-x-1' : 'hover:bg-neutral-50 dark:hover:bg-[var(--bg-tint)]'
                       }`}
                     >
                       <div className="flex items-center gap-2.5 min-w-0">
@@ -357,11 +357,11 @@ export const PricingAndBuyerMix: React.FC = () => {
                           className="w-2.5 h-2.5 rounded-[2px] shrink-0"
                           style={{ backgroundColor: slice.color }}
                         />
-                        <span className={`truncate text-xs sm:text-[13px] ${isHovered ? 'text-white font-medium' : 'text-neutral-300'}`}>
+                        <span className={`truncate text-xs sm:text-[13px] ${isHovered ? 'text-neutral-900 dark:text-[var(--text)] font-semibold' : 'text-neutral-600 dark:text-[var(--text-muted)]'}`}>
                           {slice.name}
                         </span>
                       </div>
-                      <span className="font-mono text-xs sm:text-[13px] text-white font-medium tabular-nums shrink-0">
+                      <span className="font-mono text-xs sm:text-[13px] text-neutral-900 dark:text-[var(--text)] font-semibold tabular-nums shrink-0">
                         {slice.pct}%
                       </span>
                     </div>
@@ -374,21 +374,21 @@ export const PricingAndBuyerMix: React.FC = () => {
             {/* ======================================================== */}
             {/* Meaningful & Relevant Under-Pie Section to Fill Empty Space */}
             {/* ======================================================== */}
-            <div className="mt-5 pt-4 border-t border-white/10 space-y-3">
+            <div className="mt-5 pt-4 border-t border-black/10 dark:border-[var(--line)] space-y-3">
               
               {/* Dynamic Telemetry Box (Updates on slice hover or defaults to PE & Family Office insight) */}
-              <div className="bg-[#121813] border border-[#16A34A]/25 rounded-xl p-3.5">
-                <div className="flex items-center justify-between text-[11px] font-mono text-emerald-400 mb-1.5 font-medium">
+              <div className="bg-neutral-50 dark:bg-[var(--bg-bone)] border border-[#16A34A]/25 rounded-xl p-3.5">
+                <div className="flex items-center justify-between text-[11px] font-mono text-emerald-600 dark:text-emerald-400 mb-1.5 font-medium">
                   <span className="flex items-center gap-1.5">
                     <ShieldCheck className="w-3.5 h-3.5" />
                     <span>{activeSlice ? `${activeSlice.name} Requirements` : 'Institutional Acquisition Depth'}</span>
                   </span>
-                  <span className="text-neutral-400">
+                  <span className="text-neutral-500 dark:text-[var(--text-muted)]">
                     {activeSlice ? `${activeSlice.count} verified funds` : '54% Buyout Dominance'}
                   </span>
                 </div>
 
-                <p className="text-xs text-neutral-300 font-sans leading-relaxed">
+                <p className="text-xs text-neutral-600 dark:text-[var(--text-muted)] font-sans leading-relaxed">
                   {activeSlice
                     ? `${activeSlice.name} seek: ${activeSlice.focus}. Typical ticket: ${activeSlice.checkSize}.`
                     : 'PE Directors & Family Offices command 54% of current buy-side liquidity. Blueprints with audited compliance and ARR visibility clear 2.8x faster.'}
@@ -397,13 +397,13 @@ export const PricingAndBuyerMix: React.FC = () => {
 
               {/* High-frequency buyer indicators */}
               <div className="grid grid-cols-2 gap-2 text-[11px] font-mono">
-                <div className="bg-[#14120F] border border-white/5 rounded-lg p-2.5">
-                  <span className="text-neutral-500 uppercase tracking-wider block text-[9.5px]">Avg Clear Window</span>
-                  <span className="text-white font-semibold text-xs mt-0.5 block">11.4 Days</span>
+                <div className="bg-white dark:bg-[var(--bg-paper)] border border-black/10 dark:border-[var(--line-strong)] rounded-lg p-2.5 shadow-xs">
+                  <span className="text-neutral-500 dark:text-[var(--text-muted)] uppercase tracking-wider block text-[9.5px]">Avg Clear Window</span>
+                  <span className="text-neutral-900 dark:text-[var(--text)] font-semibold text-xs mt-0.5 block">11.4 Days</span>
                 </div>
-                <div className="bg-[#14120F] border border-white/5 rounded-lg p-2.5">
-                  <span className="text-neutral-500 uppercase tracking-wider block text-[9.5px]">Escrow Liquidity</span>
-                  <span className="text-emerald-400 font-semibold text-xs mt-0.5 block">$38.2M Available</span>
+                <div className="bg-white dark:bg-[var(--bg-paper)] border border-black/10 dark:border-[var(--line-strong)] rounded-lg p-2.5 shadow-xs">
+                  <span className="text-neutral-500 dark:text-[var(--text-muted)] uppercase tracking-wider block text-[9.5px]">Escrow Liquidity</span>
+                  <span className="text-emerald-600 dark:text-emerald-400 font-semibold text-xs mt-0.5 block">$38.2M Available</span>
                 </div>
               </div>
 
@@ -412,12 +412,12 @@ export const PricingAndBuyerMix: React.FC = () => {
           </div>
 
           {/* Right Card Bottom Footer */}
-          <div className="pt-3 mt-3 border-t border-white/10 flex items-center justify-between text-xs font-mono text-neutral-400">
+          <div className="pt-3 mt-3 border-t border-[var(--line)] flex items-center justify-between text-xs font-mono text-[var(--text-muted)]">
             <span className="flex items-center gap-1.5">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
               <span>Real-time mandate sync</span>
             </span>
-            <span className="text-neutral-400">Updated today</span>
+            <span className="text-[var(--text-muted)]">Updated today</span>
           </div>
 
         </div>
