@@ -70,8 +70,10 @@ export const SpaceBackgroundCanvas: React.FC = () => {
     const STAR_COUNT = Math.min(130, Math.max(70, Math.floor((width * height) / 11000)));
 
     const handleResize = () => {
-      width = window.innerWidth;
-      height = window.innerHeight;
+      width = window.innerWidth || document.documentElement.clientWidth || 800;
+      height = window.innerHeight || document.documentElement.clientHeight || 600;
+      if (width <= 0) width = 800;
+      if (height <= 0) height = 600;
       dpr = Math.min(window.devicePixelRatio || 1, 2);
 
       canvas.width = width * dpr;
@@ -82,8 +84,10 @@ export const SpaceBackgroundCanvas: React.FC = () => {
 
     // 1. Mouse Parallax for Desktop
     const handleMouseMove = (e: MouseEvent) => {
-      const normX = (e.clientX / width - 0.5) * 2; // -1 to 1
-      const normY = (e.clientY / height - 0.5) * 2; // -1 to 1
+      if (!width || !height || width <= 0 || height <= 0) return;
+      const normX = Math.max(-1, Math.min(1, (e.clientX / width - 0.5) * 2));
+      const normY = Math.max(-1, Math.min(1, (e.clientY / height - 0.5) * 2));
+      if (!Number.isFinite(normX) || !Number.isFinite(normY)) return;
 
       targetCamX = normX * 65;
       targetCamY = normY * 65;
@@ -93,12 +97,14 @@ export const SpaceBackgroundCanvas: React.FC = () => {
 
     // 2. Gyroscopic Motion for Mobile / Tablet Devices
     const handleOrientation = (e: DeviceOrientationEvent) => {
-      if (e.gamma === null || e.beta === null) return;
+      if (typeof e.gamma !== 'number' || typeof e.beta !== 'number') return;
+      if (!Number.isFinite(e.gamma) || !Number.isFinite(e.beta)) return;
 
       // Gamma: left-to-right tilt in degrees [-90, 90]
       // Beta: front-to-back tilt in degrees [-180, 180] (natural phone hold is ~45 deg)
       const normGamma = Math.max(-1, Math.min(1, e.gamma / 45));
       const normBeta = Math.max(-1, Math.min(1, (e.beta - 45) / 45));
+      if (!Number.isFinite(normGamma) || !Number.isFinite(normBeta)) return;
 
       targetCamX = normGamma * 85;
       targetCamY = normBeta * 85;
@@ -108,7 +114,10 @@ export const SpaceBackgroundCanvas: React.FC = () => {
 
     // 3. Scroll Depth Parallax
     const handleScroll = () => {
-      scrollOffset = window.scrollY || window.pageYOffset;
+      const scroll = window.scrollY || window.pageYOffset || 0;
+      if (Number.isFinite(scroll)) {
+        scrollOffset = scroll;
+      }
     };
 
     // Initialize 3D Stars / Ambient Particles
@@ -191,48 +200,72 @@ export const SpaceBackgroundCanvas: React.FC = () => {
       const dt = Math.min(32, time - lastTime) / 16.66;
       lastTime = time;
 
+      // Ensure target camera numbers are strictly finite
+      if (!Number.isFinite(targetCamX)) targetCamX = 0;
+      if (!Number.isFinite(targetCamY)) targetCamY = 0;
+      if (!Number.isFinite(targetTiltX)) targetTiltX = 0;
+      if (!Number.isFinite(targetTiltY)) targetTiltY = 0;
+
       // Smooth camera interpolation (gyroscope + mouse parallax)
       currentCamX += (targetCamX - currentCamX) * 0.05;
       currentCamY += (targetCamY - currentCamY) * 0.05;
       currentTiltX += (targetTiltX - currentTiltX) * 0.05;
       currentTiltY += (targetTiltY - currentTiltY) * 0.05;
 
-      ctx.clearRect(0, 0, width, height);
+      // Fallback in case of any numerical instability
+      if (!Number.isFinite(currentCamX)) currentCamX = 0;
+      if (!Number.isFinite(currentCamY)) currentCamY = 0;
+      if (!Number.isFinite(currentTiltX)) currentTiltX = 0;
+      if (!Number.isFinite(currentTiltY)) currentTiltY = 0;
+
+      const safeWidth = Number.isFinite(width) && width > 0 ? width : (window.innerWidth || 800);
+      const safeHeight = Number.isFinite(height) && height > 0 ? height : (window.innerHeight || 600);
+      const safeScroll = Number.isFinite(scrollOffset) ? scrollOffset : 0;
+
+      ctx.clearRect(0, 0, safeWidth, safeHeight);
 
       const isDark = theme !== 'light';
       const isArchitect = role === 'architect';
 
       const accentRgb = isArchitect
-        ? (isDark ? '74, 222, 128' : '22, 163, 74')
-        : (isDark ? '226, 87, 27' : '226, 87, 27');
-      const neutralRgb = isDark ? '250, 245, 235' : '45, 40, 35';
+        ? (isDark ? '74, 222, 128' : '18, 140, 60')
+        : (isDark ? '226, 87, 27' : '220, 75, 20');
+      const neutralRgb = isDark ? '250, 245, 235' : '35, 30, 25';
 
       // 3D Center of projection with scroll parallax shift
-      const scrollDrift = (scrollOffset * 0.04) % DEPTH;
-      const cx = width / 2 + currentCamX;
-      const cy = height / 2 + currentCamY + (scrollOffset * 0.06);
+      const scrollDrift = (safeScroll * 0.04) % DEPTH;
+      const rawCx = safeWidth / 2 + currentCamX;
+      const rawCy = safeHeight / 2 + currentCamY + (safeScroll * 0.06);
+      const cx = Number.isFinite(rawCx) ? rawCx : safeWidth / 2;
+      const cy = Number.isFinite(rawCy) ? rawCy : safeHeight / 2;
+      const outerR = Math.max(80, Math.max(safeWidth, safeHeight) * 0.65);
 
       // ========================================================
       // 1. VOLUMETRIC AMBIENT GLOW IN DEEP 3D SPACE
       // ========================================================
-      const glowGrad = ctx.createRadialGradient(
-        cx,
-        cy + 80,
-        10,
-        cx,
-        cy + 80,
-        Math.max(width, height) * 0.65
-      );
-      if (isDark) {
-        glowGrad.addColorStop(0, `rgba(${accentRgb}, 0.06)`);
-        glowGrad.addColorStop(0.45, `rgba(${accentRgb}, 0.015)`);
-        glowGrad.addColorStop(1, 'rgba(0, 0, 0, 0)');
-      } else {
-        glowGrad.addColorStop(0, `rgba(${accentRgb}, 0.04)`);
-        glowGrad.addColorStop(1, 'rgba(255, 255, 255, 0)');
+      try {
+        const glowGrad = ctx.createRadialGradient(
+          cx,
+          cy + 80,
+          10,
+          cx,
+          cy + 80,
+          outerR
+        );
+        if (isDark) {
+          glowGrad.addColorStop(0, `rgba(${accentRgb}, 0.06)`);
+          glowGrad.addColorStop(0.45, `rgba(${accentRgb}, 0.015)`);
+          glowGrad.addColorStop(1, 'rgba(0, 0, 0, 0)');
+        } else {
+          glowGrad.addColorStop(0, `rgba(${accentRgb}, 0.10)`);
+          glowGrad.addColorStop(0.45, `rgba(${accentRgb}, 0.035)`);
+          glowGrad.addColorStop(1, 'rgba(248, 249, 250, 0)');
+        }
+        ctx.fillStyle = glowGrad;
+        ctx.fillRect(0, 0, safeWidth, safeHeight);
+      } catch {
+        // Graceful fallback if device reports non-standard canvas dimensions
       }
-      ctx.fillStyle = glowGrad;
-      ctx.fillRect(0, 0, width, height);
 
       // ========================================================
       // 2. 3D HORIZON PERSPECTIVE GRID (CYBERNETIC / INSTITUTIONAL FLOOR)
@@ -253,11 +286,11 @@ export const SpaceBackgroundCanvas: React.FC = () => {
         const scale = FOCAL_LENGTH / (FOCAL_LENGTH + adjustedZ);
         const py = gridYBase + (adjustedZ * 0.32) * scale;
         const halfW = (gridXSpan * 0.5) * scale;
-        const lineAlpha = (1 - adjustedZ / DEPTH) * (isDark ? 0.075 : 0.045);
+        const lineAlpha = (1 - adjustedZ / DEPTH) * (isDark ? 0.075 : 0.15);
 
         if (py > 0 && py < height + 60 && lineAlpha > 0.005) {
           ctx.strokeStyle = `rgba(${neutralRgb}, ${lineAlpha})`;
-          ctx.lineWidth = 0.65;
+          ctx.lineWidth = isDark ? 0.65 : 0.95;
           ctx.beginPath();
           ctx.moveTo(cx - halfW, py);
           ctx.lineTo(cx + halfW, py);
@@ -275,9 +308,9 @@ export const SpaceBackgroundCanvas: React.FC = () => {
         const x2 = cx + (gx + currentTiltY * 200) * s2;
         const y2 = gridYBase + (gridZMax * 0.32) * s2;
 
-        const lineAlpha = isDark ? 0.045 : 0.03;
+        const lineAlpha = isDark ? 0.045 : 0.095;
         ctx.strokeStyle = `rgba(${neutralRgb}, ${lineAlpha})`;
-        ctx.lineWidth = 0.55;
+        ctx.lineWidth = isDark ? 0.55 : 0.85;
         ctx.beginPath();
         ctx.moveTo(x1, y1);
         ctx.lineTo(x2, y2);
@@ -346,13 +379,13 @@ export const SpaceBackgroundCanvas: React.FC = () => {
 
         // Draw wireframe edges
         const depthAlpha = Math.max(0.12, 1 - poly.z / DEPTH);
-        const polyAlpha = depthAlpha * (poly.isAccent ? 0.38 : 0.22);
+        const polyAlpha = depthAlpha * (poly.isAccent ? (isDark ? 0.38 : 0.65) : (isDark ? 0.22 : 0.45));
         const strokeColor = poly.isAccent
           ? `rgba(${accentRgb}, ${polyAlpha})`
-          : `rgba(${neutralRgb}, ${polyAlpha * 0.75})`;
+          : `rgba(${neutralRgb}, ${polyAlpha * (isDark ? 0.75 : 0.9)})`;
 
         ctx.strokeStyle = strokeColor;
-        ctx.lineWidth = poly.isAccent ? 0.9 : 0.65;
+        ctx.lineWidth = poly.isAccent ? (isDark ? 0.9 : 1.35) : (isDark ? 0.65 : 1.05);
         ctx.beginPath();
         for (let e = 0; e < OCTA_EDGES.length; e++) {
           const [i1, i2] = OCTA_EDGES[e];
@@ -362,10 +395,10 @@ export const SpaceBackgroundCanvas: React.FC = () => {
         ctx.stroke();
 
         // Subtle glowing vertex points
-        ctx.fillStyle = poly.isAccent ? `rgba(${accentRgb}, ${polyAlpha * 1.3})` : `rgba(${neutralRgb}, ${polyAlpha})`;
+        ctx.fillStyle = poly.isAccent ? `rgba(${accentRgb}, ${polyAlpha * (isDark ? 1.3 : 1.4)})` : `rgba(${neutralRgb}, ${polyAlpha * (isDark ? 1.0 : 1.2)})`;
         for (let v = 0; v < projVertices.length; v++) {
           ctx.beginPath();
-          ctx.arc(projVertices[v].px, projVertices[v].py, 1.2, 0, Math.PI * 2);
+          ctx.arc(projVertices[v].px, projVertices[v].py, isDark ? 1.2 : 1.6, 0, Math.PI * 2);
           ctx.fill();
         }
       }
@@ -428,10 +461,12 @@ export const SpaceBackgroundCanvas: React.FC = () => {
           continue;
         }
 
-        const r = Math.max(0.4, star.baseRadius * scale * 1.7);
+        const r = Math.max(0.4, star.baseRadius * scale * (isDark ? 1.7 : 2.1));
         const depthAlpha = Math.max(0.08, 1 - finalZ / DEPTH);
         const pulse = 0.8 + Math.sin(star.pulsePhase) * 0.2;
-        const opacity = Math.min(0.92, star.baseAlpha * depthAlpha * pulse);
+        const opacity = isDark
+          ? Math.min(0.92, star.baseAlpha * depthAlpha * pulse)
+          : Math.min(0.95, star.baseAlpha * depthAlpha * pulse * 1.5);
 
         projected.push({ px, py, z: finalZ, r, opacity });
 
@@ -442,13 +477,13 @@ export const SpaceBackgroundCanvas: React.FC = () => {
         if (star.isAccent) {
           ctx.fillStyle = `rgba(${accentRgb}, ${opacity})`;
           if (finalZ < DEPTH * 0.4 && r > 1.2) {
-            ctx.shadowColor = `rgba(${accentRgb}, ${opacity * 0.8})`;
+            ctx.shadowColor = `rgba(${accentRgb}, ${isDark ? opacity * 0.8 : opacity * 0.5})`;
             ctx.shadowBlur = r * 3.5;
           } else {
             ctx.shadowBlur = 0;
           }
         } else {
-          ctx.fillStyle = `rgba(${neutralRgb}, ${opacity * 0.75})`;
+          ctx.fillStyle = isDark ? `rgba(${neutralRgb}, ${opacity * 0.75})` : `rgba(${neutralRgb}, ${opacity * 0.9})`;
           ctx.shadowBlur = 0;
         }
 
@@ -476,11 +511,11 @@ export const SpaceBackgroundCanvas: React.FC = () => {
             const dist = Math.sqrt(distSq);
             const distFactor = 1 - dist / MAX_DIST;
             const depthFactor = 1 - dz / MAX_Z_DIFF;
-            const lineOpacity = distFactor * depthFactor * 0.11 * Math.min(a.opacity, b.opacity);
+            const lineOpacity = distFactor * depthFactor * (isDark ? 0.11 : 0.24) * Math.min(a.opacity, b.opacity);
 
             if (lineOpacity > 0.005) {
-              ctx.strokeStyle = `rgba(${neutralRgb}, ${lineOpacity})`;
-              ctx.lineWidth = 0.55;
+              ctx.strokeStyle = isDark ? `rgba(${neutralRgb}, ${lineOpacity})` : `rgba(${neutralRgb}, ${lineOpacity * 1.3})`;
+              ctx.lineWidth = isDark ? 0.55 : 0.85;
               ctx.beginPath();
               ctx.moveTo(a.px, a.py);
               ctx.lineTo(b.px, b.py);

@@ -9,6 +9,8 @@ import { TrustPage } from './pages/TrustPage';
 import { OpportunitiesPage } from './pages/OpportunitiesPage';
 import { TermsPage } from './pages/TermsPage';
 import { PricingPage } from './pages/PricingPage';
+import { FaqPage } from './pages/FaqPage';
+import { ListOpportunityPage } from './pages/ListOpportunityPage';
 import { NdaGateModal } from './components/modals/NdaGateModal';
 
 const AppContent: React.FC = () => {
@@ -33,6 +35,10 @@ const AppContent: React.FC = () => {
           <TermsPage />
         ) : activeRoute === '#pricing' ? (
           <PricingPage />
+        ) : activeRoute === '#faq' ? (
+          <FaqPage />
+        ) : activeRoute === '#list' ? (
+          <ListOpportunityPage />
         ) : (
           <HomePage />
         )}

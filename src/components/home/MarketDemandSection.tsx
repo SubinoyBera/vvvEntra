@@ -190,22 +190,22 @@ export const MarketDemandSection: React.FC = () => {
           </div>
         ) : (
           <div className="text-center max-w-3xl mx-auto mb-7 sm:mb-9">
-            <div className="inline-flex items-center gap-2.5 px-3.5 py-1 rounded-full bg-[#181410] border border-[#E2571B]/30 mb-3.5 sm:mb-4">
+            <div className="inline-flex items-center gap-2.5 px-3.5 py-1 rounded-full bg-[var(--bg-bone)] border border-[#E2571B]/30 mb-3.5 sm:mb-4">
               <span className="font-serif italic text-sm text-[#E2571B] font-semibold">
                 01
               </span>
               <span className="w-1 h-1 rounded-full bg-[#E2571B]" />
-              <span className="text-[10.5px] sm:text-xs font-mono text-neutral-300 tracking-[0.2em] uppercase font-semibold">
+              <span className="text-[10.5px] sm:text-xs font-mono text-[var(--text-muted)] tracking-[0.2em] uppercase font-semibold">
                 ORDER DEPTH & EXECUTION VELOCITY
               </span>
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse ml-0.5" />
             </div>
 
-            <h2 className="text-2xl sm:text-4xl lg:text-[2.65rem] font-medium tracking-tight text-white leading-[1.18]">
+            <h2 className="text-2xl sm:text-4xl lg:text-[2.65rem] font-medium tracking-tight text-[var(--text)] leading-[1.18]">
               Private market liquidity, <em className="font-serif italic text-[#E2571B] font-normal">streamed before clearance.</em>
             </h2>
 
-            <p className="text-xs sm:text-base text-neutral-400 max-w-2xl mx-auto leading-relaxed mt-3 px-2">
+            <p className="text-xs sm:text-base text-[var(--text-muted)] max-w-2xl mx-auto leading-relaxed mt-3 px-2">
               Watch confidential deal dossiers surface alongside real-time buy-side volatility curves. Gauge spread depth, demand surges, and verified escrow valuations as they unfold.
             </p>
           </div>
@@ -228,15 +228,15 @@ export const MarketDemandSection: React.FC = () => {
             {/* -------------------------------------------- */}
             {/* LEFT CARD: Live Deal Flow (Continuous 5s Dynamic Shift) */}
             {/* -------------------------------------------- */}
-            <div className="bg-[#0D0B0A] dark:bg-[#0D0B0A] border border-white/10 rounded-2xl p-5 sm:p-7 flex flex-col justify-between shadow-2xl relative overflow-hidden h-[590px] sm:h-[620px] box-border">
+            <div className="bg-[var(--bg-paper)] border border-[var(--line)] rounded-2xl p-5 sm:p-7 flex flex-col justify-between shadow-2xl relative overflow-hidden h-[590px] sm:h-[620px] box-border">
               
               {/* Card Header */}
-              <div className="flex items-center justify-between pb-5 border-b border-white/10 mb-4 shrink-0">
-                <h3 className="text-xl sm:text-2xl font-normal text-white tracking-tight">
+              <div className="flex items-center justify-between pb-5 border-b border-[var(--line)] mb-4 shrink-0">
+                <h3 className="text-xl sm:text-2xl font-normal text-[var(--text)] tracking-tight">
                   Live <em className="font-serif italic font-normal text-[#E2571B]">deal flow</em>
                 </h3>
 
-                <div className="flex items-center gap-2 text-[11px] font-mono text-neutral-400 tracking-wider">
+                <div className="flex items-center gap-2 text-[11px] font-mono text-[var(--text-muted)] tracking-wider">
                   <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse shadow-[0_0_8px_rgba(16,185,129,0.7)]" />
                   <span>LIVE · STREAMING</span>
                 </div>
@@ -272,8 +272,8 @@ export const MarketDemandSection: React.FC = () => {
                       }}
                       className={`group flex items-center justify-between gap-2.5 sm:gap-3 px-3.5 sm:px-4 h-[60px] sm:h-[64px] rounded-xl cursor-pointer shadow-sm box-border shrink-0 transition-colors duration-300 overflow-hidden ${
                         isNew
-                          ? 'bg-[#1F1712] border border-[#E2571B] shadow-[0_0_14px_rgba(226,87,27,0.22)]'
-                          : 'bg-[#14110E] hover:bg-[#1A1612] border border-white/5 hover:border-[#E2571B]/50'
+                          ? 'bg-[var(--bg-tint)] border border-[#E2571B] shadow-[0_0_14px_rgba(226,87,27,0.22)]'
+                          : 'bg-[var(--bg-bone)] hover:bg-[var(--bg-tint)] border border-[var(--line)] hover:border-[#E2571B]/50'
                       }`}
                     >
                       {/* Left: Code badge */}
@@ -290,16 +290,16 @@ export const MarketDemandSection: React.FC = () => {
 
                       {/* Middle: Title & Meta info */}
                       <div className="flex-1 min-w-0 pr-2 overflow-hidden">
-                        <div className="text-xs sm:text-[13.5px] font-medium text-white truncate leading-tight group-hover:text-orange-200 transition-colors">
+                        <div className="text-xs sm:text-[13.5px] font-medium text-[var(--text)] truncate leading-tight group-hover:text-[#E2571B] transition-colors">
                           {deal.title}
                         </div>
-                        <div className="text-[10px] sm:text-[11px] font-mono text-neutral-400 tracking-wide mt-0.5 truncate leading-tight">
+                        <div className="text-[10px] sm:text-[11px] font-mono text-[var(--text-muted)] tracking-wide mt-0.5 truncate leading-tight">
                           {deal.meta}
                         </div>
                       </div>
 
                       {/* Right: Price */}
-                      <span className="font-serif italic text-sm sm:text-base text-white font-normal tabular-nums shrink-0 ml-auto mr-2 leading-none">
+                      <span className="font-serif italic text-sm sm:text-base text-[var(--text)] font-normal tabular-nums shrink-0 ml-auto mr-2 leading-none">
                         {deal.price}
                       </span>
 
@@ -323,7 +323,7 @@ export const MarketDemandSection: React.FC = () => {
               </div>
 
               {/* Bottom Feed Footer */}
-              <div className="pt-4 mt-3 border-t border-white/5 flex items-center justify-between text-[11px] font-mono text-neutral-400 shrink-0">
+              <div className="pt-4 mt-3 border-t border-[var(--line)] flex items-center justify-between text-[11px] font-mono text-[var(--text-muted)] shrink-0">
                 <span className="flex items-center gap-1.5">
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping inline-block" />
                   <span>Automatic 5s real-time ingestion</span>

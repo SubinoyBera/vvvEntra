@@ -43,18 +43,18 @@
   }
 
   [data-theme="light"] {
-    --bg: #FAFAF7;
+    --bg: #F8F9FA;
     --bg-paper: #FFFFFF;
-    --bg-bone: #F4F0E8;
-    --bg-tint: #FDF4EE;
-    --text: #0A0908;
-    --text-muted: rgba(10, 9, 8, 0.70);
-    --text-faint: rgba(10, 9, 8, 0.48);
-    --text-ghost: rgba(10, 9, 8, 0.28);
-    --line: rgba(10, 9, 8, 0.10);
-    --line-strong: rgba(10, 9, 8, 0.22);
-    --nav-bg: #EAE3D5;
-    --nav-border: rgba(0, 0, 0, 0.12);
+    --bg-bone: #F2F1EC;
+    --bg-tint: #FAF7F2;
+    --text: #0E0D0B;
+    --text-muted: #57534E;
+    --text-faint: #78716C;
+    --text-ghost: #A8A29E;
+    --line: rgba(0, 0, 0, 0.08);
+    --line-strong: rgba(0, 0, 0, 0.16);
+    --nav-bg: rgba(255, 255, 255, 0.88);
+    --nav-border: rgba(0, 0, 0, 0.08);
   }
 
   [data-role="architect"] {
@@ -193,3 +193,127 @@ select option {
 .animate-light-ray {
   animation: sweepLightRay 4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
 }
+
+/* ========================================================= */
+/* PREMIUM EDITORIAL LIGHT-MODE ADAPTATIONS                  */
+/* ========================================================= */
+[data-theme="light"] body {
+  background-color: var(--bg);
+  color: var(--text);
+}
+
+/* Headings in light mode adapt to deep obsidian */
+[data-theme="light"] h1.text-white,
+[data-theme="light"] h2.text-white,
+[data-theme="light"] h3.text-white,
+[data-theme="light"] h4.text-white,
+[data-theme="light"] h5.text-white {
+  color: #0E0D0B !important;
+}
+
+/* Standalone typography in light mode */
+[data-theme="light"] p.text-white,
+[data-theme="light"] div.text-white:not([class*="bg-emerald"]):not([class*="bg-orange"]):not([class*="bg-[#16A34A]"]):not([class*="bg-[#E2571B]"]):not([class*="bg-gradient-to"]):not(button *):not(a *) {
+  color: #0E0D0B;
+}
+
+/* Muted body copy in light mode */
+[data-theme="light"] .text-neutral-400 {
+  color: #57534E !important;
+}
+
+[data-theme="light"] .text-neutral-300:not(button *):not([class*="bg-[#"]):not([class*="bg-gradient"]) {
+  color: #44403C !important;
+}
+
+[data-theme="light"] .text-neutral-500 {
+  color: #78716C !important;
+}
+
+/* Hardcoded dark cards become crisp luxury white panels */
+[data-theme="light"] .bg-\[\#0D0B0A\],
+[data-theme="light"] .bg-\[\#0B0908\],
+[data-theme="light"] .bg-\[\#0E0C0A\],
+[data-theme="light"] .bg-\[\#0E0C0B\],
+[data-theme="light"] .bg-\[\#0A0807\],
+[data-theme="light"] .bg-\[\#130F0C\],
+[data-theme="light"] .bg-\[\#12100E\],
+[data-theme="light"] .bg-\[\#181411\],
+[data-theme="light"] .bg-\[\#181512\]:not(button):not(a) {
+  background-color: #FFFFFF !important;
+  border-color: rgba(0, 0, 0, 0.08) !important;
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.04), 0 2px 6px -1px rgba(0, 0, 0, 0.02) !important;
+}
+
+/* Sub-card rows & hover states */
+[data-theme="light"] .bg-\[\#14110E\],
+[data-theme="light"] .bg-\[\#161311\],
+[data-theme="light"] .bg-\[\#1A1714\],
+[data-theme="light"] .bg-\[\#1F1712\],
+[data-theme="light"] .bg-\[\#1A1612\] {
+  background-color: #F8F7F4 !important;
+  border-color: rgba(0, 0, 0, 0.06) !important;
+}
+
+[data-theme="light"] .hover\:bg-\[\#161311\]:hover,
+[data-theme="light"] .hover\:bg-\[\#12100E\]:hover,
+[data-theme="light"] .hover\:bg-\[\#1A1612\]:hover {
+  background-color: #F3F1EC !important;
+}
+
+/* Thin borders in light mode */
+[data-theme="light"] .border-white\/10,
+[data-theme="light"] .border-white\/5,
+[data-theme="light"] .border-white\/15,
+[data-theme="light"] .border-white\/20,
+[data-theme="light"] .border-white\/25,
+[data-theme="light"] .border-white\/30 {
+  border-color: rgba(0, 0, 0, 0.09) !important;
+}
+
+/* Inputs and textareas */
+[data-theme="light"] input:not([type="checkbox"]):not([type="radio"]),
+[data-theme="light"] textarea,
+[data-theme="light"] select {
+  background-color: #FFFFFF !important;
+  color: #0E0D0B !important;
+  border-color: rgba(0, 0, 0, 0.12) !important;
+}
+
+[data-theme="light"] input::placeholder,
+[data-theme="light"] textarea::placeholder {
+  color: #8C867E !important;
+}
+
+[data-theme="light"] select option {
+  background-color: #FFFFFF !important;
+  color: #0E0D0B !important;
+}
+
+/* Filter pills & bubble buttons in light mode */
+[data-theme="light"] .bg-\[\#1C1917\],
+[data-theme="light"] button.bg-\[\#14110E\]\/85 {
+  background-color: #FFFFFF !important;
+  color: #44403C !important;
+  border-color: rgba(0, 0, 0, 0.12) !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04) !important;
+}
+
+[data-theme="light"] .bg-\[\#1C1917\]:hover,
+[data-theme="light"] button.bg-\[\#14110E\]\/85:hover {
+  background-color: #F5F4F0 !important;
+  color: #0E0D0B !important;
+}
+
+/* Light mode for live area chart inner frame */
+[data-theme="light"] .bg-\[\#0A0908\]:not(#ticker-bar):not(.ticker-track) {
+  background-color: #FAFAFA !important;
+  border-color: rgba(0, 0, 0, 0.08) !important;
+}
+
+/* Light mode for Ticker bar */
+[data-theme="light"] .bg-\[\#0A0908\].border-b {
+  background-color: #0E0C0A !important;
+  border-color: rgba(255, 255, 255, 0.10) !important;
+}
+

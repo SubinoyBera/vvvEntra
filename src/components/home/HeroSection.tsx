@@ -388,19 +388,19 @@ export const HeroSection: React.FC = () => {
                 key={idx}
                 type="button"
                 onClick={bubble.action}
-                className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-3.5 py-1.5 rounded-full border border-white/10 bg-[#14110E]/85 hover:bg-[#1B1714] hover:border-white/25 backdrop-blur-md text-[11px] sm:text-xs font-mono transition-all duration-200 cursor-pointer select-none active:scale-[0.98] shadow-xs hover:shadow-md hover:-translate-y-0.5 group shrink-0 whitespace-nowrap"
+                className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-3.5 py-1.5 rounded-full border border-[var(--line-strong)] bg-[var(--bg-paper)] hover:bg-[var(--bg-bone)] backdrop-blur-md text-[11px] sm:text-xs font-mono transition-all duration-200 cursor-pointer select-none active:scale-[0.98] shadow-xs hover:shadow-md hover:-translate-y-0.5 group shrink-0 whitespace-nowrap"
               >
                 {bubble.icon && (
                   <span className="text-xs shrink-0">{bubble.icon}</span>
                 )}
-                <span className="text-neutral-300 font-normal group-hover:text-white transition-colors">
+                <span className="text-[var(--text-muted)] font-normal group-hover:text-[var(--text)] transition-colors">
                   {bubble.label}
                 </span>
                 <span
                   className={`font-semibold transition-colors duration-200 ${
                     role === 'architect'
-                      ? 'text-[#16A34A] group-hover:text-emerald-300'
-                      : 'text-[#E2571B] group-hover:text-orange-400'
+                      ? 'text-[#16A34A] group-hover:text-emerald-500'
+                      : 'text-[#E2571B] group-hover:text-orange-500'
                   }`}
                 >
                   {bubble.highlight}
@@ -454,7 +454,7 @@ export const HeroSection: React.FC = () => {
                       ? role === 'architect'
                         ? 'bg-[#16A34A] border border-[#16A34A] text-white shadow-md'
                         : 'bg-[#E2571B] border border-[#E2571B] text-white shadow-md'
-                      : 'bg-[#1C1917] border border-white/15 text-neutral-300 hover:text-white hover:border-white/35 shadow-xs'
+                      : 'bg-[var(--bg-paper)] border border-[var(--line-strong)] text-[var(--text-muted)] hover:text-[var(--text)] hover:border-[var(--text-faint)] shadow-xs'
                   }`}
                 >
                   {tf}
@@ -463,7 +463,7 @@ export const HeroSection: React.FC = () => {
             </div>
 
             {/* Vertical Divider */}
-            <span className="w-px h-4 sm:h-6 bg-white/25 mx-1 shrink-0 inline-block" />
+            <span className="w-px h-4 sm:h-6 bg-[var(--line-strong)] mx-1 shrink-0 inline-block" />
 
             {/* Sector Pills */}
             <div className="flex items-center gap-1 sm:gap-2 flex-nowrap shrink-0">
@@ -476,7 +476,7 @@ export const HeroSection: React.FC = () => {
                       ? role === 'architect'
                         ? 'bg-[#16A34A] border border-[#16A34A] text-white shadow-md'
                         : 'bg-[#E2571B] border border-[#E2571B] text-white shadow-md'
-                      : 'bg-[#1C1917] border border-white/15 text-neutral-300 hover:text-white hover:border-white/35 shadow-xs'
+                      : 'bg-[var(--bg-paper)] border border-[var(--line-strong)] text-[var(--text-muted)] hover:text-[var(--text)] hover:border-[var(--text-faint)] shadow-xs'
                   }`}
                 >
                   {sec}
@@ -491,7 +491,7 @@ export const HeroSection: React.FC = () => {
         {/* THESIS / BUILD SIGNAL ALERT BANNER */}
         {/* ============================================== */}
         <div
-          className={`mt-5 sm:mt-6 bg-[#130F0C] border border-white/10 p-4 sm:p-5 rounded-r-xl flex items-start sm:items-center gap-3.5 sm:gap-4 shadow-xl transition-all duration-300 ${
+          className={`mt-5 sm:mt-6 bg-[var(--bg-paper)] border border-[var(--line)] p-4 sm:p-5 rounded-r-xl flex items-start sm:items-center gap-3.5 sm:gap-4 shadow-xl transition-all duration-300 ${
             role === 'architect'
               ? 'border-l-[3.5px] border-l-[#16A34A]'
               : 'border-l-[3.5px] border-l-[#E2571B]'
@@ -525,7 +525,7 @@ export const HeroSection: React.FC = () => {
 
           {/* Text Content */}
           <div className="flex-1 min-w-0">
-            <div className="text-sm sm:text-base text-white tracking-tight leading-snug">
+            <div className="text-sm sm:text-base text-[var(--text)] tracking-tight leading-snug">
               {role === 'investor' ? (
                 <span>
                   Your <em className="font-serif italic text-[#E2571B] font-normal">thesis match</em> this week
@@ -537,17 +537,17 @@ export const HeroSection: React.FC = () => {
               )}
             </div>
 
-            <p className="text-xs sm:text-[13px] text-neutral-400 leading-relaxed mt-1 sm:mt-1.5">
+            <p className="text-xs sm:text-[13px] text-[var(--text-muted)] leading-relaxed mt-1 sm:mt-1.5">
               {role === 'investor' ? (
                 <>
-                  Based on your interest in <strong className="text-white font-semibold">AI vertical workflow</strong> and{' '}
-                  <strong className="text-white font-semibold">B2B SaaS mid-market</strong>: 14 new opportunities matched your filters. 3 are unlocked by peer PE buyers.{' '}
-                  <strong className="text-white font-semibold">2 are in the surge zone with rising demand and limited supply</strong>, these typically clear within 5 days.
+                  Based on your interest in <strong className="text-[var(--text)] font-semibold">AI vertical workflow</strong> and{' '}
+                  <strong className="text-[var(--text)] font-semibold">B2B SaaS mid-market</strong>: 14 new opportunities matched your filters. 3 are unlocked by peer PE buyers.{' '}
+                  <strong className="text-[var(--text)] font-semibold">2 are in the surge zone with rising demand and limited supply</strong>, these typically clear within 5 days.
                 </>
               ) : (
                 <>
-                  Highest-value gap detected in <strong className="text-white font-semibold">RegTech compliance for mid-market</strong>: buyer demand index 84, only 18 active listings, average unlock $6,200.{' '}
-                  <strong className="text-white font-semibold">If you can structure a 90+ page opportunity here, expected clear time is under 12 days based on similar listings.</strong>
+                  Highest-value gap detected in <strong className="text-[var(--text)] font-semibold">RegTech compliance for mid-market</strong>: buyer demand index 84, only 18 active listings, average unlock $6,200.{' '}
+                  <strong className="text-[var(--text)] font-semibold">If you can structure a 90+ page opportunity here, expected clear time is under 12 days based on similar listings.</strong>
                 </>
               )}
             </p>
