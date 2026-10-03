@@ -9,6 +9,7 @@ export const ApplyForAccessModal: React.FC = () => {
     role, 
     setRole, 
     setStage, 
+    setUserName,
     setActiveRoute 
   } = useApp();
 
@@ -56,6 +57,7 @@ export const ApplyForAccessModal: React.FC = () => {
     setTimeout(() => {
       setIsSubmitting(false);
       setIsSubmitted(true);
+      setUserName(fullName.trim());
       setStage('applied');
     }, 500);
   };

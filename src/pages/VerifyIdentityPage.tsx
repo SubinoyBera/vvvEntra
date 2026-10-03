@@ -3,7 +3,7 @@ import { useApp } from '../context/AppContext';
 import { Clock, Check, Shield, AlertCircle } from 'lucide-react';
 
 export const VerifyIdentityPage: React.FC = () => {
-  const { role, stage, setStage, setActiveRoute, addToast } = useApp();
+  const { role, stage, setStage, userName, setUserName, setJoinDate, setActiveRoute, addToast } = useApp();
   const isArchitect = role === 'architect';
   const roleTitle = isArchitect ? 'Architect / Opportunity Creator' : 'Buyer / Investor';
   const themeAccentColor = isArchitect ? '#16A34A' : '#E2571B';
@@ -14,7 +14,7 @@ export const VerifyIdentityPage: React.FC = () => {
   const [isVerified, setIsVerified] = useState(stage === 'verified');
 
   // Proper LinkedIn Profile URL Validation
-  const validateLinkedInUrl = (url: string): { isValid: boolean; error?: string } => {
+  const validateLinkedInUrl = (url: string): { isValid: boolean; error?: string; handle?: string } => {
     const trimmed = url.trim();
     if (!trimmed) {
       return { 
@@ -50,7 +50,7 @@ export const VerifyIdentityPage: React.FC = () => {
         };
       }
 
-      return { isValid: true };
+      return { isValid: true, handle: pathParts[1] };
     } catch {
       return { 
         isValid: false, 
@@ -78,6 +78,21 @@ export const VerifyIdentityPage: React.FC = () => {
       setIsVerifying(false);
       setIsVerified(true);
       setStage('verified');
+      setJoinDate(new Date().toISOString());
+
+      // If user hasn't set their name yet, format it from the LinkedIn profile handle
+      if (!userName && validation.handle) {
+        const derived = validation.handle
+          .replace(/[-_.]+/g, ' ')
+          .split(' ')
+          .filter(Boolean)
+          .map((w) => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase())
+          .join(' ');
+        if (derived) {
+          setUserName(derived);
+        }
+      }
+
       addToast('Identity confirmed via LinkedIn. Full institutional clearance unlocked!', 'success');
     }, 1100);
   };

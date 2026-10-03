@@ -7,10 +7,10 @@ interface ToastItem {
   type?: 'info' | 'success' | 'warn';
 }
 
-export const getInitials = (name: string): string => {
-  if (!name) return 'SB';
+export const getInitials = (name?: string): string => {
+  if (!name) return 'VO';
   const clean = name.trim();
-  if (!clean) return 'SB';
+  if (!clean) return 'VO';
   const parts = clean.split(/\s+/);
   if (parts.length === 1) {
     return parts[0].slice(0, 2).toUpperCase();
@@ -42,6 +42,7 @@ interface AppContextType {
   setUserName: (name: string) => void;
   userInitials: string;
   joinDate: string;
+  setJoinDate: (date: string) => void;
   activeRoute: string;
   setActiveRoute: (route: string) => void;
   savedOpportunities: string[];
@@ -64,10 +65,11 @@ interface AppContextType {
 const AppContext = createContext<AppContextType | undefined>(undefined);
 
 export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  // Theme and role can be remembered, but session verification state MUST NOT be persisted
   const [theme, setTheme] = useState<ThemeMode>(() => {
     const saved = localStorage.getItem('vve-theme');
     if (saved === 'dark' || saved === 'light') return saved;
-    return 'dark'; // Target website defaults dark / high-contrast
+    return 'dark';
   });
 
   const [role, setRoleState] = useState<UserRole>(() => {
@@ -76,28 +78,21 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     return 'investor';
   });
 
-  const [stage, setStage] = useState<UserStage>(() => {
-    const saved = localStorage.getItem('vve-stage');
-    if (saved === 'verified') return 'verified';
-    return 'guest';
-  });
+  // Session-only state: resets to 'guest' on every reload or tab close
+  const [stage, setStage] = useState<UserStage>('guest');
+  const [userName, setUserName] = useState<string>('');
+  const [joinDate, setJoinDate] = useState<string>(() => new Date().toISOString());
 
-  const [userName, setUserNameState] = useState<string>(() => {
-    return localStorage.getItem('vve-user-name') || 'Subinoy Bera';
-  });
-
-  const [joinDate] = useState<string>(() => {
-    const saved = localStorage.getItem('vve-join-date');
-    if (saved) return saved;
-    const now = new Date().toISOString();
-    localStorage.setItem('vve-join-date', now);
-    return now;
-  });
-
-  const setUserName = (name: string) => {
-    setUserNameState(name);
-    localStorage.setItem('vve-user-name', name);
-  };
+  // Wipe any legacy persisted user session data from localStorage
+  useEffect(() => {
+    try {
+      localStorage.removeItem('vve-stage');
+      localStorage.removeItem('vve-user-name');
+      localStorage.removeItem('vve-join-date');
+    } catch {
+      // Ignore localStorage restrictions if any
+    }
+  }, []);
 
   const userInitials = getInitials(userName);
 
@@ -136,10 +131,6 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     document.documentElement.setAttribute('data-role', role);
     localStorage.setItem('vve-role', role);
   }, [role]);
-
-  useEffect(() => {
-    localStorage.setItem('vve-stage', stage);
-  }, [stage]);
 
   useEffect(() => {
     localStorage.setItem('vve-saved', JSON.stringify(savedOpportunities));
@@ -231,6 +222,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         setUserName,
         userInitials,
         joinDate,
+        setJoinDate,
         activeRoute,
         setActiveRoute,
         savedOpportunities,

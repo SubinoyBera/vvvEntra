@@ -59,7 +59,7 @@ export const ProfilePage: React.FC = () => {
 
   const handleSaveProfile = (e: React.FormEvent) => {
     e.preventDefault();
-    const finalName = tempName.trim() || 'Subinoy Bera';
+    const finalName = tempName.trim() || userName || 'Verified Operator';
     setUserName(finalName);
     setHeadline(tempHeadline.trim());
     setLocation(tempLocation.trim());
@@ -162,7 +162,7 @@ export const ProfilePage: React.FC = () => {
               <div className="space-y-1.5">
                 <div className="flex flex-wrap items-center gap-2.5">
                   <h1 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-normal text-neutral-900 dark:text-white tracking-tight">
-                    {userName}
+                    {userName || 'Verified Operator'}
                   </h1>
 
                   {/* Verified Pill Badge */}
@@ -411,13 +411,13 @@ export const ProfilePage: React.FC = () => {
                 <input 
                   type="text"
                   value={tempName}
-                  placeholder="e.g. Subinoy Bera or John Doe"
+                  placeholder="e.g. John Doe or Jane Smith"
                   onChange={(e) => setTempName(e.target.value)}
                   className="w-full px-3.5 py-2.5 rounded-lg border border-neutral-300 dark:border-white/15 bg-white dark:bg-[#070605] text-sm text-neutral-900 dark:text-white focus:outline-none focus:ring-1"
                   style={{ outlineColor: themeColor }}
                 />
                 <p className="text-[11px] text-neutral-500 mt-1 font-mono">
-                  Navbar profile button will automatically update to initials ({getInitials(tempName || 'SB')})
+                  Navbar profile button will automatically update to initials ({getInitials(tempName || userName || 'JD')})
                 </p>
               </div>
 

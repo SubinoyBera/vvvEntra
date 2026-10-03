@@ -191,10 +191,10 @@ export const Navbar: React.FC = () => {
                     ? 'inset 0 1px 1px rgba(255,255,255,0.4), 0 2px 6px rgba(22,163,74,0.35)'
                     : 'inset 0 1px 1px rgba(255,255,255,0.4), 0 2px 6px rgba(226,87,27,0.35)'
                 }}
-                title={`${userName} · Verified Profile (${userInitials})`}
-                aria-label={`${userName} Profile (${userInitials})`}
+                title={`${userName || 'Verified Operator'} · Verified Profile (${userInitials})`}
+                aria-label={`${userName || 'Verified Operator'} Profile (${userInitials})`}
               >
-                {/* First Letters of User Name (e.g. 'SB' for Subinoy Bera, 'JD' for John Doe) */}
+                {/* First Letters of User Name */}
                 <span>{userInitials}</span>
 
                 {/* Green verified indicator dot on bottom-right corner */}
@@ -221,7 +221,7 @@ export const Navbar: React.FC = () => {
                     </div>
                     <div className="overflow-hidden">
                       <h4 className="text-sm font-semibold text-neutral-900 dark:text-white tracking-tight truncate">
-                        {userName}
+                        {userName || 'Verified Operator'}
                       </h4>
                       
                       {/* Established Tier Badge */}
@@ -362,7 +362,7 @@ export const Navbar: React.FC = () => {
                     >
                       {userInitials}
                     </div>
-                    <span>{userName} (My profile)</span>
+                    <span>{userName || 'Verified Operator'} (My profile)</span>
                   </div>
                   <span className="text-[11px] font-mono text-purple-400">✦ Established</span>
                 </button>
