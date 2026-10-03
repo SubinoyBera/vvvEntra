@@ -7,6 +7,29 @@ interface ToastItem {
   type?: 'info' | 'success' | 'warn';
 }
 
+export const getInitials = (name: string): string => {
+  if (!name) return 'SB';
+  const clean = name.trim();
+  if (!clean) return 'SB';
+  const parts = clean.split(/\s+/);
+  if (parts.length === 1) {
+    return parts[0].slice(0, 2).toUpperCase();
+  }
+  return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
+};
+
+export const formatMemberSince = (dateInput?: string): string => {
+  try {
+    const d = dateInput ? new Date(dateInput) : new Date();
+    if (isNaN(d.getTime())) {
+      return new Intl.DateTimeFormat('en-US', { month: 'short', year: 'numeric' }).format(new Date());
+    }
+    return new Intl.DateTimeFormat('en-US', { month: 'short', year: 'numeric' }).format(d);
+  } catch {
+    return 'Oct 2026';
+  }
+};
+
 interface AppContextType {
   theme: ThemeMode;
   toggleTheme: () => void;
@@ -15,6 +38,10 @@ interface AppContextType {
   toggleRole: () => void;
   stage: UserStage;
   setStage: (stage: UserStage) => void;
+  userName: string;
+  setUserName: (name: string) => void;
+  userInitials: string;
+  joinDate: string;
   activeRoute: string;
   setActiveRoute: (route: string) => void;
   savedOpportunities: string[];
@@ -54,6 +81,25 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     if (saved === 'verified') return 'verified';
     return 'guest';
   });
+
+  const [userName, setUserNameState] = useState<string>(() => {
+    return localStorage.getItem('vve-user-name') || 'Subinoy Bera';
+  });
+
+  const [joinDate] = useState<string>(() => {
+    const saved = localStorage.getItem('vve-join-date');
+    if (saved) return saved;
+    const now = new Date().toISOString();
+    localStorage.setItem('vve-join-date', now);
+    return now;
+  });
+
+  const setUserName = (name: string) => {
+    setUserNameState(name);
+    localStorage.setItem('vve-user-name', name);
+  };
+
+  const userInitials = getInitials(userName);
 
   const [activeRoute, setActiveRoute] = useState<string>(() => {
     return window.location.hash || '#home';
@@ -127,39 +173,29 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const closeApplyModal = () => {
     setIsApplyModalOpen(false);
     if (window.location.hash === '#apply') {
-      window.location.hash = activeRoute === '#apply' ? '#dashboard' : activeRoute;
+      setActiveRoute('#home');
+      window.location.hash = '#home';
     }
   };
 
   const toggleTheme = () => {
-    setTheme(prev => {
-      const next = prev === 'dark' ? 'light' : 'dark';
-      addToast(`Theme switched to ${next} mode`, 'info');
-      return next;
-    });
+    setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'));
   };
 
   const setRole = (newRole: UserRole) => {
     setRoleState(newRole);
-    addToast(
-      newRole === 'investor' 
-        ? 'Switched to Investor / Buyer view (Orange theme)' 
-        : 'Switched to Architect / Lister view (Green theme)',
-      'info'
-    );
   };
 
   const toggleRole = () => {
-    setRole(role === 'investor' ? 'architect' : 'investor');
+    setRoleState((prev) => (prev === 'investor' ? 'architect' : 'investor'));
   };
 
   const toggleSaveOpportunity = (id: string) => {
-    setSavedOpportunities(prev => {
-      if (prev.includes(id)) {
-        addToast('Removed from saved opportunities', 'info');
-        return prev.filter(x => x !== id);
+    setSavedOpportunities((prev) => {
+      const exists = prev.includes(id);
+      if (exists) {
+        return prev.filter((item) => item !== id);
       } else {
-        addToast('Saved opportunity to your dossier watchlist', 'success');
         return [...prev, id];
       }
     });
@@ -191,6 +227,10 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         toggleRole,
         stage,
         setStage,
+        userName,
+        setUserName,
+        userInitials,
+        joinDate,
         activeRoute,
         setActiveRoute,
         savedOpportunities,

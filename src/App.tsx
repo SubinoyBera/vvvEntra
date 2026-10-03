@@ -14,6 +14,7 @@ import { ListOpportunityPage } from './pages/ListOpportunityPage';
 import { PlaybookPage } from './pages/PlaybookPage';
 import { RequestAccessPage } from './pages/RequestAccessPage';
 import { VerifyIdentityPage } from './pages/VerifyIdentityPage';
+import { ProfilePage } from './pages/ProfilePage';
 import { NdaGateModal } from './components/modals/NdaGateModal';
 import { ApplyForAccessModal } from './components/modals/ApplyForAccessModal';
 
@@ -49,6 +50,8 @@ const AppContent: React.FC = () => {
           <RequestAccessPage />
         ) : activeRoute === '#verify' || activeRoute === '#verify-identity' ? (
           <VerifyIdentityPage />
+        ) : activeRoute === '#profile' ? (
+          <ProfilePage />
         ) : (
           <HomePage />
         )}

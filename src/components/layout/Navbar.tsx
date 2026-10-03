@@ -1,6 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useApp } from '../../context/AppContext';
-import { Sun, Moon, Menu, X, User, Check } from 'lucide-react';
+import { 
+  Sun, 
+  Moon, 
+  Menu, 
+  X, 
+  User, 
+  Check, 
+  DollarSign, 
+  Settings, 
+  LogOut, 
+  Sparkles 
+} from 'lucide-react';
 
 export const Navbar: React.FC = () => {
   const { 
@@ -8,14 +19,35 @@ export const Navbar: React.FC = () => {
     toggleTheme, 
     role, 
     stage, 
+    setStage,
+    userName,
+    userInitials,
     openApplyModal,
     activeRoute,
-    setActiveRoute 
+    setActiveRoute,
+    addToast 
   } = useApp();
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isProfileOpen, setIsProfileOpen] = useState(false);
   const [showNav, setShowNav] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
+
+  const profileRef = useRef<HTMLDivElement>(null);
+
+  // Close profile dropdown on outside click
+  useEffect(() => {
+    const handleOutsideClick = (e: MouseEvent) => {
+      if (profileRef.current && !profileRef.current.contains(e.target as Node)) {
+        setIsProfileOpen(false);
+      }
+    };
+
+    if (isProfileOpen) {
+      document.addEventListener('mousedown', handleOutsideClick);
+    }
+    return () => document.removeEventListener('mousedown', handleOutsideClick);
+  }, [isProfileOpen]);
 
   // Auto-hide navigation bar on scroll down, show on scroll up
   useEffect(() => {
@@ -24,6 +56,7 @@ export const Navbar: React.FC = () => {
       if (currentScrollY > 100) {
         if (currentScrollY > lastScrollY && currentScrollY - lastScrollY > 6) {
           setShowNav(false);
+          setIsProfileOpen(false);
         } else if (lastScrollY - currentScrollY > 6) {
           setShowNav(true);
         }
@@ -53,9 +86,23 @@ export const Navbar: React.FC = () => {
     window.location.hash = hash;
     window.scrollTo({ top: 0, behavior: 'smooth' });
     setMobileMenuOpen(false);
+    setIsProfileOpen(false);
+  };
+
+  const handleProfileNavigation = (hash: string) => {
+    handleNavClick(hash);
+    setIsProfileOpen(false);
+  };
+
+  const handleLogout = () => {
+    setStage('guest');
+    addToast('Logged out of verified session', 'info');
+    setIsProfileOpen(false);
+    handleNavClick('#home');
   };
 
   const isArchitect = role === 'architect';
+  const themeAccentColor = isArchitect ? '#16A34A' : '#E2571B';
 
   return (
     <div 
@@ -110,7 +157,7 @@ export const Navbar: React.FC = () => {
         </nav>
 
         {/* Right Action Zone */}
-        <div className="flex items-center gap-2 sm:gap-3 shrink-0">
+        <div className="flex items-center gap-2 sm:gap-3 shrink-0 relative">
           
           {/* Theme Toggle Button */}
           <button
@@ -126,20 +173,124 @@ export const Navbar: React.FC = () => {
             )}
           </button>
 
-          {/* When VERIFIED: Replace "Apply for access" with User Profile Icon */}
+          {/* When VERIFIED: User Profile Button with First Letters of User Name (e.g. SB, JD) */}
           {stage === 'verified' ? (
-            <button
-              onClick={() => handleNavClick('#dashboard')}
-              title="Verified Member Profile · Account Active"
-              className="relative flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 rounded-full border border-neutral-300 dark:border-white/20 bg-neutral-100 dark:bg-[#181512] hover:border-[var(--role)] text-neutral-800 dark:text-white transition-all shadow-xs cursor-pointer group shrink-0"
-              aria-label="User Profile"
-            >
-              <User className="w-4 h-4 sm:w-5 sm:h-5 text-neutral-700 dark:text-neutral-200 group-hover:text-[var(--role)] transition-colors" />
-              {/* Green Verified indicator badge */}
-              <span className="absolute -bottom-0.5 -right-0.5 w-3 h-3 rounded-full bg-emerald-500 border-2 border-white dark:border-[#14120F] flex items-center justify-center shadow-xs">
-                <Check className="w-2 h-2 text-white stroke-[3]" />
-              </span>
-            </button>
+            <div className="relative" ref={profileRef}>
+              <button
+                type="button"
+                onClick={() => setIsProfileOpen(!isProfileOpen)}
+                className={`relative flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 rounded-full font-serif font-bold text-xs sm:text-[13px] text-white tracking-wide transition-all duration-200 cursor-pointer shadow-md select-none border active:scale-95 ${
+                  isProfileOpen
+                    ? 'ring-2 ring-emerald-400 ring-offset-2 ring-offset-[var(--nav-bg)] scale-105'
+                    : 'hover:scale-105'
+                }`}
+                style={{
+                  backgroundColor: themeAccentColor,
+                  borderColor: isArchitect ? 'rgba(134, 239, 172, 0.45)' : 'rgba(253, 186, 116, 0.45)',
+                  boxShadow: isArchitect
+                    ? 'inset 0 1px 1px rgba(255,255,255,0.4), 0 2px 6px rgba(22,163,74,0.35)'
+                    : 'inset 0 1px 1px rgba(255,255,255,0.4), 0 2px 6px rgba(226,87,27,0.35)'
+                }}
+                title={`${userName} · Verified Profile (${userInitials})`}
+                aria-label={`${userName} Profile (${userInitials})`}
+              >
+                {/* First Letters of User Name (e.g. 'SB' for Subinoy Bera, 'JD' for John Doe) */}
+                <span>{userInitials}</span>
+
+                {/* Green verified indicator dot on bottom-right corner */}
+                <span className="absolute -bottom-0.5 -right-0.5 w-3 h-3 rounded-full bg-emerald-500 border-2 border-white dark:border-[#0E0C0A] flex items-center justify-center shadow-xs">
+                  <Check className="w-2 h-2 text-white stroke-[3.5]" />
+                </span>
+              </button>
+
+              {/* Pop-up Dropdown Menu (Exact Match to Screenshot) */}
+              {isProfileOpen && (
+                <div 
+                  className="absolute right-0 top-full mt-2.5 w-60 sm:w-64 rounded-2xl border border-black/10 dark:border-white/10 bg-[#FAF8F5] dark:bg-[#0D0B0A] shadow-2xl p-3 z-50 animate-fadeIn transition-all select-none"
+                  style={{
+                    boxShadow: '0 20px 40px -10px rgba(0,0,0,0.5), 0 0 1px 1px rgba(255,255,255,0.05)'
+                  }}
+                >
+                  {/* User Profile Header in Dropdown */}
+                  <div className="px-2 py-1.5 flex items-center gap-3">
+                    <div 
+                      className="w-9 h-9 rounded-full flex items-center justify-center font-serif font-bold text-xs text-white shrink-0 shadow-xs"
+                      style={{ backgroundColor: themeAccentColor }}
+                    >
+                      {userInitials}
+                    </div>
+                    <div className="overflow-hidden">
+                      <h4 className="text-sm font-semibold text-neutral-900 dark:text-white tracking-tight truncate">
+                        {userName}
+                      </h4>
+                      
+                      {/* Established Tier Badge */}
+                      <div className="mt-0.5">
+                        <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[10.5px] font-mono font-medium bg-[#2A1B4E] dark:bg-[#201538] border border-[#A855F7]/30 text-[#D8B4FE]">
+                          <span className="text-purple-400 text-[10px]">✦</span>
+                          <span>Established tier</span>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Divider */}
+                  <div className="border-t border-neutral-200 dark:border-white/10 my-2" />
+
+                  {/* Menu Options */}
+                  <div className="space-y-0.5">
+                    {/* 1. My Profile */}
+                    <button
+                      type="button"
+                      onClick={() => handleProfileNavigation('#profile')}
+                      className="w-full flex items-center gap-3 px-2.5 py-2 rounded-xl text-xs sm:text-[13px] text-neutral-700 dark:text-neutral-300 hover:text-neutral-950 dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/5 transition-all text-left cursor-pointer"
+                    >
+                      <User className="w-4 h-4 text-neutral-500 dark:text-neutral-400 shrink-0" />
+                      <span className="font-medium">My profile</span>
+                    </button>
+
+                    {/* 2. Earnings & History */}
+                    <button
+                      type="button"
+                      onClick={() => {
+                        addToast('Earnings & Escrow Ledger opened', 'info');
+                        setIsProfileOpen(false);
+                      }}
+                      className="w-full flex items-center gap-3 px-2.5 py-2 rounded-xl text-xs sm:text-[13px] text-neutral-700 dark:text-neutral-300 hover:text-neutral-950 dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/5 transition-all text-left cursor-pointer"
+                    >
+                      <span className="w-4 text-center font-mono font-bold text-xs text-neutral-500 dark:text-neutral-400">$</span>
+                      <span className="font-medium">Earnings &amp; history</span>
+                    </button>
+
+                    {/* 3. Account Settings */}
+                    <button
+                      type="button"
+                      onClick={() => {
+                        addToast('Account Security & Preferences opened', 'info');
+                        setIsProfileOpen(false);
+                      }}
+                      className="w-full flex items-center gap-3 px-2.5 py-2 rounded-xl text-xs sm:text-[13px] text-neutral-700 dark:text-neutral-300 hover:text-neutral-950 dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/5 transition-all text-left cursor-pointer"
+                    >
+                      <Settings className="w-4 h-4 text-neutral-500 dark:text-neutral-400 shrink-0" />
+                      <span className="font-medium">Account settings</span>
+                    </button>
+                  </div>
+
+                  {/* Divider */}
+                  <div className="border-t border-neutral-200 dark:border-white/10 my-2" />
+
+                  {/* 4. Log out */}
+                  <button
+                    type="button"
+                    onClick={handleLogout}
+                    className="w-full flex items-center gap-2.5 px-2.5 py-2 rounded-xl text-xs sm:text-[13px] text-[#E2571B] hover:bg-orange-500/10 transition-all text-left cursor-pointer font-medium"
+                  >
+                    <LogOut className="w-4 h-4 shrink-0 text-[#E2571B]" />
+                    <span>Log out</span>
+                  </button>
+                </div>
+              )}
+            </div>
           ) : (
             /* 3D Apply for access button with periodic sweeping light ray */
             <button
@@ -199,13 +350,29 @@ export const Navbar: React.FC = () => {
 
           <div className="pt-2 border-t border-[var(--line)] mt-3">
             {stage === 'verified' ? (
-              <button
-                onClick={() => { handleNavClick('#dashboard'); setMobileMenuOpen(false); }}
-                className="w-full flex items-center justify-center gap-2 py-2.5 rounded-lg border border-emerald-500/30 bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 text-xs font-semibold"
-              >
-                <User className="w-4 h-4" />
-                <span>Verified Account Profile (Active)</span>
-              </button>
+              <div className="space-y-1.5">
+                <button
+                  onClick={() => { handleNavClick('#profile'); setMobileMenuOpen(false); }}
+                  className="w-full flex items-center justify-between px-3 py-2.5 rounded-lg border border-emerald-500/30 bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 text-xs font-semibold"
+                >
+                  <div className="flex items-center gap-2.5">
+                    <div 
+                      className="w-6 h-6 rounded-full flex items-center justify-center font-serif font-bold text-[10px] text-white shrink-0"
+                      style={{ backgroundColor: themeAccentColor }}
+                    >
+                      {userInitials}
+                    </div>
+                    <span>{userName} (My profile)</span>
+                  </div>
+                  <span className="text-[11px] font-mono text-purple-400">✦ Established</span>
+                </button>
+                <button
+                  onClick={handleLogout}
+                  className="w-full py-2 text-center text-xs font-medium text-[#E2571B] hover:underline"
+                >
+                  Log out
+                </button>
+              </div>
             ) : (
               <button
                 onClick={() => { openApplyModal(); setMobileMenuOpen(false); }}
