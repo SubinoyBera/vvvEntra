@@ -42,10 +42,16 @@ interface PlaybookChapter {
 }
 
 export const PlaybookPage: React.FC = () => {
-  const { role, setRole, addToast, theme } = useApp();
+  const { role, setRole, addToast, theme, setActiveRoute } = useApp();
   const [selectedRole, setSelectedRole] = useState<'buyer' | 'architect'>(
     role === 'architect' ? 'architect' : 'buyer'
   );
+
+  const navigateTo = (hash: string) => {
+    setActiveRoute(hash);
+    window.location.hash = hash;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
   const [activeChapterId, setActiveChapterId] = useState<string>('01');
   const [searchQuery, setSearchQuery] = useState('');
   const [copiedId, setCopiedId] = useState<string | null>(null);
@@ -102,40 +108,40 @@ export const PlaybookPage: React.FC = () => {
       id: '01',
       num: '01',
       title: 'Mindset',
-      subtitle: 'The Operator\'s Mental Model',
-      badge: 'STRATEGIC FOUNDATION',
+      subtitle: 'The Operator\'s Mental Model · Think like an operator, not a tourist',
+      badge: 'MINDSET · STRATEGIC FOUNDATION',
       summary:
-        'Buying verified intellectual property on vvEntra is not shopping for an off-the-shelf SaaS. You are acquiring validated velocity: 12 to 24 months of market testing, failed iterations, and proprietary regulatory or technical architecture in a single transaction.',
+        'Buying verified intellectual property on vvEntra is not shopping for an off-the-shelf SaaS or casually browsing for ideas. You are acquiring validated velocity: 12 to 24 months of market testing, failed iterations, and proprietary regulatory or technical architecture in a single transaction. Serious operators approach acquisitions with allocated capital, dedicated execution capacity, and decisive conviction.',
       principles: [
         {
-          heading: 'Buy conviction, not speculative pitch decks',
+          heading: 'Tourists browse ideas. Operators acquire unfair velocity.',
           description:
-            'Amateurs buy TAM estimates and optimistic projections. Serious operators buy documented unit economics, live supplier agreements, customer cohorts, and proprietary code bases with zero technical debt.',
+            'Amateurs treat the platform like an idea feed. Serious operators understand that ideas are cheap and validated execution is scarce. You are buying 12 to 24 months of de-risked development, audited supplier relationships, and proprietary architecture.',
+          doRule: 'Focus on time arbitrage: evaluate an asset based on how many months of team burn rate it eliminates.',
+          dontRule: 'Never treat the platform as passive reading material without dedicated deployment capacity.'
+        },
+        {
+          heading: 'Tourists read pitch decks. Operators verify auditable economics.',
+          description:
+            'Amateurs buy TAM estimates and optimistic projections. Serious operators demand auditable unit economics, customer cohort data, live supplier agreements, and clean source code with zero technical debt.',
           doRule: 'Demand auditable customer conversations, supplier rate sheets, and validated conversion logs.',
           dontRule: 'Never pay for qualitative "market opportunity" memos without operational substantiation.'
         },
         {
-          heading: 'Treat due diligence as risk containment, not negotiation warfare',
+          heading: 'Tourists negotiate endlessly. Operators de-risk and move fast.',
           description:
-            'Use vvEntra\'s 7-day inspection window to verify material representations. If the opportunity conforms to the Tier 2 preview, release escrow promptly to secure the architect\'s advisory goodwill.',
-          doRule: 'Submit structured clarification requests within 48 hours of Tier 3 release.',
+            'Indecision and prolonged haggling kill momentum and alienate top architects. Operators use vvEntra\'s 7-day inspection window as a disciplined risk containment sprint to verify representations, release escrow promptly, and deploy.',
+          doRule: 'Submit structured diligence queries within 48 hours and release escrow once representations verify.',
           dontRule: 'Do not withhold escrow release as leverage to renegotiate pre-agreed terms.'
-        },
-        {
-          heading: 'Calculate time-to-market advantage as your primary ROI metric',
-          description:
-            'An opportunity priced at $25,000 that saves 14 months of engineering and customer acquisition yields a 10x payback on saved burn rate alone. Factor time arbitrage into your acquisition calculus.',
-          doRule: 'Compare acquisition price against fully-loaded team salary burn for 9 months.',
-          dontRule: 'Do not evaluate asset price in isolation from deployment speed.'
         }
       ],
       checklists: [
-        'Internal investment committee criteria documented before browsing',
+        'Internal investment criteria and acquisition mandate documented before browsing',
         'Available cash allocation earmarked in escrow-compatible account',
-        'Dedicated operational lead appointed to take custody of Tier 3 codebase',
-        'Defined 90-day post-acquisition execution roadmap'
+        'Dedicated operational or technical lead appointed to take custody of Tier 3 codebase',
+        'Defined 90-day post-acquisition execution roadmap locked before unlock'
       ],
-      proTip: 'The highest-performing buyers complete initial diligence within 72 hours and schedule their architect onboarding call before day 4 of the inspection window.'
+      proTip: 'The highest-performing buyers complete initial diligence within 72 hours and schedule their architect onboarding call before day 4 of the inspection window. In contrast, tourists wait until day 6 and scramble.'
     },
     {
       id: '02',
@@ -342,15 +348,15 @@ export const PlaybookPage: React.FC = () => {
       id: '01',
       num: '01',
       title: 'Mindset',
-      subtitle: 'Pricing & Monetizing Proprietary IP',
-      badge: 'CREATOR ARCHITECTURE',
+      subtitle: 'Pricing & Monetizing Proprietary IP · Think like an operator, not a tourist',
+      badge: 'CREATOR MINDSET',
       summary:
-        'Listing on vvEntra is not selling freelance hours or writing a blog post. You are structuring an institutional-grade asset package that allows serious buyers to bypass years of R&D and pay you a premium for your validated engineering.',
+        'Listing on vvEntra is not selling freelance hours or writing a casual blog post. You are structuring an institutional-grade asset package that allows serious operators to bypass years of R&D and pay you a premium for your validated engineering. Think like an operator acquiring your own work.',
       principles: [
         {
-          heading: 'Serious buyers pay for verified precision, not generic ideas',
+          heading: 'Operators pay for verified precision, not generic tourist ideas',
           description:
-            'An idea is worth nothing; execution is worth thousands. Buyers pay top dollar for turnkey blueprints, audited financial models, operational supplier contacts, and clean, documented source code.',
+            'An idea is worth nothing; execution is worth thousands. Serious operators pay top dollar for turnkey blueprints, audited financial models, operational supplier contacts, and clean, documented source code.',
           doRule: 'Package the exact artifacts, contracts, and codebases you built and tested.',
           dontRule: 'Never submit unvalidated conceptual ideas without operational substantiation.'
         },
@@ -595,7 +601,7 @@ export const PlaybookPage: React.FC = () => {
       {/* ======================================================== */}
       {/* 1. HERO SECTION (Matching User Image Exact Reference) */}
       {/* ======================================================== */}
-      <section className="relative pt-12 sm:pt-20 pb-16 sm:pb-24 border-b border-black/10 dark:border-[var(--line)] bg-[#FAF8F4] dark:bg-[#070605] overflow-hidden transition-colors duration-300">
+      <section className="relative pt-12 sm:pt-20 pb-16 sm:pb-24 border-b border-black/10 dark:border-[var(--line)] bg-transparent overflow-hidden transition-colors duration-300">
         
         {/* Subtle radial luxury glow */}
         <div 
@@ -677,9 +683,12 @@ export const PlaybookPage: React.FC = () => {
             </div>
           </div>
 
-          {/* Chapter Timeline Rail (Exact Match to User Image: 01 Mindset → 02 Preparation → 03 Execution → 04 Red flags → 05 Success patterns → 06 Common mistakes) */}
-          <div className="mt-10 sm:mt-14 overflow-x-auto pb-2 scrollbar-none flex items-center justify-center">
-            <div className="flex items-center gap-2 sm:gap-4 text-xs sm:text-[13px] font-mono whitespace-nowrap px-4 py-2 rounded-2xl bg-black/[0.02] dark:bg-white/[0.02] border border-black/5 dark:border-white/5">
+          {/* Chapter Timeline Rail: 01 Mindset → 02 Preparation → 03 Execution → 04 Red flags → 05 Success patterns → 06 Common mistakes */}
+          <div className="mt-8 sm:mt-12 w-full flex items-center justify-center px-2 sm:px-4">
+            <nav 
+              aria-label="Playbook Chapters"
+              className="inline-flex items-center justify-center flex-wrap sm:flex-nowrap gap-1 sm:gap-2 text-[11px] sm:text-xs font-mono px-5 sm:px-8 py-2 sm:py-2.5 rounded-full bg-black/[0.04] dark:bg-[#110F0E] border border-black/10 dark:border-white/10 shadow-xs max-w-full"
+            >
               {[
                 { num: '01', label: 'Mindset' },
                 { num: '02', label: 'Preparation' },
@@ -692,29 +701,38 @@ export const PlaybookPage: React.FC = () => {
                 return (
                   <React.Fragment key={item.num}>
                     <button
+                      type="button"
                       onClick={() => scrollToChapter(item.num)}
-                      className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full transition-all cursor-pointer ${
+                      className={`flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full transition-all cursor-pointer select-none ${
                         isActive
-                          ? 'bg-neutral-900 text-white dark:bg-white/10 dark:text-white border border-black/20 dark:border-white/20 shadow-xs'
-                          : 'text-neutral-600 dark:text-neutral-400 hover:text-neutral-950 dark:hover:text-white'
+                          ? 'bg-[#181512] text-white dark:bg-white/20 dark:text-white border border-black/30 dark:border-white/25 shadow-sm'
+                          : 'text-neutral-700 dark:text-neutral-400 hover:text-neutral-950 dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/5'
                       }`}
                     >
                       <span 
-                        className="font-serif italic font-semibold text-xs sm:text-sm"
-                        style={{ color: themeColor }}
+                        className={`font-serif italic font-semibold text-xs sm:text-sm ${
+                          isActive ? 'text-white !text-white' : ''
+                        }`}
+                        style={{ color: isActive ? '#FFFFFF' : themeColor }}
                       >
                         {item.num}
                       </span>
-                      <span className="font-medium">{item.label}</span>
+                      <span 
+                        className={`font-medium whitespace-nowrap ${
+                          isActive ? 'text-white !text-white' : 'text-neutral-700 dark:text-neutral-300'
+                        }`}
+                      >
+                        {item.label}
+                      </span>
                     </button>
 
                     {idx < arr.length - 1 && (
-                      <span className="text-neutral-400 dark:text-neutral-600 select-none">→</span>
+                      <span className="text-neutral-400 dark:text-neutral-600 select-none text-[10px] sm:text-xs">→</span>
                     )}
                   </React.Fragment>
                 );
               })}
-            </div>
+            </nav>
           </div>
 
         </div>
@@ -723,7 +741,7 @@ export const PlaybookPage: React.FC = () => {
       {/* ======================================================== */}
       {/* 2. PLAYBOOK SEARCH & CHAPTER OVERVIEW CONTROLS */}
       {/* ======================================================== */}
-      <section className="py-8 border-b border-black/10 dark:border-[var(--line)] bg-[#F5F2EB] dark:bg-[#0A0908] transition-colors duration-300">
+      <section className="py-8 border-b border-black/10 dark:border-[var(--line)] bg-transparent transition-colors duration-300">
         <div className="max-w-[1140px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
             
@@ -774,7 +792,7 @@ export const PlaybookPage: React.FC = () => {
       {/* ======================================================== */}
       {/* 3. PLAYBOOK CHAPTERS (High-Contrast Tactile Cards) */}
       {/* ======================================================== */}
-      <section className="py-16 sm:py-20 bg-[#F8F5EE] dark:bg-[#070605] transition-colors duration-300">
+      <section className="py-16 sm:py-20 bg-transparent transition-colors duration-300">
         <div className="max-w-[1140px] mx-auto px-4 sm:px-6 lg:px-8 space-y-12 sm:space-y-16">
           
           {filteredChapters.map((chapter) => {
@@ -962,50 +980,72 @@ export const PlaybookPage: React.FC = () => {
       </section>
 
       {/* ======================================================== */}
-      {/* 4. CLOSING CONCIERGE & ACTION BANNER */}
+      {/* 4. CLOSING CARD: THE PLATFORM REWARDS DISCIPLINE          */}
       {/* ======================================================== */}
-      <section className="py-16 sm:py-24 border-t border-black/10 dark:border-[var(--line)] bg-[#EBE5DB] dark:bg-[#070605] text-center transition-colors duration-300">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6">
+      <section className="py-16 sm:py-24 border-t border-black/10 dark:border-[var(--line)] bg-transparent transition-colors duration-300">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           
-          <div className="mb-5 sm:mb-6">
-            <span 
-              className="text-[11px] sm:text-xs font-mono uppercase tracking-[0.25em] font-semibold"
-              style={{ color: themeColor }}
-            >
-              — PUT THEORY INTO PRACTICE
-            </span>
-          </div>
+          {/* Centered Framing Card Container */}
+          <div className="rounded-2xl bg-white dark:bg-[#110F0E] border border-black/12 dark:border-white/10 p-8 sm:p-12 md:p-16 text-center shadow-xl dark:shadow-2xl transition-all duration-300">
+            
+            {/* Eyebrow: — NOW YOU'RE READY */}
+            <div className="flex items-center justify-center gap-2 mb-6 sm:mb-8">
+              <span 
+                className="text-[11px] sm:text-xs font-mono uppercase tracking-[0.25em] font-semibold flex items-center gap-2"
+                style={{ color: themeColor }}
+              >
+                <span>—</span>
+                <span>NOW YOU'RE READY</span>
+              </span>
+            </div>
 
-          <h2 className="font-serif text-3xl sm:text-5xl lg:text-[3.5rem] font-normal text-neutral-900 dark:text-white tracking-tight leading-[1.14] mb-5">
-            You have the playbook.
-            <br />
-            Now execute with{' '}
-            <em className="font-serif italic font-normal" style={{ color: themeColor }}>
-              certainty.
-            </em>
-          </h2>
+            {/* Headline: The platform rewards discipline. */}
+            <h2 className="font-serif text-3xl sm:text-5xl lg:text-[3.5rem] font-normal tracking-tight text-neutral-900 dark:text-white leading-[1.15] mb-6 sm:mb-8 max-w-3xl mx-auto">
+              The platform{' '}
+              <em 
+                className={`font-serif italic font-normal transition-colors duration-300 ${isArchitect ? 'text-[#16A34A]' : 'text-[#E2571B]'}`}
+                style={{ color: themeColor }}
+              >
+                rewards discipline.
+              </em>
+            </h2>
 
-          <p className="max-w-xl mx-auto text-xs sm:text-sm md:text-base text-neutral-700 dark:text-neutral-300 leading-relaxed font-normal mb-8 sm:mb-10">
-            {isArchitect
-              ? 'Structure your intellectual property into a turn-key dossier. Protect your trade secrets with staged reveal rails and collect guaranteed payouts.'
-              : 'Browse vetted business opportunities protected by regulated escrow custody, transparent due diligence windows, and direct architect access.'}
-          </p>
+            {/* Paragraph */}
+            <p className="max-w-2xl mx-auto text-xs sm:text-sm md:text-base text-neutral-600 dark:text-neutral-300 leading-relaxed font-normal mb-8 sm:mb-10">
+              The users who treat vvEntra as a serious environment get serious results. The ones who don't, don't.{' '}
+              <em className="font-serif italic font-normal text-neutral-800 dark:text-neutral-200">
+                You've now read more than 80% of the people you'll transact with.
+              </em>
+            </p>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a
-              href={isArchitect ? '#list' : '#opportunities'}
-              className="w-full sm:w-auto px-8 py-3.5 rounded-full text-xs sm:text-sm font-semibold text-white tracking-wide transition-all shadow-md hover:brightness-105 active:scale-98 cursor-pointer"
-              style={{ backgroundColor: themeColor }}
-            >
-              {isArchitect ? 'List an opportunity dossier →' : 'Explore verified opportunities →'}
-            </a>
+            {/* 3 Buttons Row */}
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
+              <button
+                onClick={() => navigateTo('#dashboard')}
+                className="w-full sm:w-auto px-6 py-3 rounded-md text-xs sm:text-sm font-medium text-white transition-all shadow-md hover:brightness-110 active:scale-95 cursor-pointer flex items-center justify-center gap-2 select-none"
+                style={{ backgroundColor: themeColor, color: '#FFFFFF' }}
+              >
+                <span>Open the dashboard</span>
+                <span className="font-sans">→</span>
+              </button>
 
-            <a
-              href="#trust"
-              className="w-full sm:w-auto px-7 py-3.5 rounded-full text-xs sm:text-sm font-semibold text-neutral-800 dark:text-neutral-200 bg-white dark:bg-[#12100E] border border-black/15 dark:border-white/15 hover:border-black/30 dark:hover:border-white/30 transition-all shadow-xs cursor-pointer"
-            >
-              Review Trust Architecture →
-            </a>
+              <button
+                onClick={() => navigateTo('#trust')}
+                className="w-full sm:w-auto px-6 py-3 rounded-md text-xs sm:text-sm font-medium text-neutral-900 dark:text-white bg-white dark:bg-[#110F0E] border border-neutral-300 dark:border-white/20 hover:bg-neutral-100 dark:hover:bg-white/10 hover:border-neutral-400 dark:hover:border-white/30 transition-all shadow-xs active:scale-95 cursor-pointer flex items-center justify-center gap-2 select-none"
+              >
+                <span>Read trust policy</span>
+                <span className="font-sans">→</span>
+              </button>
+
+              <button
+                onClick={() => navigateTo('#faq')}
+                className="w-full sm:w-auto px-6 py-3 rounded-md text-xs sm:text-sm font-medium text-neutral-900 dark:text-white bg-white dark:bg-[#110F0E] border border-neutral-300 dark:border-white/20 hover:bg-neutral-100 dark:hover:bg-white/10 hover:border-neutral-400 dark:hover:border-white/30 transition-all shadow-xs active:scale-95 cursor-pointer flex items-center justify-center gap-2 select-none"
+              >
+                <span>View FAQ</span>
+                <span className="font-sans">→</span>
+              </button>
+            </div>
+
           </div>
 
         </div>

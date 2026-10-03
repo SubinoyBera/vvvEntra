@@ -204,7 +204,7 @@ export const LivePulseSection: React.FC = () => {
   };
 
   return (
-    <section className="py-8 sm:py-10 border-b border-[var(--line)] bg-transparent select-none">
+    <section id="live-pulse" className="py-8 sm:py-10 border-b border-[var(--line)] bg-transparent select-none">
       <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* ======================================================== */}
@@ -254,7 +254,7 @@ export const LivePulseSection: React.FC = () => {
             return (
               <div
                 key={sec.id}
-                className={`p-3 rounded-xl border transition-all duration-200 flex flex-col justify-between gap-3 shadow-sm group ${
+                className={`p-3 rounded-xl border transition-all duration-200 flex flex-col justify-between gap-3 shadow-xs group ${
                   isArchitect
                     ? 'bg-white dark:bg-[#0B130E] border-black/10 dark:border-white/10 hover:border-emerald-500/40 hover:shadow-[0_0_15px_rgba(22,163,74,0.15)]'
                     : 'bg-white dark:bg-[#130E0B] border-black/10 dark:border-white/10 hover:border-[#E2571B]/50 hover:shadow-[0_0_15px_rgba(226,87,27,0.18)]'
@@ -262,8 +262,8 @@ export const LivePulseSection: React.FC = () => {
               >
                 {/* Sector Title */}
                 <div
-                  className={`text-xs font-medium text-neutral-900 dark:text-white truncate transition-colors duration-200 ${
-                    isArchitect ? 'group-hover:text-emerald-600 dark:group-hover:text-emerald-400' : 'group-hover:text-orange-600 dark:group-hover:text-orange-400'
+                  className={`text-xs font-semibold text-[var(--text)] truncate transition-colors duration-200 ${
+                    isArchitect ? 'group-hover:text-emerald-600 dark:group-hover:text-emerald-400' : 'group-hover:text-[#E2571B] dark:group-hover:text-[#E2571B]'
                   }`}
                   title={sec.name}
                 >
@@ -272,7 +272,7 @@ export const LivePulseSection: React.FC = () => {
 
                 {/* Number & Delta */}
                 <div className="flex items-baseline justify-between font-mono">
-                  <span className="text-sm sm:text-base font-semibold tabular-nums text-neutral-900 dark:text-white">
+                  <span className="text-sm sm:text-base font-semibold tabular-nums text-[var(--text)]">
                     {sec.count}
                   </span>
                   
@@ -294,10 +294,10 @@ export const LivePulseSection: React.FC = () => {
         {/* LIVE TAPE TERMINAL CONTAINER (Architect vs Investor) */}
         {/* ======================================================== */}
         <div
-          className={`p-4 sm:p-5 rounded-2xl border shadow-lg flex flex-col lg:flex-row lg:items-center justify-between gap-5 relative overflow-hidden transition-all duration-300 ${
+          className={`p-4 sm:p-5 rounded-2xl border shadow-md flex flex-col lg:flex-row lg:items-center justify-between gap-5 relative overflow-hidden transition-all duration-300 ${
             isArchitect
-              ? 'bg-white dark:bg-[#0A120D] border-emerald-500/30 dark:border-emerald-500/20 shadow-[0_4px_25px_rgba(0,0,0,0.05)] dark:shadow-[0_0_30px_rgba(22,163,74,0.06)]'
-              : 'bg-white dark:bg-[#120D0A] border-[#E2571B]/35 dark:border-[#E2571B]/25 shadow-[0_4px_25px_rgba(0,0,0,0.05)] dark:shadow-[0_0_30px_rgba(226,87,27,0.08)]'
+              ? 'bg-[#F4FBF6] dark:bg-[#0A120D] border-emerald-500/25 dark:border-emerald-500/20 shadow-[0_4px_20px_rgba(22,163,74,0.06)]'
+              : 'bg-[#FFF8F2] dark:bg-[#120D0A] border-[#E2571B]/30 dark:border-[#E2571B]/25 shadow-[0_4px_20px_rgba(226,87,27,0.07)]'
           }`}
         >
           
@@ -328,16 +328,16 @@ export const LivePulseSection: React.FC = () => {
                 <div
                   key={act.id}
                   className={`flex flex-wrap items-center gap-x-2 text-xs font-mono transition-opacity duration-700 ${
-                    act.isNew ? 'text-neutral-900 dark:text-[var(--text)]' : 'text-neutral-600 dark:text-[var(--text-muted)]'
+                    act.isNew ? 'text-[var(--text)]' : 'text-[var(--text-muted)]'
                   }`}
                 >
                   {/* Role */}
-                  <span className="text-neutral-900 dark:text-[var(--text)] font-semibold">
+                  <span className="text-[var(--text)] font-semibold">
                     {act.role}
                   </span>
 
                   {/* Action */}
-                  <span className="text-neutral-600 dark:text-[var(--text-muted)]">
+                  <span className="text-[var(--text-muted)]">
                     {act.action}
                   </span>
 
@@ -354,12 +354,12 @@ export const LivePulseSection: React.FC = () => {
                   </span>
 
                   {/* Sector */}
-                  <span className="text-neutral-600 dark:text-[var(--text-muted)]">
+                  <span className="text-[var(--text-muted)]">
                     ({act.sector})
                   </span>
 
                   {/* Timestamp */}
-                  <span className="text-neutral-400 dark:text-[var(--text-faint)] text-[11px] tabular-nums">
+                  <span className="text-[var(--text-faint)] text-[11px] tabular-nums">
                     · {formatTime(act.minutesAgo)}
                   </span>
                 </div>
@@ -370,7 +370,7 @@ export const LivePulseSection: React.FC = () => {
           {/* Right: View Full Market Terminal link */}
           <a
             href="#dashboard"
-            className={`text-xs font-mono text-neutral-600 dark:text-[var(--text-muted)] shrink-0 flex items-center gap-1.5 transition-colors duration-200 group ${
+            className={`text-xs font-mono text-[var(--text-muted)] shrink-0 flex items-center gap-1.5 transition-colors duration-200 group ${
               isArchitect ? 'hover:text-emerald-600' : 'hover:text-[#E2571B]'
             }`}
           >

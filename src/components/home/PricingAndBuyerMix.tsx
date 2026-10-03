@@ -189,16 +189,16 @@ export const PricingAndBuyerMix: React.FC = () => {
           <div>
             {/* Header */}
             <div className="flex items-baseline justify-between pb-4 border-b border-black/10 dark:border-[var(--line)] mb-4">
-              <h3 className="text-xl sm:text-2xl font-normal text-neutral-900 dark:text-white tracking-tight">
+              <h3 className="text-xl sm:text-2xl font-normal text-[var(--text)] tracking-tight">
                 Sector <em className="font-serif italic font-normal text-[#16A34A]">pricing benchmarks</em>
               </h3>
-              <span className="font-mono text-xs text-neutral-500 dark:text-[var(--text-muted)] tracking-wider">
+              <span className="font-mono text-xs text-[var(--text-muted)] tracking-wider">
                 AVG · LAST 30 DAYS
               </span>
             </div>
 
             {/* Table Column Headers */}
-            <div className="grid grid-cols-12 gap-2 text-[10.5px] sm:text-[11px] font-mono text-neutral-500 dark:text-[var(--text-muted)] uppercase tracking-widest pb-3 border-b border-black/10 dark:border-[var(--line)] px-2">
+            <div className="grid grid-cols-12 gap-2 text-[10.5px] sm:text-[11px] font-mono text-[var(--text-muted)] uppercase tracking-widest pb-3 border-b border-black/10 dark:border-[var(--line)] px-2">
               <div className="col-span-5">SECTOR</div>
               <div className="col-span-2 text-right">MIN</div>
               <div className="col-span-2 text-right text-emerald-600 dark:text-emerald-400 font-semibold">AVG</div>
@@ -235,16 +235,16 @@ export const PricingAndBuyerMix: React.FC = () => {
                 >
                   {/* Sector Title & Subsector */}
                   <div className="col-span-5 min-w-0 pr-1">
-                    <div className="text-xs sm:text-[14px] font-medium text-neutral-900 dark:text-white tracking-tight truncate group-hover:text-emerald-600 dark:group-hover:text-emerald-300 transition-colors">
+                    <div className="text-xs sm:text-[14px] font-medium text-[var(--text)] tracking-tight truncate group-hover:text-emerald-600 dark:group-hover:text-emerald-300 transition-colors">
                       {row.sector}
                     </div>
-                    <div className="text-[9.5px] sm:text-[10px] font-mono text-neutral-500 dark:text-[var(--text-muted)] tracking-wider truncate mt-0.5 uppercase">
+                    <div className="text-[9.5px] sm:text-[10px] font-mono text-[var(--text-muted)] tracking-wider truncate mt-0.5 uppercase">
                       {row.subSector}
                     </div>
                   </div>
 
                   {/* Min Price */}
-                  <div className="col-span-2 text-right font-mono text-xs sm:text-[13.5px] text-neutral-500 dark:text-[var(--text-muted)] tabular-nums">
+                  <div className="col-span-2 text-right font-mono text-xs sm:text-[13.5px] text-[var(--text-muted)] tabular-nums">
                     {row.min}
                   </div>
 
@@ -298,11 +298,11 @@ export const PricingAndBuyerMix: React.FC = () => {
           <div>
             {/* Header */}
             <div className="flex items-baseline justify-between pb-4 border-b border-black/10 dark:border-[var(--line)] mb-5">
-              <h3 className="text-xl sm:text-2xl font-normal text-neutral-900 dark:text-white tracking-tight">
+              <h3 className="text-xl sm:text-2xl font-normal text-[var(--text)] tracking-tight">
                 Who's <em className="font-serif italic font-normal text-[#16A34A]">looking</em>
-                <span className="font-serif font-light text-neutral-500 dark:text-[var(--text-muted)]"> · buyer mix</span>
+                <span className="font-serif font-light text-[var(--text-muted)]"> · buyer mix</span>
               </h3>
-              <span className="font-mono text-xs text-neutral-500 dark:text-[var(--text-muted)] tracking-wider">
+              <span className="font-mono text-xs text-[var(--text-muted)] tracking-wider">
                 By sector engagement
               </span>
             </div>

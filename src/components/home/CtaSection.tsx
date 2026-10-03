@@ -3,14 +3,10 @@ import { useApp } from '../../context/AppContext';
 import { ArrowRight, ShieldCheck, Sparkles } from 'lucide-react';
 
 export const CtaSection: React.FC = () => {
-  const { setRole, setStage, addToast, setActiveRoute } = useApp();
+  const { setRole, openApplyModal } = useApp();
 
   const handleApply = (roleTarget: 'investor' | 'architect') => {
-    setRole(roleTarget);
-    setStage('applied');
-    addToast(`Application initiated as ${roleTarget === 'investor' ? 'Investor' : 'Architect'}.`, 'success');
-    setActiveRoute('#apply');
-    window.location.hash = '#apply';
+    openApplyModal(roleTarget);
   };
 
   return (

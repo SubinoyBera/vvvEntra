@@ -12,7 +12,10 @@ import { PricingPage } from './pages/PricingPage';
 import { FaqPage } from './pages/FaqPage';
 import { ListOpportunityPage } from './pages/ListOpportunityPage';
 import { PlaybookPage } from './pages/PlaybookPage';
+import { RequestAccessPage } from './pages/RequestAccessPage';
+import { VerifyIdentityPage } from './pages/VerifyIdentityPage';
 import { NdaGateModal } from './components/modals/NdaGateModal';
+import { ApplyForAccessModal } from './components/modals/ApplyForAccessModal';
 
 const AppContent: React.FC = () => {
   const { activeRoute, setActiveRoute } = useApp();
@@ -42,6 +45,10 @@ const AppContent: React.FC = () => {
           <FaqPage />
         ) : activeRoute === '#list' ? (
           <ListOpportunityPage />
+        ) : activeRoute === '#request-access' || activeRoute === '#access-received' ? (
+          <RequestAccessPage />
+        ) : activeRoute === '#verify' || activeRoute === '#verify-identity' ? (
+          <VerifyIdentityPage />
         ) : (
           <HomePage />
         )}
@@ -54,6 +61,7 @@ const AppContent: React.FC = () => {
 
       {/* Gate & Feedback Overlays */}
       <NdaGateModal />
+      <ApplyForAccessModal />
     </div>
   );
 };

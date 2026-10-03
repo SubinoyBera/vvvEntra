@@ -267,7 +267,7 @@ const FAQ_ITEMS: FaqQuestion[] = [
 ];
 
 export const TrustPage: React.FC = () => {
-  const { role, setActiveRoute, addToast, stage, setStage } = useApp();
+  const { role, setActiveRoute, addToast, stage, setStage, openApplyModal } = useApp();
   const isArchitect = role === 'architect';
 
   const themeColor = isArchitect ? '#16A34A' : '#E2571B';
@@ -284,12 +284,7 @@ export const TrustPage: React.FC = () => {
   };
 
   const handleApplyClick = () => {
-    if (stage !== 'verified') {
-      setStage('verified');
-      addToast('Institutional access approved. Full confidential exchange unlocked.', 'success');
-    } else {
-      addToast('Institutional clearance is active.', 'info');
-    }
+    openApplyModal(role);
   };
 
   const handleReturnToDashboard = () => {

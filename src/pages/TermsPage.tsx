@@ -335,7 +335,7 @@ const TERMS_SECTIONS: TermSection[] = [
 ];
 
 export const TermsPage: React.FC = () => {
-  const { role, addToast, stage, setStage } = useApp();
+  const { role, addToast, stage, setStage, openApplyModal } = useApp();
   const isArchitect = role === 'architect';
   const themeColor = isArchitect ? '#16A34A' : '#E2571B';
 
@@ -908,14 +908,7 @@ export const TermsPage: React.FC = () => {
           </p>
 
           <button
-            onClick={() => {
-              if (stage !== 'verified') {
-                setStage('verified');
-                addToast('Institutional access approved. Terms & legal protocol accepted.', 'success');
-              } else {
-                addToast('Your institutional access is active.', 'info');
-              }
-            }}
+            onClick={() => openApplyModal(role)}
             className={`cursor-pointer select-none rounded-full px-6 sm:px-7 py-2.5 sm:py-3 text-xs sm:text-sm font-medium text-white tracking-wide transition-all duration-150 shrink-0 whitespace-nowrap flex items-center gap-2 hover:opacity-90 active:scale-[0.98] ${
               isArchitect
                 ? 'bg-[#16A34A] hover:bg-[#15803D]'

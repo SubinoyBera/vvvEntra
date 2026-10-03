@@ -185,7 +185,8 @@ export const OpportunitiesPage: React.FC = () => {
     savedOpportunities, 
     toggleSaveOpportunity, 
     addToast,
-    stage
+    stage,
+    openApplyModal
   } = useApp();
 
   const isArchitect = role === 'architect';
@@ -616,7 +617,7 @@ export const OpportunitiesPage: React.FC = () => {
           </div>
 
           <button
-            onClick={() => addToast('Opening Institutional Verification Protocol.', 'info')}
+            onClick={() => openApplyModal(role)}
             className={`relative group cursor-pointer select-none rounded-full px-7 py-3 text-xs sm:text-sm font-semibold text-white tracking-wide transition-all duration-200 shrink-0 whitespace-nowrap active:translate-y-[2px] ${
               isArchitect
                 ? 'bg-gradient-to-b from-[#34D399] via-[#16A34A] to-[#15803D] border border-[#86EFAC]/50 shadow-[inset_0_1px_1.5px_rgba(255,255,255,0.75),0_3px_0_#0E622B,0_6px_16px_rgba(22,163,74,0.4)]'

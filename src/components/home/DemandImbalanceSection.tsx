@@ -202,8 +202,8 @@ export const DemandImbalanceSection: React.FC = () => {
                     ? 'bg-[#16A34A] border-[#16A34A] text-white shadow-xs shadow-emerald-500/25'
                     : 'bg-[#E2571B] border-[#E2571B] text-white shadow-xs'
                   : role === 'architect'
-                  ? 'bg-[#0D150F] border-white/10 text-neutral-300 hover:text-white hover:border-[#16A34A]/30'
-                  : 'bg-[#14110E] border-white/10 text-neutral-300 hover:text-white hover:border-white/25'
+                  ? 'bg-white dark:bg-[#0D150F] border-black/10 dark:border-white/10 text-[var(--text-muted)] hover:text-[var(--text)] hover:border-[#16A34A]/30'
+                  : 'bg-white dark:bg-[#14110E] border-black/10 dark:border-white/10 text-[var(--text-muted)] hover:text-[var(--text)] hover:border-black/25'
               }`}
             >
               {dom === 'all'
@@ -215,7 +215,7 @@ export const DemandImbalanceSection: React.FC = () => {
                 : 'Consumer & D2C'}
             </button>
           ))}
-          <span className="ml-auto text-xs font-mono text-neutral-500 hidden sm:inline-block">
+          <span className="ml-auto text-xs font-mono text-[var(--text-muted)] hidden sm:inline-block">
             {filteredCategories.length} Categories Tracked
           </span>
         </div>
@@ -226,7 +226,7 @@ export const DemandImbalanceSection: React.FC = () => {
           {/* ======================================================== */}
           {/* SCROLLABLE MAIN TABLE */}
           {/* ======================================================== */}
-          <div className="lg:col-span-2 bg-[#0D0B0A] dark:bg-[#0D0B0A] border border-white/10 rounded-2xl p-5 sm:p-6 shadow-2xl flex flex-col">
+          <div className="lg:col-span-2 bg-white dark:bg-[#0D0B0A] border border-black/10 dark:border-white/10 rounded-2xl p-5 sm:p-6 shadow-xl flex flex-col">
             
             {/* Table Header */}
             <div className="flex items-center justify-between pb-3.5 border-b border-white/10 mb-3 text-xs font-mono text-neutral-400 uppercase tracking-wider">
@@ -369,7 +369,7 @@ export const DemandImbalanceSection: React.FC = () => {
           {/* SIGNAL SPOTLIGHT SIDEBAR */}
           {/* ======================================================== */}
           <div className="space-y-4">
-            <div className="p-6 rounded-2xl bg-[#0D0B0A] dark:bg-[#0D0B0A] border border-white/10 shadow-2xl flex flex-col justify-between">
+            <div className="p-6 rounded-2xl bg-white dark:bg-[#0D0B0A] border border-black/10 dark:border-white/10 shadow-xl flex flex-col justify-between">
               
               <div>
                 {/* Header with Signal Tabs */}
@@ -408,7 +408,7 @@ export const DemandImbalanceSection: React.FC = () => {
 
                 {/* Signal Title */}
                 <h4
-                  className={`text-lg sm:text-xl font-medium text-white mb-2 tracking-tight transition-opacity duration-300 ${
+                  className={`text-lg sm:text-xl font-medium text-[var(--text)] mb-2 tracking-tight transition-opacity duration-300 ${
                     fadeAnim ? 'opacity-100' : 'opacity-0'
                   }`}
                 >
@@ -417,7 +417,7 @@ export const DemandImbalanceSection: React.FC = () => {
 
                 {/* Signal Description */}
                 <p
-                  className={`text-xs text-neutral-400 leading-relaxed mb-5 transition-opacity duration-300 min-h-[48px] ${
+                  className={`text-xs text-[var(--text-muted)] leading-relaxed mb-5 transition-opacity duration-300 min-h-[48px] ${
                     fadeAnim ? 'opacity-100' : 'opacity-0'
                   }`}
                 >
@@ -425,28 +425,28 @@ export const DemandImbalanceSection: React.FC = () => {
                 </p>
                 
                 {/* Metrics Table */}
-                <div className="p-3.5 rounded-xl bg-[#14110E] border border-white/5 space-y-2.5 text-xs font-mono mb-5">
-                  <div className="flex justify-between text-neutral-400">
+                <div className="p-3.5 rounded-xl bg-[#FAF8F4] dark:bg-[#14110E] border border-black/5 dark:border-white/5 space-y-2.5 text-xs font-mono mb-5">
+                  <div className="flex justify-between text-[var(--text-muted)]">
                     <span>
                       {role === 'architect' ? 'Est. Unlock Fee:' : 'Median Unlock Price:'}
                     </span>
-                    <span className="text-white font-semibold tabular-nums">
+                    <span className="text-[var(--text)] font-semibold tabular-nums">
                       {currentSignal.medianPrice}
                     </span>
                   </div>
-                  <div className="flex justify-between text-neutral-400">
+                  <div className="flex justify-between text-[var(--text-muted)]">
                     <span>
                       {role === 'architect' ? 'Buyer Waitlist Ratio:' : 'Buyer Waitlist Ratio:'}
                     </span>
-                    <span className="text-emerald-400 font-semibold tabular-nums">
+                    <span className="text-emerald-600 dark:text-emerald-400 font-semibold tabular-nums">
                       {currentSignal.waitlistRatio}
                     </span>
                   </div>
-                  <div className="flex justify-between text-neutral-400">
+                  <div className="flex justify-between text-[var(--text-muted)]">
                     <span>
                       {role === 'architect' ? 'Target Clearance:' : 'Fastest Clearance:'}
                     </span>
-                    <span className="text-white font-semibold truncate max-w-[140px] text-right">
+                    <span className="text-[var(--text)] font-semibold truncate max-w-[140px] text-right">
                       {currentSignal.fastestClearance}
                     </span>
                   </div>

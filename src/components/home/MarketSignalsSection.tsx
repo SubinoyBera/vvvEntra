@@ -104,11 +104,11 @@ export const MarketSignalsSection: React.FC = () => {
               <div>
                 {/* Header */}
                 <div className="flex items-baseline justify-between pb-4 border-b border-black/10 dark:border-[var(--line)] mb-6">
-                  <h3 className="text-xl sm:text-2xl font-normal text-neutral-900 dark:text-white tracking-tight">
+                  <h3 className="text-xl sm:text-2xl font-normal text-[var(--text)] tracking-tight">
                     Capital <em className="font-serif italic text-[#E2571B] font-normal">deployed</em>{' '}
-                    <span className="font-serif font-light text-neutral-500 dark:text-[var(--text-muted)]">· weekly</span>
+                    <span className="font-serif font-light text-[var(--text-muted)]">· weekly</span>
                   </h3>
-                  <span className="font-mono text-xs text-neutral-500 dark:text-[var(--text-muted)]">Total · $42M</span>
+                  <span className="font-mono text-xs text-[var(--text-muted)]">Total · $42M</span>
                 </div>
 
                 {/* Bar Chart */}
@@ -129,7 +129,7 @@ export const MarketSignalsSection: React.FC = () => {
                       </div>
 
                       {/* Week label */}
-                      <span className="font-mono text-[10px] sm:text-[11px] text-neutral-600 dark:text-[var(--text-muted)] mt-2 font-medium">
+                      <span className="font-mono text-[10px] sm:text-[11px] text-[var(--text-muted)] mt-2 font-medium">
                         {item.week}
                       </span>
                     </div>
@@ -138,7 +138,7 @@ export const MarketSignalsSection: React.FC = () => {
               </div>
 
               {/* Footer Summary */}
-              <div className="pt-3 mt-4 border-t border-black/10 dark:border-[var(--line)] text-xs font-mono text-neutral-600 dark:text-[var(--text-muted)] leading-relaxed">
+              <div className="pt-3 mt-4 border-t border-black/10 dark:border-[var(--line)] text-xs font-mono text-[var(--text-muted)] leading-relaxed">
                 Capital flow accelerating. Week-over-week growth averaging{' '}
                 <strong className="text-emerald-600 dark:text-emerald-400 font-semibold">+18%</strong>.
               </div>
@@ -151,10 +151,10 @@ export const MarketSignalsSection: React.FC = () => {
               <div>
                 {/* Header */}
                 <div className="flex items-baseline justify-between pb-4 border-b border-black/10 dark:border-[var(--line)] mb-2">
-                  <h3 className="text-xl sm:text-2xl font-normal text-neutral-900 dark:text-white tracking-tight">
+                  <h3 className="text-xl sm:text-2xl font-normal text-[var(--text)] tracking-tight">
                     Sector <em className="font-serif italic text-[#E2571B] font-normal">velocity</em>
                   </h3>
-                  <span className="font-mono text-xs text-neutral-500 dark:text-[var(--text-muted)]">Buyer interest · 7d</span>
+                  <span className="font-mono text-xs text-[var(--text-muted)]">Buyer interest · 7d</span>
                 </div>
 
                 {/* Rows List */}
@@ -165,12 +165,12 @@ export const MarketSignalsSection: React.FC = () => {
                       className="py-2.5 flex items-center justify-between gap-3 text-xs font-sans group hover:bg-neutral-50 dark:hover:bg-[var(--bg-tint)] px-1.5 rounded transition-colors"
                     >
                       {/* Rank */}
-                      <span className="font-mono text-[11px] text-neutral-500 dark:text-[var(--text-muted)] w-5 shrink-0">
+                      <span className="font-mono text-[11px] text-[var(--text-muted)] w-5 shrink-0">
                         {sec.rank}
                       </span>
 
                       {/* Name */}
-                      <span className="text-neutral-900 dark:text-white text-xs sm:text-[13px] font-medium flex-1 truncate">
+                      <span className="text-[var(--text)] text-xs sm:text-[13px] font-medium flex-1 truncate">
                         {sec.name}
                       </span>
 
@@ -209,10 +209,10 @@ export const MarketSignalsSection: React.FC = () => {
               <div>
                 {/* Header */}
                 <div className="pb-4 border-b border-black/10 dark:border-[var(--line)] mb-2">
-                  <h3 className="text-xl sm:text-2xl font-normal text-neutral-900 dark:text-white tracking-tight">
+                  <h3 className="text-xl sm:text-2xl font-normal text-[var(--text)] tracking-tight">
                     Where <em className="font-serif italic text-[#E2571B] font-normal">peers</em> are looking
                   </h3>
-                  <span className="font-mono text-xs text-neutral-500 dark:text-[var(--text-muted)] mt-1 block">
+                  <span className="font-mono text-xs text-[var(--text-muted)] mt-1 block">
                     Aggregated buyer signals
                   </span>
                 </div>
@@ -234,19 +234,19 @@ export const MarketSignalsSection: React.FC = () => {
                       </span>
 
                       {/* Sector Name */}
-                      <span className="text-neutral-900 dark:text-white text-xs sm:text-[13.5px] font-medium flex-1 truncate">
+                      <span className="text-[var(--text)] text-xs sm:text-[13.5px] font-medium flex-1 truncate">
                         {item.name}
                       </span>
 
                       {/* View count */}
-                      <span className="font-mono text-[11px] sm:text-xs text-neutral-500 dark:text-[var(--text-muted)] text-right shrink-0">
+                      <span className="font-mono text-[11px] sm:text-xs text-[var(--text-muted)] text-right shrink-0">
                         {item.views}
                       </span>
 
                       {/* Unlock count */}
                       <span
                         className={`font-mono text-xs sm:text-[12.5px] text-right shrink-0 font-medium w-20 ${
-                          item.highlight ? 'text-emerald-600 dark:text-emerald-400 font-semibold' : 'text-neutral-500 dark:text-[var(--text-muted)]'
+                          item.highlight ? 'text-emerald-600 dark:text-emerald-400 font-semibold' : 'text-[var(--text-muted)]'
                         }`}
                       >
                         {item.unlocks}

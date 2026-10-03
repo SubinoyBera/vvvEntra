@@ -22,6 +22,9 @@ interface AppContextType {
   selectedOpportunityForNda: Opportunity | null;
   openNdaModal: (opp: Opportunity) => void;
   closeNdaModal: () => void;
+  isApplyModalOpen: boolean;
+  openApplyModal: (targetRole?: UserRole) => void;
+  closeApplyModal: () => void;
   toasts: ToastItem[];
   addToast: (message: string, type?: 'info' | 'success' | 'warn') => void;
   removeToast: (id: string) => void;
@@ -66,6 +69,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   });
 
   const [selectedOpportunityForNda, setSelectedOpportunityForNda] = useState<Opportunity | null>(null);
+  const [isApplyModalOpen, setIsApplyModalOpen] = useState(false);
   const [toasts, setToasts] = useState<ToastItem[]>([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
@@ -98,11 +102,34 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   useEffect(() => {
     const handleHashChange = () => {
       const hash = window.location.hash || '#home';
-      setActiveRoute(hash);
+      if (hash === '#apply') {
+        setIsApplyModalOpen(true);
+      } else {
+        setActiveRoute(hash);
+      }
     };
+
+    if (window.location.hash === '#apply') {
+      setIsApplyModalOpen(true);
+    }
+
     window.addEventListener('hashchange', handleHashChange);
     return () => window.removeEventListener('hashchange', handleHashChange);
   }, []);
+
+  const openApplyModal = (targetRole?: UserRole) => {
+    if (targetRole) {
+      setRoleState(targetRole);
+    }
+    setIsApplyModalOpen(true);
+  };
+
+  const closeApplyModal = () => {
+    setIsApplyModalOpen(false);
+    if (window.location.hash === '#apply') {
+      window.location.hash = activeRoute === '#apply' ? '#dashboard' : activeRoute;
+    }
+  };
 
   const toggleTheme = () => {
     setTheme(prev => {
@@ -171,6 +198,9 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         selectedOpportunityForNda,
         openNdaModal,
         closeNdaModal,
+        isApplyModalOpen,
+        openApplyModal,
+        closeApplyModal,
         toasts,
         addToast,
         removeToast,
